@@ -6,7 +6,7 @@
         Calendar,
         Schedual,
         Plan,
-        Requirements,
+        Requests,
         StudentGuide,
         Suggestions,
         Map,

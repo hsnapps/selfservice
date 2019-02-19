@@ -242,4 +242,55 @@ Admission &amp; Registration &amp; Trainees Services</value>
   <data name="TVTC_Ar_Full" xml:space="preserve">
     <value>المؤسسة العامة للتدريب التقني والمهني</value>
   </data>
+  <data name="RequestATMCard" xml:space="preserve">
+    <value>طلب بطاقة صراف</value>
+  </data>
+  <data name="RequestCarLicense" xml:space="preserve">
+    <value>طلب تصريح مواقف سيارة</value>
+  </data>
+  <data name="RequestMaintainance" xml:space="preserve">
+    <value>طلب صيانة او الابلاغ عن عطل</value>
+  </data>
+  <data name="RequestStudentCard" xml:space="preserve">
+    <value>طلب بطاقة طالب</value>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>إحباط</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>إعادة المحاولة</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="Building" xml:space="preserve">
+    <value>المبنى</value>
+  </data>
+  <data name="HallOrLab" xml:space="preserve">
+    <value>القاعة او المعمل</value>
+  </data>
+  <data name="RequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="SendingError" xml:space="preserve">
+    <value>لم يتم إرسال الطلب بنجاح</value>
+  </data>
+  <data name="SentSuccessfully" xml:space="preserve">
+    <value>تم إرسال الطلب بنجاح</value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿using SelfService.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
@@ -18,7 +19,25 @@ namespace SelfService.DB
             CONNECTION_STRING = String.Format(cs, parameters.Database);
         }
 
-        public static Student Login(string trainee_num, string id_number) {
+        internal static string GetEmail(string config) {
+            string email = "";
+
+            string statement = "select value from settings where category = 'email' and key = '" + config + "';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        email = reader.GetString(0);
+                    }
+                }
+                connection.Close();
+            }
+
+            return email;
+        }
+
+        internal static Student Login(string trainee_num, string id_number) {
             string statement = @"
 select id, email, mobile, name_ar, name_en, id_num, program, section, level, unit, term 
 from students 
@@ -41,7 +60,7 @@ and id_num = '{1}';";
             return student;
         }
 
-        public static int GetTimeout() {
+        internal static int GetTimeout() {
             int timeout = 60 * 2 * 1000;
 
             string statement = "select value from settings where category = 'config' and key = 'timeout';";
@@ -57,6 +76,25 @@ and id_num = '{1}';";
             }
 
             return timeout;
+        }
+
+        internal static List<string> GetConfig(string category) {
+            List<string> data = new List<string>();
+
+            string statement = "select value from settings where category = '" + category + "';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        var value = reader["value"].ToString();
+                        data.Add(value);
+                    }
+                }
+                connection.Close();
+            }
+
+            return data;
         }
     }
 

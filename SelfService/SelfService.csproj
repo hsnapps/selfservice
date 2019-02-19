@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -73,15 +76,25 @@
     <Compile Include="Code\Commands.cs" />
     <Compile Include="Code\Fonts.cs" />
     <Compile Include="Code\Letter.cs" />
+    <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\Masks.cs" />
     <Compile Include="Code\PrintProperties.cs" />
     <Compile Include="Components\CommandButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ConfirmButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\DateInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Deligations.cs" />
+    <Compile Include="Components\DropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\InlineInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\Input.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -119,6 +132,9 @@
     <Compile Include="Screens\Letters\SaudiCouncilOfEngineers.cs" />
     <Compile Include="Screens\Letters\ToWhomItMayConcern.cs" />
     <Compile Include="Screens\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\MaintainanceRequest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\Requests.cs">
@@ -179,6 +195,9 @@
     <EmbeddedResource Include="Fonts\EngraversMTBold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EmbeddedResource Include="Pdf\Communication.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -206,7 +225,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DB\env.txt">

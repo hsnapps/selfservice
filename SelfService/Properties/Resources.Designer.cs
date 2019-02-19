@@ -61,6 +61,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to إحباط.
+        /// </summary>
+        internal static string Abort {
+            get {
+                return ResourceManager.GetString("Abort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to القبول والتسجيل وخدمات المتدربين.
         /// </summary>
         internal static string Admission_Ar {
@@ -85,6 +94,15 @@ namespace SelfService.Properties {
             get {
                 object obj = ResourceManager.GetObject("Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المبنى.
+        /// </summary>
+        internal static string Building {
+            get {
+                return ResourceManager.GetString("Building", resourceCulture);
             }
         }
         
@@ -208,6 +226,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to القاعة او المعمل.
+        /// </summary>
+        internal static string HallOrLab {
+            get {
+                return ResourceManager.GetString("HallOrLab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الممـلـكـة الـعـــــربـيــة الـســعــوديــة
         ///المؤسسة العامة للتدريب التقني والمهني
         ///كليــة الاتصالات والإلكـتـــرونيات بــجــدة
@@ -247,6 +274,15 @@ namespace SelfService.Properties {
         internal static string Ifadah {
             get {
                 return ResourceManager.GetString("Ifadah", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تجاهل.
+        /// </summary>
+        internal static string Ignore {
+            get {
+                return ResourceManager.GetString("Ignore", resourceCulture);
             }
         }
         
@@ -305,6 +341,24 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لا.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to موافق.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الخطط الدراسية.
         /// </summary>
         internal static string Plan {
@@ -323,11 +377,65 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to طلب بطاقة صراف.
+        /// </summary>
+        internal static string RequestATMCard {
+            get {
+                return ResourceManager.GetString("RequestATMCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to طلب تصريح مواقف سيارة.
+        /// </summary>
+        internal static string RequestCarLicense {
+            get {
+                return ResourceManager.GetString("RequestCarLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تفاصيل الطلب.
+        /// </summary>
+        internal static string RequestDetails {
+            get {
+                return ResourceManager.GetString("RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to طلب صيانة او الابلاغ عن عطل.
+        /// </summary>
+        internal static string RequestMaintainance {
+            get {
+                return ResourceManager.GetString("RequestMaintainance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to طلب بطاقة طالب.
+        /// </summary>
+        internal static string RequestStudentCard {
+            get {
+                return ResourceManager.GetString("RequestStudentCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الطلبات.
         /// </summary>
         internal static string Requirements {
             get {
                 return ResourceManager.GetString("Requirements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إعادة المحاولة.
+        /// </summary>
+        internal static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
             }
         }
         
@@ -350,6 +458,33 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to إرسال.
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لم يتم إرسال الطلب بنجاح.
+        /// </summary>
+        internal static string SendingError {
+            get {
+                return ResourceManager.GetString("SendingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تم إرسال الطلب بنجاح.
+        /// </summary>
+        internal static string SentSuccessfully {
+            get {
+                return ResourceManager.GetString("SentSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اضغط هنا للبدأ.
         /// </summary>
         internal static string StartHere {
@@ -364,6 +499,15 @@ namespace SelfService.Properties {
         internal static string StudentGuide {
             get {
                 return ResourceManager.GetString("StudentGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الموضوع.
+        /// </summary>
+        internal static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
             }
         }
         
@@ -418,6 +562,15 @@ namespace SelfService.Properties {
         internal static string TVTC_En_Full {
             get {
                 return ResourceManager.GetString("TVTC_En_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نعم.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

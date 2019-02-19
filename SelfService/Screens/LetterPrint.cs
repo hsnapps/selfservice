@@ -46,10 +46,6 @@ namespace SelfService.Screens
             this.Controls.Add(preview);
         }
 
-        void GenerateDocument() {
-
-        }
-
         void OnPrintLetter(object sender, EventArgs e) {
 
         }

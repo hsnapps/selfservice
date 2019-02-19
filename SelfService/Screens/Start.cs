@@ -1,4 +1,5 @@
-﻿using SelfService.Components;
+﻿using SelfService.Code;
+using SelfService.Components;
 using SelfService.Properties;
 using System;
 using System.Windows.Forms;
@@ -49,33 +50,45 @@ namespace SelfService.Screens
 
         void OnCommandsPanelCLosed(object sender, FormClosedEventArgs e) {
             switch (commands.Command) {
-                case Code.Commands.Letters:
+                case Commands.Letters:
                     SelectLetters letters = new SelectLetters();
                     letters.FormClosed += (s, v) => { DisplayCommands(); };
                     letters.Show(this);
                     break;
-                case Code.Commands.Calendar:
+
+                case Commands.Calendar:
                     break;
-                case Code.Commands.Schedual:
+
+                case Commands.Schedual:
                     Schedule schedule = new Schedule();
                     schedule.FormClosed += (s, v) => { DisplayCommands(); };
                     schedule.Show(this);
                     break;
-                case Code.Commands.Plan:
+
+                case Commands.Plan:
                     break;
-                case Code.Commands.Requirements:
+
+                case Commands.Requests:
+                    Requests requests = new Requests();
+                    requests.FormClosed += (s, v) => { DisplayCommands(); };
+                    requests.Show(this);
                     break;
-                case Code.Commands.StudentGuide:
+
+                case Commands.StudentGuide:
                     StudentGuide guide = new StudentGuide();
                     guide.FormClosed += (s, v) => { DisplayCommands(); };
                     guide.Show();
                     break;
-                case Code.Commands.Suggestions:
+
+                case Commands.Suggestions:
                     break;
-                case Code.Commands.Map:
+
+                case Commands.Map:
                     break;
-                case Code.Commands.CommingSubjects:
+
+                case Commands.CommingSubjects:
                     break;
+
                 default:
                     BaseForm.Student = null;
                     break;

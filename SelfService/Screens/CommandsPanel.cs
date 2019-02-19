@@ -26,7 +26,7 @@ namespace SelfService.Screens
             dictionary.Add("Plan", Resources.Plan);
             dictionary.Add("Schedual", Resources.Schedual);
             dictionary.Add("StudentGuide", Resources.StudentGuide);
-            dictionary.Add("Requirements", Resources.Requirements);
+            dictionary.Add("Requests", Resources.Requirements);
             dictionary.Add("Map", Resources.Map);
             dictionary.Add("Suggestions", Resources.Suggestions);
             dictionary.Add("Exit", Resources.Exit);

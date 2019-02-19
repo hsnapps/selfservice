@@ -14,6 +14,7 @@ namespace SelfService
     {
         public Form1() {
             InitializeComponent();
+            comboBox1.DataSource = DB.Execute.GetConfig("maintainence");
         }
     }
 }

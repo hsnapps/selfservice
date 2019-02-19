@@ -1,6 +1,5 @@
 ﻿using SelfService.Components;
 using SelfService.Properties;
-using SelfService.Screens.Letters;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,9 +13,10 @@ namespace SelfService.Screens
         public Requests() {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
 
-            maintainance = new CommandButton(Resources.ToWhomItMayConcern);
-            scard = new CommandButton(Resources.SaudiCouncilOfEngineers);
-            atm = new CommandButton(Resources.ExaminationCertificate);
+            maintainance = new CommandButton(Resources.RequestMaintainance);
+            scard = new CommandButton(Resources.RequestStudentCard);
+            atm = new CommandButton(Resources.RequestATMCard);
+            car = new CommandButton(Resources.RequestCarLicense);
             exit = new CommandButton(Resources.Close);
 
             panel = new FlowLayoutPanel {
@@ -27,9 +27,9 @@ namespace SelfService.Screens
                 BackColor = Color.Transparent,
             };
 
-            atm.Click += (s, e) => {
-                ExaminationCertificate form = new ExaminationCertificate();
-                form.Show(this);
+            maintainance.Click += (s, e) => {
+                MaintainanceRequest request = new MaintainanceRequest();
+                request.Show(this);
             };
 
             exit.Click += (s, e) => { Close(); };
