@@ -262,3 +262,7 @@ __pycache__/
 
 # Videos
 Videos/
+DB/env.txt
+SelfService.csproj
+packages.config
+App.config

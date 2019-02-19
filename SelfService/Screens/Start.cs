@@ -57,6 +57,9 @@ namespace SelfService.Screens
                 case Code.Commands.Calendar:
                     break;
                 case Code.Commands.Schedual:
+                    Schedule schedule = new Schedule();
+                    schedule.FormClosed += (s, v) => { DisplayCommands(); };
+                    schedule.Show(this);
                     break;
                 case Code.Commands.Plan:
                     break;

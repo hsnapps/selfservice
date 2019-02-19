@@ -6,37 +6,35 @@ using System.Windows.Forms;
 
 namespace SelfService.Screens
 {
-    class SelectLetters : BaseForm
+    class Requests : BaseForm
     {
-        CommandButton toWhomItMayConcern;
-        CommandButton saudiCouncilOfEngineers;
-        CommandButton examinationCertificate;
-        CommandButton exit;
+        CommandButton maintainance, scard, atm, car, exit;
         FlowLayoutPanel panel;
 
-        public SelectLetters() {
+        public Requests() {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
 
-            toWhomItMayConcern = new CommandButton(Resources.ToWhomItMayConcern);
-            saudiCouncilOfEngineers = new CommandButton(Resources.SaudiCouncilOfEngineers);
-            examinationCertificate = new CommandButton(Resources.ExaminationCertificate);
+            maintainance = new CommandButton(Resources.ToWhomItMayConcern);
+            scard = new CommandButton(Resources.SaudiCouncilOfEngineers);
+            atm = new CommandButton(Resources.ExaminationCertificate);
             exit = new CommandButton(Resources.Close);
+
             panel = new FlowLayoutPanel {
                 Left = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2,
                 Top = 250 + CommandButton.DefaultHeight,
                 Width = CommandButton.DefaultWidth + 2,
-                Height = CommandButton.DefaultHeight * 5,
+                Height = CommandButton.DefaultHeight * 6,
                 BackColor = Color.Transparent,
             };
 
-            examinationCertificate.Click += (s, e) => {
+            atm.Click += (s, e) => {
                 ExaminationCertificate form = new ExaminationCertificate();
                 form.Show(this);
             };
 
             exit.Click += (s, e) => { Close(); };
 
-            panel.Controls.AddRange(new Control[] { toWhomItMayConcern, saudiCouncilOfEngineers, examinationCertificate, exit });
+            panel.Controls.AddRange(new Control[] { maintainance, scard, atm, exit });
             Controls.Add(panel);
         }
     }
