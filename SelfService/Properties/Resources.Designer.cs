@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SelfService.Properties
-{
-
-
+namespace SelfService.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,34 +19,33 @@ namespace SelfService.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if ((resourceMan == null)) {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SelfService.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -58,6 +57,367 @@ namespace SelfService.Properties
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to القبول والتسجيل وخدمات المتدربين.
+        /// </summary>
+        internal static string Admission_Ar {
+            get {
+                return ResourceManager.GetString("Admission_Ar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admission &amp; Registration &amp; Trainees Services.
+        /// </summary>
+        internal static string Admission_En {
+            get {
+                return ResourceManager.GetString("Admission_En", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button {
+            get {
+                object obj = ResourceManager.GetObject("Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonDown {
+            get {
+                object obj = ResourceManager.GetObject("ButtonDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to التقويم الأكاديمي.
+        /// </summary>
+        internal static string Calendar {
+            get {
+                return ResourceManager.GetString("Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إلغاء الأمر.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إغلاق.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to كليــة الاتصالات والإلكـتـــرونيات بــجــدة.
+        /// </summary>
+        internal static string College_Ar {
+            get {
+                return ResourceManager.GetString("College_Ar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to College of Telecommunications &amp; Electronics – Jeddah.
+        /// </summary>
+        internal static string College_En {
+            get {
+                return ResourceManager.GetString("College_En", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الخطابات-التقويم الأكاديمي-الجداول-الخطط الدراسية-الطلبات-دليل المتدرب-المقترحات والشكاوي-خريطة الكلية-المواد المتبقية-الإنهاء والخروج.
+        /// </summary>
+        internal static string CommandsLabels {
+            get {
+                return ResourceManager.GetString("CommandsLabels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المواد المتبقية.
+        /// </summary>
+        internal static string CommingSubjects {
+            get {
+                return ResourceManager.GetString("CommingSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نهاية الاختبارات.
+        /// </summary>
+        internal static string ExamEnd {
+            get {
+                return ResourceManager.GetString("ExamEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطاب إفادة اختبارات.
+        /// </summary>
+        internal static string ExaminationCertificate {
+            get {
+                return ResourceManager.GetString("ExaminationCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to بداية الاختبارات.
+        /// </summary>
+        internal static string ExamStart {
+            get {
+                return ResourceManager.GetString("ExamStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خروج.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الممـلـكـة الـعـــــربـيــة الـســعــوديــة
+        ///المؤسسة العامة للتدريب التقني والمهني
+        ///كليــة الاتصالات والإلكـتـــرونيات بــجــدة
+        ///القبول والتسجيل وخدمات المتدربين.
+        /// </summary>
+        internal static string HeaderArb {
+            get {
+                return ResourceManager.GetString("HeaderArb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KINGDOM OF SAUDI ARARIA
+        ///Technical and Vocational Training Corporation
+        ///College of Telecommunications &amp; Electronics – Jeddah
+        ///Admission &amp; Registration &amp; Trainees Services.
+        /// </summary>
+        internal static string HeaderEng {
+            get {
+                return ResourceManager.GetString("HeaderEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to رقم الهوية.
+        /// </summary>
+        internal static string IdNumber {
+            get {
+                return ResourceManager.GetString("IdNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إفـــادة
+        ///تأديـة الاخـتبـارات الـنهائيـة.
+        /// </summary>
+        internal static string Ifadah {
+            get {
+                return ResourceManager.GetString("Ifadah", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to معلومات تسجيل الدخول غير صحيحة!.
+        /// </summary>
+        internal static string InvalidCredentials {
+            get {
+                return ResourceManager.GetString("InvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الممـلـكـة الـعـــــربـيــة الـســعــوديــة.
+        /// </summary>
+        internal static string Kingdom_Ar {
+            get {
+                return ResourceManager.GetString("Kingdom_Ar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KINGDOM OF SAUDI ARARIA.
+        /// </summary>
+        internal static string Kingdom_En {
+            get {
+                return ResourceManager.GetString("Kingdom_En", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الخطابات.
+        /// </summary>
+        internal static string Letters {
+            get {
+                return ResourceManager.GetString("Letters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to دخول.
+        /// </summary>
+        internal static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خريطة الكلية.
+        /// </summary>
+        internal static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الخطط الدراسية.
+        /// </summary>
+        internal static string Plan {
+            get {
+                return ResourceManager.GetString("Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to طباعة.
+        /// </summary>
+        internal static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الطلبات.
+        /// </summary>
+        internal static string Requirements {
+            get {
+                return ResourceManager.GetString("Requirements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطاب تعريف لهيئة المهندسين.
+        /// </summary>
+        internal static string SaudiCouncilOfEngineers {
+            get {
+                return ResourceManager.GetString("SaudiCouncilOfEngineers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الجداول.
+        /// </summary>
+        internal static string Schedual {
+            get {
+                return ResourceManager.GetString("Schedual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اضغط هنا للبدأ.
+        /// </summary>
+        internal static string StartHere {
+            get {
+                return ResourceManager.GetString("StartHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to دليل المتدرب.
+        /// </summary>
+        internal static string StudentGuide {
+            get {
+                return ResourceManager.GetString("StudentGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المقترحات والشكاوي.
+        /// </summary>
+        internal static string Suggestions {
+            get {
+                return ResourceManager.GetString("Suggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطاب تعريف إلى من يهمه الأمر.
+        /// </summary>
+        internal static string ToWhomItMayConcern {
+            get {
+                return ResourceManager.GetString("ToWhomItMayConcern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to رقم المتدرب.
+        /// </summary>
+        internal static string TraineeNumber {
+            get {
+                return ResourceManager.GetString("TraineeNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TVTC.
+        /// </summary>
+        internal static string TVTC {
+            get {
+                return ResourceManager.GetString("TVTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المؤسسة العامة للتدريب التقني والمهني.
+        /// </summary>
+        internal static string TVTC_Ar_Full {
+            get {
+                return ResourceManager.GetString("TVTC_Ar_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical and Vocational Training Corporation.
+        /// </summary>
+        internal static string TVTC_En_Full {
+            get {
+                return ResourceManager.GetString("TVTC_En_Full", resourceCulture);
             }
         }
     }

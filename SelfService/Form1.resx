@@ -117,129 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tvtc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IdNumber" xml:space="preserve">
-    <value>رقم الهوية</value>
-  </data>
-  <data name="StartHere" xml:space="preserve">
-    <value>اضغط هنا للبدأ</value>
-  </data>
-  <data name="TraineeNumber" xml:space="preserve">
-    <value>رقم المتدرب</value>
-  </data>
-  <data name="TVTC" xml:space="preserve">
-    <value>TVTC</value>
-  </data>
-  <data name="TVTC_En_Full" xml:space="preserve">
-    <value>Technical and Vocational Training Corporation</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>إلغاء الأمر</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>دخول</value>
-  </data>
-  <data name="InvalidCredentials" xml:space="preserve">
-    <value>معلومات تسجيل الدخول غير صحيحة!</value>
-  </data>
-  <data name="CommandsLabels" xml:space="preserve">
-    <value>الخطابات-التقويم الأكاديمي-الجداول-الخطط الدراسية-الطلبات-دليل المتدرب-المقترحات والشكاوي-خريطة الكلية-المواد المتبقية-الإنهاء والخروج</value>
-  </data>
-  <data name="Calendar" xml:space="preserve">
-    <value>التقويم الأكاديمي</value>
-  </data>
-  <data name="CommingSubjects" xml:space="preserve">
-    <value>المواد المتبقية</value>
-  </data>
-  <data name="Exit" xml:space="preserve">
-    <value>خروج</value>
-  </data>
-  <data name="Letters" xml:space="preserve">
-    <value>الخطابات</value>
-  </data>
-  <data name="Map" xml:space="preserve">
-    <value>خريطة الكلية</value>
-  </data>
-  <data name="Plan" xml:space="preserve">
-    <value>الخطط الدراسية</value>
-  </data>
-  <data name="Requirements" xml:space="preserve">
-    <value>الطلبات</value>
-  </data>
-  <data name="Schedual" xml:space="preserve">
-    <value>الجداول</value>
-  </data>
-  <data name="StudentGuide" xml:space="preserve">
-    <value>دليل المتدرب</value>
-  </data>
-  <data name="Suggestions" xml:space="preserve">
-    <value>المقترحات والشكاوي</value>
-  </data>
-  <data name="ExaminationCertificate" xml:space="preserve">
-    <value>خطاب إفادة اختبارات</value>
-  </data>
-  <data name="SaudiCouncilOfEngineers" xml:space="preserve">
-    <value>خطاب تعريف لهيئة المهندسين</value>
-  </data>
-  <data name="ToWhomItMayConcern" xml:space="preserve">
-    <value>خطاب تعريف إلى من يهمه الأمر</value>
-  </data>
-  <data name="ExamEnd" xml:space="preserve">
-    <value>نهاية الاختبارات</value>
-  </data>
-  <data name="ExamStart" xml:space="preserve">
-    <value>بداية الاختبارات</value>
-  </data>
-  <data name="Print" xml:space="preserve">
-    <value>طباعة</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>إغلاق</value>
-  </data>
-  <data name="HeaderEng" xml:space="preserve">
-    <value>KINGDOM OF SAUDI ARARIA
-Technical and Vocational Training Corporation
-College of Telecommunications &amp; Electronics – Jeddah
-Admission &amp; Registration &amp; Trainees Services</value>
-  </data>
-  <data name="HeaderArb" xml:space="preserve">
-    <value>الممـلـكـة الـعـــــربـيــة الـســعــوديــة
-المؤسسة العامة للتدريب التقني والمهني
-كليــة الاتصالات والإلكـتـــرونيات بــجــدة
-القبول والتسجيل وخدمات المتدربين</value>
-  </data>
-  <data name="Admission_Ar" xml:space="preserve">
-    <value>القبول والتسجيل وخدمات المتدربين</value>
-  </data>
-  <data name="Admission_En" xml:space="preserve">
-    <value>Admission &amp; Registration &amp; Trainees Services</value>
-  </data>
-  <data name="College_Ar" xml:space="preserve">
-    <value>كليــة الاتصالات والإلكـتـــرونيات بــجــدة</value>
-  </data>
-  <data name="College_En" xml:space="preserve">
-    <value>College of Telecommunications &amp; Electronics – Jeddah</value>
-  </data>
-  <data name="Ifadah" xml:space="preserve">
-    <value>إفـــادة
-تأديـة الاخـتبـارات الـنهائيـة</value>
-  </data>
-  <data name="Kingdom_Ar" xml:space="preserve">
-    <value>الممـلـكـة الـعـــــربـيــة الـســعــوديــة</value>
-  </data>
-  <data name="Kingdom_En" xml:space="preserve">
-    <value>KINGDOM OF SAUDI ARARIA</value>
-  </data>
-  <data name="TVTC_Ar_Full" xml:space="preserve">
-    <value>المؤسسة العامة للتدريب التقني والمهني</value>
+  <data name="axWindowsMediaPlayer1.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAtwAAAAIB
+        AAAAAQAAAAAAAAAAAAAAAKIAAAAAAwAACAAAAAAABQAAAAAAAADwPwMAAAAAAAUAAAAAAAAAAAAIAAIA
+        AAAAAAMAAQAAAAsA//8DAAAAAAALAP//CAACAAAAAAADADIAAAALAAAACAAKAAAAZgB1AGwAbAAAAAsA
+        AAALAAAACwD//wsA//8LAAAACAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACAACAAAAAAALAAAAwAcAAGEC
+        AAAL
+</value>
   </data>
 </root>
