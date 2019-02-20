@@ -14,7 +14,7 @@ namespace SelfService.Screens
         Label lblMessage;
         CommandButton login;
         CommandButton cancel;
-        Keyboard keyboard;
+        NumaricKeyboard keyboard;
 
         public Login() {
             var x = (Screen.PrimaryScreen.Bounds.Width - Input.DefaultWidth) / 2;
@@ -48,7 +48,7 @@ namespace SelfService.Screens
                 RightToLeft = RightToLeft.Yes,
                 Visible = false,
             };
-            keyboard = new Keyboard();
+            keyboard = new NumaricKeyboard();
 
 #if DEBUG
             idNumber.Text = "1087534176";

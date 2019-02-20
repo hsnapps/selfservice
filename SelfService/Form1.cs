@@ -14,7 +14,11 @@ namespace SelfService
     {
         public Form1() {
             InitializeComponent();
-            comboBox1.DataSource = DB.Execute.GetConfig("maintainence");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(textBox1.Text);
+            textBox2.Text = asciiBytes.ToString();
         }
     }
 }

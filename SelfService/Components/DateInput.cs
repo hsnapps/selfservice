@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SelfService.Code;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SelfService.Components

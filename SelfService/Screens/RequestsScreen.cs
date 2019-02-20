@@ -49,7 +49,8 @@ namespace SelfService.Screens
                 StudentCard studentCard = new StudentCard();
                 studentCard.Show(this);
             } else if (b.Text == Resources.RequestATMCard) {
-
+                ATMCard card = new ATMCard();
+                card.Show();
             } else if (b.Text == Resources.RequestCarLicense) {
 
             } else {

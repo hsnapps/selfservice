@@ -14,7 +14,7 @@ namespace SelfService.Screens.Letters
         Label lblMessage;
         CommandButton print;
         CommandButton close;
-        Keyboard keyboard;
+        NumaricKeyboard keyboard;
 
         public ExaminationCertificate() {
             var x = (Screen.PrimaryScreen.Bounds.Width - DateInput.DefaultWidth) / 2;
@@ -48,7 +48,7 @@ namespace SelfService.Screens.Letters
                 RightToLeft = RightToLeft.Yes,
                 Visible = false,
             };
-            keyboard = new Keyboard();
+            keyboard = new NumaricKeyboard();
 
             endDate.InputGotFocus += OnInputGotFocus;
             startDate.InputGotFocus += OnInputGotFocus;

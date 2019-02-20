@@ -88,7 +88,7 @@
     <Compile Include="Components\DateInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Deligations.cs" />
+    <Compile Include="Code\Deligations.cs" />
     <Compile Include="Components\DropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,7 +99,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\NumaricKeyboard.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Waiting.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="DB\Execute.cs" />
     <Compile Include="Documents\ExaminationCertificateLetter.cs">
@@ -132,6 +138,9 @@
     <Compile Include="Screens\Letters\SaudiCouncilOfEngineers.cs" />
     <Compile Include="Screens\Letters\ToWhomItMayConcern.cs" />
     <Compile Include="Screens\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Requests\ATMCard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\Requests\Maintainance.cs">
@@ -239,6 +248,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\index.html" />
+    <EmbeddedResource Include="Images\Waiting-1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Waiting-2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
