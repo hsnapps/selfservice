@@ -15,17 +15,17 @@ namespace SelfService.Screens
         public RequestsScreen() {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
 
-            maintainance = new CommandButton(Resources.RequestMaintainance);
-            scard = new CommandButton(Resources.RequestStudentCard);
-            atm = new CommandButton(Resources.RequestATMCard);
-            car = new CommandButton(Resources.RequestCarLicense);
+            maintainance = new CommandButton(Resources.RequestMaintainance) { Margin = new Padding(0, 0, 0, 20) };
+            scard = new CommandButton(Resources.RequestStudentCard) { Margin = new Padding(0, 0, 0, 20) };
+            atm = new CommandButton(Resources.RequestATMCard) { Margin = new Padding(0, 0, 0, 20) };
+            car = new CommandButton(Resources.RequestCarLicense) { Margin = new Padding(0, 0, 0, 20) };
             exit = new CommandButton(Resources.Close);
 
             panel = new FlowLayoutPanel {
                 Left = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2,
-                Top = 250 + CommandButton.DefaultHeight,
+                Top = 100 + CommandButton.DefaultHeight,
                 Width = CommandButton.DefaultWidth + 2,
-                Height = CommandButton.DefaultHeight * 6,
+                Height = CommandButton.DefaultHeight * 7,
                 BackColor = Color.Transparent,
             };
 
@@ -35,7 +35,7 @@ namespace SelfService.Screens
             car.Click += OnButtonClick;
             exit.Click += OnButtonClick;
 
-            panel.Controls.AddRange(new Control[] { maintainance, scard, atm, exit });
+            panel.Controls.AddRange(new Control[] { maintainance, scard, atm, car, exit });
             Controls.Add(panel);
         }
 
@@ -52,7 +52,8 @@ namespace SelfService.Screens
                 ATMCard card = new ATMCard();
                 card.Show();
             } else if (b.Text == Resources.RequestCarLicense) {
-
+                CarBadge car = new CarBadge();
+                car.Show();
             } else {
                 Close();
             }

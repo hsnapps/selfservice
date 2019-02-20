@@ -10,6 +10,7 @@ namespace SelfService.Screens
     {
         Login login;
         CommandsPanel commands;
+        
 
         public Start() : base(true) {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
@@ -36,11 +37,13 @@ namespace SelfService.Screens
 #endif
         }
 
+#if DEBUG
         protected override void OnKeyUp(KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) {
                 Close();
             }
         }
+#endif
 
         void OnStart(object sender, EventArgs e) {
             login = new Login();

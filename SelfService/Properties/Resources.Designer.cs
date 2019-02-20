@@ -145,11 +145,36 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to رقم الطالب: &lt;id&gt;
+        ///رقم الجوال: &lt;mobile&gt;
+        ///الاسم بالعربية: &lt;name_ar&gt;
+        ///الاسم بالإنجليزية: &lt;name_en&gt;
+        ///رقم الهوية: &lt;id_num&gt;
+        ///نوع السيارة: &lt;carModel&gt;
+        ///اللوحة - أرقام: &lt;paletNumbers&gt;
+        ///اللوحة - حروف: &lt;paletLetters&gt;.
+        /// </summary>
+        internal static string CarData {
+            get {
+                return ResourceManager.GetString("CarData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to سبب طلب البطاقة.
         /// </summary>
         internal static string CardReason {
             get {
                 return ResourceManager.GetString("CardReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع السيارة.
+        /// </summary>
+        internal static string CarModel {
+            get {
+                return ResourceManager.GetString("CarModel", resourceCulture);
             }
         }
         
@@ -364,6 +389,33 @@ namespace SelfService.Properties {
         internal static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ارقام.
+        /// </summary>
+        internal static string PaletLetters {
+            get {
+                return ResourceManager.GetString("PaletLetters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يرجى ادخال رقم اللوحة من اليمين الى اليسار.
+        /// </summary>
+        internal static string PaletNote {
+            get {
+                return ResourceManager.GetString("PaletNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to حروف.
+        /// </summary>
+        internal static string PaletNumbers {
+            get {
+                return ResourceManager.GetString("PaletNumbers", resourceCulture);
             }
         }
         

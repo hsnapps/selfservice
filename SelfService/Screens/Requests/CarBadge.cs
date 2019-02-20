@@ -7,22 +7,35 @@ using System.Windows.Forms;
 
 namespace SelfService.Screens.Requests
 {
-    class StudentCard : BaseForm
+    class CarBadge : BaseForm
     {
-        readonly DropDown reason;
+        readonly InlineInput carModel;
+        readonly InlineInput paletLetters;
+        readonly InlineInput paletNumbers;
+        readonly Label label;
         readonly CommandButton send;
         readonly CommandButton close;
         readonly Panel footer;
         readonly FlowLayoutPanel panel;
 
-        public StudentCard() {
-            reason = new DropDown(Resources.CardReason, "reason");
+        public CarBadge() {
+            carModel = new InlineInput(Resources.CarModel);
+            paletLetters = new InlineInput(Resources.PaletLetters) { MaxLength = 3 };
+            paletNumbers = new InlineInput(Resources.PaletNumbers) { MaxLength = 4 };
+            label = new Label {
+                Font = new Font(Fonts.ALMohanadBold, 25),
+                AutoSize = false,
+                Size = carModel.Size,
+                Text = Resources.PaletNote,
+                TextAlign = ContentAlignment.MiddleCenter,
+            };
+
             panel = new FlowLayoutPanel {
                 Dock = DockStyle.Fill,
                 BackColor = Color.Transparent,
-                Padding = new Padding(20, 400, 20, 50),
+                Padding = new Padding(20, 150, 20, 50),
             };
-            panel.Controls.AddRange(new Control[] { reason });
+            panel.Controls.AddRange(new Control[] { carModel, label, paletLetters, paletNumbers });
             panel.ControlAdded += (s, e) => {
                 (s as FlowLayoutPanel).SetFlowBreak(e.Control, true);
             };
@@ -50,16 +63,16 @@ namespace SelfService.Screens.Requests
         }
 
         void OnSend(object s, EventArgs e) {
-            string subject = Resources.RequestStudentCard + " - " + reason.Text;
-            string body = Resources.StudentData
+            string subject = Resources.RequestCarLicense;
+            string body = Resources.CarData
                 .Replace("<id>", BaseForm.Student.ID)
                 .Replace("<mobile>", BaseForm.Student.Mobile)
                 .Replace("<name_ar>", BaseForm.Student.Name_AR)
                 .Replace("<name_en>", BaseForm.Student.Name_EN)
                 .Replace("<id_num>", BaseForm.Student.ID_Number)
-                .Replace("<program>", BaseForm.Student.Program)
-                .Replace("<section>", BaseForm.Student.Section)
-                .Replace("<level>", BaseForm.Student.Level);
+                .Replace("<carModel>", carModel.Text)
+                .Replace("<paletNumbers>", paletNumbers.Text)
+                .Replace("<paletLetters>", paletLetters.Text);
 
             Mail.Send(To.Admission, subject, body, this);
         }

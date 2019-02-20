@@ -75,6 +75,7 @@ namespace SelfService.Screens
         void OnInputGotFocus(object sender, EventArgs e) {
             keyboard.Control = (sender as Input);
             keyboard.Visible = true;
+            //base.ShowKeyboard(true);
         }
 
         void OnLogin(object sender, MouseEventArgs e) {

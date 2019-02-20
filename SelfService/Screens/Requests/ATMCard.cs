@@ -16,7 +16,7 @@ namespace SelfService.Screens.Requests
         readonly FlowLayoutPanel panel;
 
         public ATMCard() {
-            reason = new DropDown(Resources.CardReason, "badge");
+            reason = new DropDown(Resources.CardReason, "reason");
             panel = new FlowLayoutPanel {
                 Dock = DockStyle.Fill,
                 BackColor = Color.Transparent,
@@ -61,7 +61,7 @@ namespace SelfService.Screens.Requests
                 .Replace("<section>", BaseForm.Student.Section)
                 .Replace("<level>", BaseForm.Student.Level);
 
-            Mail.Send(To.Admission, subject, body);
+            Mail.Send(To.Admission, subject, body, this);
         }
     }
 }

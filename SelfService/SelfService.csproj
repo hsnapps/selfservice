@@ -143,6 +143,9 @@
     <Compile Include="Screens\Requests\ATMCard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Screens\Requests\CarBadge.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Screens\Requests\Maintainance.cs">
       <SubType>Form</SubType>
     </Compile>

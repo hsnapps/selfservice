@@ -1,4 +1,5 @@
 ﻿using SelfService.Code;
+using SelfService.Components;
 using SelfService.Models;
 using SelfService.Properties;
 using System.Drawing;
@@ -14,6 +15,7 @@ namespace SelfService.Screens
     {
         Timer timer;
         Bitmap background;
+        Keyboard keyboard;
 
         public BaseForm(bool disableTimer = false) {
             //LoadFonts();
@@ -29,6 +31,13 @@ namespace SelfService.Screens
             KeyUp += (s, e) => {
                 base.OnKeyUp(e);
             };
+
+            //keyboard = new Keyboard();
+            //keyboard.Hide();
+        }
+
+        protected void ShowKeyboard(bool show) {
+            //keyboard.Visible = show;
         }
 
         void LoadImages() {
@@ -57,7 +66,7 @@ namespace SelfService.Screens
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = background;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            //ClientSize = new Size(800, 450);
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Normal;
             StartPosition = FormStartPosition.Manual;

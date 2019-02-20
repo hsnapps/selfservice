@@ -21,7 +21,7 @@ namespace SelfService.Code
 
         }
 
-        public static void Send(To to, string subject, string body) {
+        public static void Send(To to, string subject, string body, BaseForm form = null) {
             string email = DB.Execute.GetEmail(Enum.GetName(typeof(To), to).ToLower());            
             string username = DB.Execute.GetEmail("username");
             string password = DB.Execute.GetEmail("password");
@@ -30,7 +30,7 @@ namespace SelfService.Code
             int port = Convert.ToInt32(DB.Execute.GetEmail("port"));
             int timeout = 50000;
 
-            Waiting waiting = new Waiting();
+            Waiting waiting = new Waiting(form);
             waiting.Show();
 
             SmtpClient client = new SmtpClient {
@@ -62,7 +62,11 @@ namespace SelfService.Code
         }
 
         static void OnSendCompleted(object sender, AsyncCompletedEventArgs e) {
-            (e.UserState as Waiting).Close();
+            if (e.Error != null) {
+                (e.UserState as Waiting).ShowMessage(e.Error.Message);
+            } else {
+                (e.UserState as Waiting).ShowMessage(Resources.SentSuccessfully); 
+            }
         }
     }
 }

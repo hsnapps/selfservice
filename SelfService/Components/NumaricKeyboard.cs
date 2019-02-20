@@ -10,11 +10,22 @@ namespace SelfService.Components
 {
     class NumaricKeyboard : UserControl
     {
+        const int BTNWIDTH = 77;
+        const int BTNHEIGHT = 68;
+
         Button[] buttons = new Button[12];
-        string numbers = "123456789˂0˅";
+        readonly string numbers;
 
         public NumaricKeyboard() {
+            numbers = "123456789˂0˅";
             InitializeComponent();
+        }
+
+        public NumaricKeyboard(Point location) {
+            numbers = "123456789,0.";
+            InitializeComponent();
+            Location = location;
+            Visible = true;
         }
 
         int x = 3;
@@ -28,7 +39,7 @@ namespace SelfService.Components
                     Font = new Font("Microsoft Sans Serif", 25f),
                     Location = new Point(x, y),
                     Name = String.Format("button{0}", i),
-                    Size = new Size(77, 68),
+                    Size = new Size(BTNWIDTH, BTNHEIGHT),
                     TabIndex = 0,
                     Text = numbers[i].ToString(),
                     UseVisualStyleBackColor = false,
@@ -44,21 +55,23 @@ namespace SelfService.Components
 
             Controls.AddRange(buttons);
 
-            Size = new Size((buttons[0].Width * 3) + (6 * 2), (buttons[0].Height * 3) + (6 * 2));
+            Size = new Size(NumaricKeyboard.DefaultWidth, NumaricKeyboard.DefaultHeight);
             Size = new Size(248, 300);
             x = (Screen.PrimaryScreen.Bounds.Width - this.Width) / 2;
             y = Screen.PrimaryScreen.Bounds.Height - this.Height;
             Location = new Point(x, y);
-            this.Visible = false;
+            Visible = false;
         }
 
         void OnKeyClick(object sender, EventArgs e) {
+            Button me = (Button)sender;
+
             if (Control == null) {
-                this.Visible = false;
+                //this.Visible = false;
+                DoSendKeys(me.Text);
                 return;
             }
-
-            Button me = (Button)sender;
+            
             switch (me.Text) {
                 case "˂":
                     try {
@@ -87,6 +100,12 @@ namespace SelfService.Components
             }
         }
 
+        void DoSendKeys(string text) {
+            SendKeys.SendWait(text);
+        }
+
         public Control Control { get; set; }
+        public static int DefaultWidth { get { return (BTNWIDTH * 3) + (6 * 2); } }
+        public static int DefaultHeight { get { return (BTNHEIGHT * 3) + (6 * 2); } }
     }
 }

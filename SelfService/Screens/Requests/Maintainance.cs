@@ -61,7 +61,7 @@ namespace SelfService.Screens.Requests
             string _subject = String.Format("{0} - {1}", lab.Text, subject.Text);
             string _body = String.Format("{0}\n{1}", Student.Name_AR, details.Text);
 
-            Mail.Send(To.Maintainance, _subject, _body);
+            Mail.Send(To.Maintainance, _subject, _body, this);
         }
     }
 }

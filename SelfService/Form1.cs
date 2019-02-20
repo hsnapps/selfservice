@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SelfService
@@ -16,9 +11,25 @@ namespace SelfService
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            byte[] asciiBytes = Encoding.ASCII.GetBytes(textBox1.Text);
-            textBox2.Text = asciiBytes.ToString();
+        void button2_Click(object sender, EventArgs e) {
+            byte[] asciiBytes = Encoding.UTF8.GetBytes(textBox1.Text);
+            foreach (byte b in asciiBytes) {
+                listBox1.Items.Add(b);
+            }
+            textBox1.Text = "";
+        }
+
+        void button1_Click(object sender, EventArgs e) {
+            string copy = "";
+            foreach (var item in listBox1.Items) {
+                copy += item.ToString() + ", ";
+            }
+            listBox1.Items.Clear();
+            Clipboard.SetText(copy);
+        }
+
+        void button3_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }
