@@ -5,35 +5,27 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SelfService.Screens
+namespace SelfService.Screens.Requests
 {
-    class MaintainanceRequest : BaseForm
+    class StudentCard : BaseForm
     {
-        readonly DropDown subject;
-        readonly InlineInput building;
-        readonly InlineInput lab;
-        readonly InlineInput details;
+        readonly DropDown reason;
         readonly CommandButton send;
         readonly CommandButton close;
         readonly Panel footer;
         readonly FlowLayoutPanel panel;
 
-        public MaintainanceRequest() {
-            subject = new DropDown(Resources.Subject, "maintainence");
-            building = new InlineInput(Resources.Building);
-            lab = new InlineInput(Resources.HallOrLab);
-            details = new InlineInput(Resources.RequestDetails, true);
-
+        public StudentCard() {
+            reason = new DropDown(Resources.CardReason, "badge");
             panel = new FlowLayoutPanel {
                 Dock = DockStyle.Fill,
                 BackColor = Color.Transparent,
-                Padding = new Padding(20, 200, 20, 50),
+                Padding = new Padding(20, 400, 20, 50),
             };
-            panel.Controls.AddRange(new Control[] { subject, building, lab, details });
+            panel.Controls.AddRange(new Control[] { reason });
             panel.ControlAdded += (s, e) => {
                 (s as FlowLayoutPanel).SetFlowBreak(e.Control, true);
             };
-
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
             close = new CommandButton(Resources.Close) {
                 Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
@@ -48,6 +40,7 @@ namespace SelfService.Screens
             footer = new Panel {
                 Dock = DockStyle.Bottom,
                 Height = CommandButton.DefaultHeight + 2,
+                BackColor = Color.Transparent,
             };
             footer.Controls.Add(close);
             footer.Controls.Add(send);
@@ -56,11 +49,19 @@ namespace SelfService.Screens
             Controls.Add(panel);
         }
 
-        async void OnSend(object s, EventArgs e) {
-            string _subject = String.Format("{0} - {1}", lab.Text, subject.Text);
-            string _body = String.Format("{0}\n{1}", Student.Name_AR, details.Text);
+        void OnSend(object s, EventArgs e) {
+            string subject = Resources.RequestStudentCard + " - " + reason.Text;
+            string body = Resources.StudentData
+                .Replace("<id>", BaseForm.Student.ID)
+                .Replace("<mobile>", BaseForm.Student.Mobile)
+                .Replace("<name_ar>", BaseForm.Student.Name_AR)
+                .Replace("<name_en>", BaseForm.Student.Name_EN)
+                .Replace("<id_num>", BaseForm.Student.ID_Number)
+                .Replace("<program>", BaseForm.Student.Program)
+                .Replace("<section>", BaseForm.Student.Section)
+                .Replace("<level>", BaseForm.Student.Level);
 
-            await Mail.Send(To.Maintainance, _subject, _body);
+            Mail.Send(To.Admission, subject, body);
         }
     }
 }

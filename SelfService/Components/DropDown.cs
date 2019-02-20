@@ -27,7 +27,7 @@ namespace SelfService.Components
             label.Name = "label";
             label.Padding = new Padding(3);
             label.RightToLeft = RightToLeft.Yes;
-            label.Size = new Size(250, 50);
+            label.Size = new Size(200, 50);
             label.TabIndex = 0;
             label.Text = text;
             label.TextAlign = ContentAlignment.MiddleLeft;
@@ -43,7 +43,7 @@ namespace SelfService.Components
             box.DataSource = data;
             //box.Click += (s, e) => { (s as ComboBox).DroppedDown = true; };
 
-            int width = Screen.PrimaryScreen.Bounds.Width - 50;
+            int width = Screen.PrimaryScreen.Bounds.Width - 100;
 
             // InlineInput
             AutoScaleDimensions = new SizeF(6F, 13F);

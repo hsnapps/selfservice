@@ -293,4 +293,17 @@ Admission &amp; Registration &amp; Trainees Services</value>
   <data name="SentSuccessfully" xml:space="preserve">
     <value>تم إرسال الطلب بنجاح</value>
   </data>
+  <data name="CardReason" xml:space="preserve">
+    <value>سبب طلب البطاقة</value>
+  </data>
+  <data name="StudentData" xml:space="preserve">
+    <value>رقم الطالب: &lt;id&gt;
+رقم الجوال: &lt;mobile&gt;
+الاسم بالعربية: &lt;name_ar&gt;
+الاسم بالإنجليزية: &lt;name_en&gt;
+رقم الهوية: &lt;id_num&gt;
+البرنامج: &lt;program&gt;
+القسم: &lt;section&gt;
+المستوى: &lt;level&gt;</value>
+  </data>
 </root>

@@ -1,12 +1,18 @@
-﻿using System;
+﻿using SelfService.Properties;
+using SelfService.Screens;
+using System;
+using System.ComponentModel;
+using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SelfService.Code
 {
     public enum To
     {
-        Maintainance
+        Maintainance,
+        Admission
     }
     static class Mail
     {
@@ -14,35 +20,42 @@ namespace SelfService.Code
 
         }
 
-        public static async Task Send(To to, string subject, string body) {
-            string email = "";
-            switch (to) {
-                case To.Maintainance:
-                    email = DB.Execute.GetEmail("maintainence");
-                    break;
-            }
-            string from = DB.Execute.GetEmail("from");
+        public static void Send(To to, string subject, string body) {
+            string email = DB.Execute.GetEmail(Enum.GetName(typeof(To), to).ToLower()); ;
+            //switch (to) {
+            //    case To.Maintainance:
+            //        email = DB.Execute.GetEmail("maintainence");
+            //        break;
+            //    case To.Admission:
+            //        email = DB.Execute.GetEmail("admission");
+            //        break;
+            //}
+            string username = DB.Execute.GetEmail("username");
             string password = DB.Execute.GetEmail("password");
             string displayName = DB.Execute.GetEmail("displayName");
+            string host = DB.Execute.GetEmail("host");
+            int port = Convert.ToInt32(DB.Execute.GetEmail("port"));
 
             SmtpClient client = new SmtpClient {
-                Port = Convert.ToInt32(DB.Execute.GetEmail("port")),
+                Port = port,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Host = DB.Execute.GetEmail("host"),
-                EnableSsl = true,
-                Credentials = new System.Net.NetworkCredential(from, password),
-                Timeout = 5 * 1000,
+                Host = host,
+                EnableSsl = false,
+                Credentials = new NetworkCredential(username, password),
+                Timeout = 50000,
             };
-            MailMessage mail = new MailMessage(from, email) {
+            MailMessage mail = new MailMessage(BaseForm.Student.Email, email) {
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = false,
             };
-            try {
-                await client.SendMailAsync(mail);
-            } catch (Exception) {
 
+            try {
+                client.Send(mail);
+                MessageBox.Show(Resources.SentSuccessfully);
+            } catch (Exception x) {
+                MessageBox.Show(Resources.SendingError + "\n" + x.Message);
             }
         }
     }

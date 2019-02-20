@@ -69,7 +69,7 @@ namespace SelfService.Screens
                     break;
 
                 case Commands.Requests:
-                    Requests requests = new Requests();
+                    RequestsScreen requests = new RequestsScreen();
                     requests.FormClosed += (s, v) => { DisplayCommands(); };
                     requests.Show(this);
                     break;

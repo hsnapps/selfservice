@@ -145,6 +145,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سبب طلب البطاقة.
+        /// </summary>
+        internal static string CardReason {
+            get {
+                return ResourceManager.GetString("CardReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to إغلاق.
         /// </summary>
         internal static string Close {
@@ -490,6 +499,22 @@ namespace SelfService.Properties {
         internal static string StartHere {
             get {
                 return ResourceManager.GetString("StartHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to رقم الطالب: &lt;id&gt;
+        ///رقم الجوال: &lt;mobile&gt;
+        ///الاسم بالعربية: &lt;name_ar&gt;
+        ///الاسم بالإنجليزية: &lt;name_en&gt;
+        ///رقم الهوية: &lt;id_num&gt;
+        ///البرنامج: &lt;program&gt;
+        ///القسم: &lt;section&gt;
+        ///المستوى: &lt;level&gt;.
+        /// </summary>
+        internal static string StudentData {
+            get {
+                return ResourceManager.GetString("StudentData", resourceCulture);
             }
         }
         

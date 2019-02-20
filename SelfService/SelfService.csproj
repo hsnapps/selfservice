@@ -134,10 +134,13 @@
     <Compile Include="Screens\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\MaintainanceRequest.cs">
+    <Compile Include="Screens\Requests\Maintainance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\Requests.cs">
+    <Compile Include="Screens\RequestsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Requests\StudentCard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\Schedule.cs">
