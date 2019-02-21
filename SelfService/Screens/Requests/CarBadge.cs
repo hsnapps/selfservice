@@ -74,7 +74,7 @@ namespace SelfService.Screens.Requests
                 .Replace("<paletNumbers>", paletNumbers.Text)
                 .Replace("<paletLetters>", paletLetters.Text);
 
-            Mail.Send(To.Admission, subject, body, this);
+            Mail.Send(To.CarBadge, subject, body, this);
         }
     }
 }

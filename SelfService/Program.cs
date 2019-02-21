@@ -13,7 +13,7 @@ namespace SelfService
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new Start());
+            Application.Run(new Video());
         }
     }
 }

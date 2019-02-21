@@ -12,7 +12,10 @@ namespace SelfService.Code
     public enum To
     {
         Maintainance,
-        Admission
+        CarBadge,
+        ATMCard,
+        Claiming,
+        StudentCard
     }
 
     static class Mail

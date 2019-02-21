@@ -61,7 +61,7 @@ namespace SelfService.Screens.Requests
                 .Replace("<section>", BaseForm.Student.Section)
                 .Replace("<level>", BaseForm.Student.Level);
 
-            Mail.Send(To.Admission, subject, body, this);
+            Mail.Send(To.ATMCard, subject, body, this);
         }
     }
 }

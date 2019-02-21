@@ -334,4 +334,19 @@ Admission &amp; Registration &amp; Trainees Services</value>
 اللوحة - أرقام: &lt;paletNumbers&gt;
 اللوحة - حروف: &lt;paletLetters&gt;</value>
   </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="ClaimingData" xml:space="preserve">
+    <value>رقم الطالب: &lt;id&gt;
+رقم الجوال: &lt;mobile&gt;
+الاسم بالعربية: &lt;name_ar&gt;
+الاسم بالإنجليزية: &lt;name_en&gt;
+رقم الهوية: &lt;id_num&gt;
+البرنامج: &lt;program&gt;
+القسم: &lt;section&gt;
+المستوى: &lt;level&gt;
+نوع الطلب: &lt;requestType&gt;
+تفاصيل الطلب: &lt;requestDetails&gt;</value>
+  </data>
 </root>

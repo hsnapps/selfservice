@@ -10,7 +10,8 @@ namespace SelfService.Screens
     {
         Login login;
         CommandsPanel commands;
-        
+        Timer _timer;
+        Video video;
 
         public Start() : base(true) {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
@@ -23,7 +24,23 @@ namespace SelfService.Screens
             };
 
             btn.Click += OnStart;
-            this.Controls.Add(btn);
+            Controls.Add(btn);
+
+            video = new Video();
+            video.FormClosed += (s, e) => { _timer.Start(); };
+
+            _timer = new Timer {
+                Interval = DB.Execute.GetTimeout(),
+                Enabled = true,
+            };
+            _timer.Tick += (s, e) => {
+                FormCollection fc = Application.OpenForms;
+                if(fc.Count == 1) {
+                    if (video == null) video = new Video();
+                    video.Show();
+                    (s as Timer).Stop();
+                }
+            };
 
 #if DEBUG
             var close = new CommandButton(Resources.Exit) {
@@ -33,7 +50,7 @@ namespace SelfService.Screens
             };
 
             close.Click += (s, e)=> { Close(); };
-            this.Controls.Add(close);
+            Controls.Add(close);
 #endif
         }
 
@@ -54,36 +71,29 @@ namespace SelfService.Screens
         void OnCommandsPanelCLosed(object sender, FormClosedEventArgs e) {
             switch (commands.Command) {
                 case Commands.Letters:
-                    SelectLetters letters = new SelectLetters();
-                    letters.FormClosed += (s, v) => { DisplayCommands(); };
-                    letters.Show(this);
+                    DisplayForm(new SelectLetters());
                     break;
 
                 case Commands.Calendar:
                     break;
 
                 case Commands.Schedual:
-                    Schedule schedule = new Schedule();
-                    schedule.FormClosed += (s, v) => { DisplayCommands(); };
-                    schedule.Show(this);
+                    DisplayForm(new Schedule());
                     break;
 
                 case Commands.Plan:
                     break;
 
                 case Commands.Requests:
-                    RequestsScreen requests = new RequestsScreen();
-                    requests.FormClosed += (s, v) => { DisplayCommands(); };
-                    requests.Show(this);
+                    DisplayForm(new RequestsScreen());
                     break;
 
                 case Commands.StudentGuide:
-                    StudentGuide guide = new StudentGuide();
-                    guide.FormClosed += (s, v) => { DisplayCommands(); };
-                    guide.Show();
+                    DisplayForm(new StudentGuide());
                     break;
 
                 case Commands.Suggestions:
+                    DisplayForm(new Claiming());
                     break;
 
                 case Commands.Map:
@@ -110,6 +120,13 @@ namespace SelfService.Screens
             commands = new CommandsPanel();
             commands.FormClosed += OnCommandsPanelCLosed;
             commands.Show(this);
+        }
+
+        void DisplayForm(BaseForm form) {
+            form.FormClosed += (s, v) => {
+                DisplayCommands();
+            };
+            form.Show();            
         }
     }
 }

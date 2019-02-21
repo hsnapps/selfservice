@@ -15,7 +15,7 @@ namespace SelfService.Screens
     {
         Timer timer;
         Bitmap background;
-        Keyboard keyboard;
+        //Keyboard keyboard;
 
         public BaseForm(bool disableTimer = false) {
             //LoadFonts();

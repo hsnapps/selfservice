@@ -37,6 +37,73 @@ namespace SelfService.DB
             return email;
         }
 
+        internal static string GetVideopath() {
+            string path = "";
+
+            string statement = "select value from settings where category = 'video' and key = 'path';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        path = reader.GetString(0);
+                    }
+                }
+                connection.Close();
+            }
+
+            return path;
+        }
+
+        internal static string GetVideoUrl() {
+            string url = "";
+            //string streamUrl = "";
+            //string quality;
+            string statement = "select value from settings where category = 'video' and key = 'url';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        url = reader.GetString(0);
+                    }
+                }
+                connection.Close();
+            }
+
+            //var yt = new YoutubeUrlResolver();
+            //var links = yt.Extractor(url);
+            //foreach (var link in links) {
+            //    quality = link.ElementAt(1);
+            //    if (quality.Contains("small") || quality.Contains("med")) {
+            //        continue;
+            //    }
+
+            //    streamUrl = link.ElementAt(0);
+            //    break;
+            //}
+            //return streamUrl;
+            return url;
+        }
+
+        internal static string GetVideoSelection() {
+            string selection = "";
+
+            string statement = "select value from settings where category = 'video' and key = 'select';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        selection = reader.GetString(0);
+                    }
+                }
+                connection.Close();
+            }
+
+            return selection;
+        }
+
         internal static Student Login(string trainee_num, string id_number) {
             string statement = @"
 select id, email, mobile, name_ar, name_en, id_num, program, section, level, unit, term 

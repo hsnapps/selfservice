@@ -179,6 +179,24 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to رقم الطالب: &lt;id&gt;
+        ///رقم الجوال: &lt;mobile&gt;
+        ///الاسم بالعربية: &lt;name_ar&gt;
+        ///الاسم بالإنجليزية: &lt;name_en&gt;
+        ///رقم الهوية: &lt;id_num&gt;
+        ///البرنامج: &lt;program&gt;
+        ///القسم: &lt;section&gt;
+        ///المستوى: &lt;level&gt;
+        ///نوع الطلب: &lt;requestType&gt;
+        ///تفاصيل الطلب: &lt;requestDetails&gt;.
+        /// </summary>
+        internal static string ClaimingData {
+            get {
+                return ResourceManager.GetString("ClaimingData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to إغلاق.
         /// </summary>
         internal static string Close {
@@ -479,6 +497,15 @@ namespace SelfService.Properties {
         internal static string RequestStudentCard {
             get {
                 return ResourceManager.GetString("RequestStudentCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع الطلب.
+        /// </summary>
+        internal static string RequestType {
+            get {
+                return ResourceManager.GetString("RequestType", resourceCulture);
             }
         }
         

@@ -79,6 +79,7 @@
     <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\Masks.cs" />
     <Compile Include="Code\PrintProperties.cs" />
+    <Compile Include="Code\YoutubeUrlResolver.cs" />
     <Compile Include="Components\CommandButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -121,6 +122,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Claiming.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\CommandsPanel.cs">
@@ -166,6 +170,12 @@
     </Compile>
     <Compile Include="Screens\StudentGuide.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Video.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Video.Designer.cs">
+      <DependentUpon>Video.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -269,11 +279,39 @@
     <EmbeddedResource Include="Images\Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screens\Video.resx">
+      <DependentUpon>Video.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Videos\Vid1.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="AxAXVLC">
+      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AXVLC">
+      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="AxWMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
       <VersionMajor>1</VersionMajor>
