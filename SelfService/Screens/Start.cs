@@ -11,47 +11,108 @@ namespace SelfService.Screens
         Login login;
         CommandsPanel commands;
         Timer _timer;
-        Video video;
+        //Video video;
+        CommandButton start;
+#if DEBUG
+        CommandButton close;
+#endif
+        AxWMPLib.AxWindowsMediaPlayer player;
+        readonly string url;
 
         public Start() : base(true) {
+            string selection = DB.Execute.GetVideoSelection();
+            switch (selection) {
+                case "web":
+                    url = DB.Execute.GetVideoUrl();
+                    break;
+                case "youtube":
+                    url = DB.Execute.GetYoutubeUrl();
+                    break;
+                default:
+                    url = DB.Execute.GetVideoPath();
+                    break;
+            }
+
+            InitializeVideo();
+
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
             var y = (Screen.PrimaryScreen.Bounds.Height - CommandButton.DefaultHeight) / 2;
 
-            var btn = new CommandButton(Resources.StartHere) {
+            start = new CommandButton(Resources.StartHere) {
                 Left = x,
                 Top = y,
                 Height = 90,
             };
 
-            btn.Click += OnStart;
-            Controls.Add(btn);
+            start.Click += OnStart;
+            Controls.Add(start);
 
-            video = new Video();
-            video.FormClosed += (s, e) => { _timer.Start(); };
+            //video = new Video();
+            //video.FormClosed += (s, e) => { _timer.Start(); };
 
             _timer = new Timer {
                 Interval = DB.Execute.GetTimeout(),
                 Enabled = true,
             };
-            _timer.Tick += (s, e) => {
-                FormCollection fc = Application.OpenForms;
-                if(fc.Count == 1) {
-                    if (video == null) video = new Video();
-                    video.Show();
-                    (s as Timer).Stop();
-                }
-            };
+            _timer.Tick += OnTimer;
 
 #if DEBUG
-            var close = new CommandButton(Resources.Exit) {
+            close = new CommandButton(Resources.Exit) {
                 Left = x,
                 Top = y + CommandButton.DefaultHeight + 20,
                 Height = 90,
             };
 
-            close.Click += (s, e)=> { Close(); };
+            close.Click += (s, e) => { Close(); };
             Controls.Add(close);
 #endif
+        }
+
+        void OnTimer(object s, EventArgs e) {
+            FormCollection fc = Application.OpenForms;
+            if (fc.Count == 1) {
+                start.Visible = false;
+#if DEBUG
+                close.Visible = false;
+#endif
+                player.Visible = true;
+                player.URL = url;
+                (s as Timer).Stop();
+            }
+        }
+
+        void InitializeVideo() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Video));
+            player = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(player)).BeginInit();
+
+            player.Enabled = true;
+            player.Location = new System.Drawing.Point(183, 65);
+            player.Name = "player";
+            player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
+            player.Size = new System.Drawing.Size(417, 275);
+            player.TabIndex = 0;
+            player.ClickEvent += new AxWMPLib._WMPOCXEvents_ClickEventHandler(OnPlayerClickEvent);
+            player.Visible = false;
+            player.Bounds = this.Bounds;
+            player.EndOfStream += OnEndOfStream;
+
+            Controls.Add(player);
+            ((System.ComponentModel.ISupportInitialize)(player)).EndInit();
+        }
+
+        void OnEndOfStream(object s, AxWMPLib._WMPOCXEvents_EndOfStreamEvent e) {
+            (s as AxWMPLib.AxWindowsMediaPlayer).URL = url;
+        }
+
+        void OnPlayerClickEvent(object s, AxWMPLib._WMPOCXEvents_ClickEvent e) {
+            (s as AxWMPLib.AxWindowsMediaPlayer).Visible = false;
+            (s as AxWMPLib.AxWindowsMediaPlayer).URL = "";
+            start.Visible = true;
+#if DEBUG
+            close.Visible = true;
+#endif
+            _timer.Start();
         }
 
 #if DEBUG
@@ -126,7 +187,7 @@ namespace SelfService.Screens
             form.FormClosed += (s, v) => {
                 DisplayCommands();
             };
-            form.Show();            
+            form.Show();
         }
     }
 }

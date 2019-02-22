@@ -242,7 +242,20 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نهاية الاختبارات.
+        ///   Looks up a localized string similar to تفيــد كليــة الاتصــالات والالكترونيات بجــدة بأن فــتــرة الاخــتبــارات النهائيــة العمليــة والنظريــة
+        ///
+        ///للــفترة المــســائــيــــة للــفصــــل الــتــدريبي الــــثــــانــــي لــلــــعــــــــــام year1  /year2  
+        ///
+        ///تــــبــــــدأ من يــــــــوم الأحــــــــــد start إلى يــــوم الأربــــعــــــــاء end هـ ..
+        /// </summary>
+        internal static string ExamBody {
+            get {
+                return ResourceManager.GetString("ExamBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نهايــــــة الاختبارات.
         /// </summary>
         internal static string ExamEnd {
             get {
@@ -260,7 +273,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to بداية الاختبارات.
+        ///   Looks up a localized string similar to بـدايـة الاختبارات.
         /// </summary>
         internal static string ExamStart {
             get {
@@ -307,6 +320,15 @@ namespace SelfService.Properties {
         internal static string HeaderEng {
             get {
                 return ResourceManager.GetString("HeaderEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الرقم الاكــــــاديمي.
+        /// </summary>
+        internal static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
             }
         }
         
@@ -380,6 +402,15 @@ namespace SelfService.Properties {
         internal static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الــــــــــتــــخــــــصــــــــص.
+        /// </summary>
+        internal static string Major {
+            get {
+                return ResourceManager.GetString("Major", resourceCulture);
             }
         }
         
@@ -546,6 +577,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الـــــقــــــــــــــــســــــــــــــــــــم.
+        /// </summary>
+        internal static string Section {
+            get {
+                return ResourceManager.GetString("Section", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to إرسال.
         /// </summary>
         internal static string Send {
@@ -630,6 +670,15 @@ namespace SelfService.Properties {
         internal static string ToWhomItMayConcern {
             get {
                 return ResourceManager.GetString("ToWhomItMayConcern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اســم المـــــتـــــــــــدرب.
+        /// </summary>
+        internal static string TraineeName {
+            get {
+                return ResourceManager.GetString("TraineeName", resourceCulture);
             }
         }
         

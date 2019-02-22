@@ -1,14 +1,7 @@
 ﻿using SelfService.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SelfService.Screens
@@ -31,16 +24,23 @@ namespace SelfService.Screens
             Name = "BaseForm";
             Text = Resources.TVTC_En_Full;
 
-            player.Bounds = new Rectangle(Padding.Left, Padding.Top, Width - (2 * Padding.Right), Height - (2 * Padding.Bottom));
-
+            player.Bounds = this.Bounds; //;new Rectangle(Padding.Left, Padding.Top, Width - (2 * Padding.Right), Height - (2 * Padding.Bottom));
+            
+            string url = "";
             string selection = DB.Execute.GetVideoSelection();
-
-            if (selection == "web") {
-                player.URL = DB.Execute.GetVideoUrl();
-            } else {
-                player.URL = DB.Execute.GetVideopath();
+            switch (selection) {
+                case "web":
+                    url = DB.Execute.GetVideoUrl();
+                    break;
+                case "youtube":
+                    url = DB.Execute.GetYoutubeUrl();
+                    break;
+                default:
+                    url = DB.Execute.GetVideoPath();
+                    break;
             }
 
+            player.URL = url;
             this.Click += (s, e) => { Close(); };
         }
 

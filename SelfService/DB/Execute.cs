@@ -1,8 +1,12 @@
-﻿using SelfService.Models;
+﻿using Newtonsoft.Json.Linq;
+using SelfService.Code;
+using SelfService.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
+using System.Net.Http;
 using System.Windows.Forms;
 
 namespace SelfService.DB
@@ -37,53 +41,84 @@ namespace SelfService.DB
             return email;
         }
 
-        internal static string GetVideopath() {
-            string path = "";
+        internal static string GetYoutubeUrl() {
+            string id = GetVideo("youtube");
+            string url = "https://ytgrabber.p.rapidapi.com/app/get/" + id;
+            YoutubeRespone youtube;
 
-            string statement = "select value from settings where category = 'video' and key = 'path';";
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
-                    SQLiteDataReader reader = command.ExecuteReader();
-                    if (reader.Read()) {
-                        path = reader.GetString(0);
-                    }
-                }
-                connection.Close();
+            using (HttpClient client = new HttpClient()) {
+                client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "DGN0v3Cft1mshsk7mpUF91dmRTOTp19kt6cjsn9cDqrtU4GFLS");
+                var response = client.GetStringAsync(new Uri(url)).Result;
+                //youtube = JsonConvert.DeserializeObject<YoutubeRespone>(response);
+                youtube = new YoutubeRespone();
+                JObject obj = JObject.Parse(response);
+                youtube.Error = (string)obj["error"];
+                youtube.ThumbnailUrl = (string)obj["thumbnailUrl"];
+                youtube.Title = (string)obj["title"];
+                JArray links = (JArray)obj["link"];
+
+                youtube.Links = links.Select(c => {
+                    //JToken t_link = c["link"];
+                    JToken t_type = c["type"];
+                    JToken t_format = t_type["format"];
+                    JToken t_quality = t_type["quality"];
+                    JToken t_url= c["url"];
+                    YoutubeVideoType type =
+                    new YoutubeVideoType((string)t_format, (string)t_quality);
+                    return new Link(type, (string)t_url);
+                }).ToList();
             }
 
-            return path;
+            if (youtube == null) {
+                return "";
+            }
+
+            if (youtube.Links == null) {
+                return "";
+            }
+
+            if (!String.IsNullOrEmpty(youtube.Error)) {
+                return "";
+            }
+
+            var mp4 = youtube.Links.FindAll(v => v.Type.Format == "mp4");
+            foreach (var link in mp4) {
+                if (link.Type.Quality.Contains("1080")) {
+                    return link.URL;
+                } else if (link.Type.Quality.Contains("720")) {
+                    return link.URL;
+                } else if (link.Type.Quality.Contains("360")) {
+                    return link.URL;
+                }
+            }
+
+            return "";
+        }
+
+        internal static string GetVideoPath() {
+            return GetVideo("path");
         }
 
         internal static string GetVideoUrl() {
-            string url = "";
-            //string streamUrl = "";
-            //string quality;
-            string statement = "select value from settings where category = 'video' and key = 'url';";
+            return GetVideo("web");
+        }
+
+        static string GetVideo(string key) {
+            string video = "";
+            string statement = String.Format("select value from settings where category = 'video' and key = '{0}';", key);
+
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
                     SQLiteDataReader reader = command.ExecuteReader();
                     if (reader.Read()) {
-                        url = reader.GetString(0);
+                        video = reader.GetString(0);
                     }
                 }
                 connection.Close();
             }
 
-            //var yt = new YoutubeUrlResolver();
-            //var links = yt.Extractor(url);
-            //foreach (var link in links) {
-            //    quality = link.ElementAt(1);
-            //    if (quality.Contains("small") || quality.Contains("med")) {
-            //        continue;
-            //    }
-
-            //    streamUrl = link.ElementAt(0);
-            //    break;
-            //}
-            //return streamUrl;
-            return url;
+            return video;
         }
 
         internal static string GetVideoSelection() {

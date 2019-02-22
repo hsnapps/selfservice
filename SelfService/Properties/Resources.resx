@@ -194,10 +194,10 @@
     <value>خطاب تعريف إلى من يهمه الأمر</value>
   </data>
   <data name="ExamEnd" xml:space="preserve">
-    <value>نهاية الاختبارات</value>
+    <value>نهايــــــة الاختبارات</value>
   </data>
   <data name="ExamStart" xml:space="preserve">
-    <value>بداية الاختبارات</value>
+    <value>بـدايـة الاختبارات</value>
   </data>
   <data name="Print" xml:space="preserve">
     <value>طباعة</value>
@@ -348,5 +348,24 @@ Admission &amp; Registration &amp; Trainees Services</value>
 المستوى: &lt;level&gt;
 نوع الطلب: &lt;requestType&gt;
 تفاصيل الطلب: &lt;requestDetails&gt;</value>
+  </data>
+  <data name="ExamBody" xml:space="preserve">
+    <value>تفيــد كليــة الاتصــالات والالكترونيات بجــدة بأن فــتــرة الاخــتبــارات النهائيــة العمليــة والنظريــة
+
+للــفترة المــســائــيــــة للــفصــــل الــتــدريبي الــــثــــانــــي لــلــــعــــــــــام year1  /year2  
+
+تــــبــــــدأ من يــــــــوم الأحــــــــــد start إلى يــــوم الأربــــعــــــــاء end هـ .</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>الرقم الاكــــــاديمي</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>الــــــــــتــــخــــــصــــــــص</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>الـــــقــــــــــــــــســــــــــــــــــــم</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>اســم المـــــتـــــــــــدرب</value>
   </data>
 </root>
