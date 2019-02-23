@@ -1,5 +1,4 @@
 ﻿using SelfService.Components;
-using SelfService.Documents;
 using SelfService.Properties;
 using System;
 using System.Drawing;
@@ -76,7 +75,7 @@ namespace SelfService.Screens.Letters
             }
 
             keyboard.Visible = false;
-            LetterPrint letter = new LetterPrint(new ExaminationCertificateLetter(startDate.Date, endDate.Date));
+            LetterPrint letter = new LetterPrint(new Documents.ExaminationCertificate(startDate.Date, endDate.Date));
             letter.Show(this);
         }
 

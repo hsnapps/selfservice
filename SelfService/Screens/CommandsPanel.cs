@@ -21,13 +21,13 @@ namespace SelfService.Screens
 
             commands = new CommandButton[10];
             dictionary = new Dictionary<string, string>();
-            dictionary.Add("Calendar", Resources.Calendar);
+            dictionary.Add("Calendar", Resources.Calendar + "*");
             dictionary.Add("Letters", Resources.Letters);
-            dictionary.Add("Plan", Resources.Plan);
-            dictionary.Add("Schedual", Resources.Schedual);
+            dictionary.Add("Plan", Resources.Plan + "*");
+            dictionary.Add("Schedual", Resources.Schedual + "*");
             dictionary.Add("StudentGuide", Resources.StudentGuide);
             dictionary.Add("Requests", Resources.Requirements);
-            dictionary.Add("Map", Resources.Map);
+            dictionary.Add("Map", Resources.Map + "*");
             dictionary.Add("Suggestions", Resources.Suggestions);
             dictionary.Add("Exit", Resources.Exit);
             dictionary.Add("CommingSubjects", Resources.CommingSubjects);

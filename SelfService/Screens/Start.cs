@@ -161,6 +161,7 @@ namespace SelfService.Screens
                     break;
 
                 case Commands.CommingSubjects:
+                    DisplayForm(new Courses());
                     break;
 
                 default:

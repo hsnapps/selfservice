@@ -25,90 +25,171 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.registered = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.completed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorized_units = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.course_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.course_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passed_units = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.required_units = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passed_subjects = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.required_subjects = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // dataGridView1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(776, 26);
-            this.textBox1.TabIndex = 0;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.registered,
+            this.completed,
+            this.authorized_units,
+            this.course_name,
+            this.course_symbol,
+            this.gpa,
+            this.passed_units,
+            this.required_units,
+            this.passed_subjects,
+            this.required_subjects});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dataGridView1.Size = new System.Drawing.Size(1333, 749);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // listBox1
+            // registered
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(12, 44);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(206, 384);
-            this.listBox1.TabIndex = 1;
+            this.registered.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.registered.DataPropertyName = "registered";
+            this.registered.HeaderText = "مسجل حاليا";
+            this.registered.Name = "registered";
+            this.registered.ReadOnly = true;
+            this.registered.Width = 97;
             // 
-            // button1
+            // completed
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(594, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 34);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Copy";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.completed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.completed.DataPropertyName = "completed";
+            this.completed.HeaderText = "مستوفى";
+            this.completed.Name = "completed";
+            this.completed.ReadOnly = true;
+            this.completed.Width = 75;
             // 
-            // button2
+            // authorized_units
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(594, 285);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 34);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Convert";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.authorized_units.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.authorized_units.DataPropertyName = "authorized_units";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.authorized_units.DefaultCellStyle = dataGridViewCellStyle1;
+            this.authorized_units.HeaderText = "الوحدات المعتمدة للمقرر";
+            this.authorized_units.Name = "authorized_units";
+            this.authorized_units.ReadOnly = true;
+            this.authorized_units.Width = 154;
             // 
-            // button3
+            // course_name
             // 
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button3.Location = new System.Drawing.Point(594, 394);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 34);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Exit";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.course_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.course_name.DataPropertyName = "course_name";
+            this.course_name.HeaderText = "إسم المقرر";
+            this.course_name.Name = "course_name";
+            this.course_name.ReadOnly = true;
+            this.course_name.Width = 85;
+            // 
+            // course_symbol
+            // 
+            this.course_symbol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.course_symbol.DataPropertyName = "course_symbol";
+            this.course_symbol.HeaderText = "رمز المقرر";
+            this.course_symbol.Name = "course_symbol";
+            this.course_symbol.ReadOnly = true;
+            this.course_symbol.Width = 83;
+            // 
+            // gpa
+            // 
+            this.gpa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gpa.DataPropertyName = "gpa";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.gpa.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gpa.HeaderText = "المعدل التراكمي";
+            this.gpa.Name = "gpa";
+            this.gpa.ReadOnly = true;
+            this.gpa.Width = 119;
+            // 
+            // passed_units
+            // 
+            this.passed_units.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.passed_units.DataPropertyName = "passed_units";
+            this.passed_units.HeaderText = "الوحدات المعتمدة المنجزة";
+            this.passed_units.Name = "passed_units";
+            this.passed_units.ReadOnly = true;
+            this.passed_units.Width = 155;
+            // 
+            // required_units
+            // 
+            this.required_units.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.required_units.DataPropertyName = "required_units";
+            this.required_units.HeaderText = "الوحدات المعتمدة المطلوبة";
+            this.required_units.Name = "required_units";
+            this.required_units.ReadOnly = true;
+            this.required_units.Width = 158;
+            // 
+            // passed_subjects
+            // 
+            this.passed_subjects.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.passed_subjects.DataPropertyName = "passed_subjects";
+            this.passed_subjects.HeaderText = "عدد المقررات المنجزة";
+            this.passed_subjects.Name = "passed_subjects";
+            this.passed_subjects.ReadOnly = true;
+            this.passed_subjects.Width = 136;
+            // 
+            // required_subjects
+            // 
+            this.required_subjects.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.required_subjects.DataPropertyName = "required_subjects";
+            this.required_subjects.HeaderText = "عدد المقررات المطلوبة";
+            this.required_subjects.Name = "required_subjects";
+            this.required_subjects.ReadOnly = true;
+            this.required_subjects.Width = 139;
             // 
             // Form1
             // 
-            this.AcceptButton = this.button3;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button3;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1333, 749);
+            this.Controls.Add(this.dataGridView1);
+            this.Font = new System.Drawing.Font("AL-Mohanad", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn registered;
+        private System.Windows.Forms.DataGridViewTextBoxColumn completed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorized_units;
+        private System.Windows.Forms.DataGridViewTextBoxColumn course_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn course_symbol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gpa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passed_units;
+        private System.Windows.Forms.DataGridViewTextBoxColumn required_units;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passed_subjects;
+        private System.Windows.Forms.DataGridViewTextBoxColumn required_subjects;
     }
 }
 

@@ -242,6 +242,33 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT 
+        ///CASE registered 
+        ///	WHEN 1 THEN &apos;نعم&apos;
+        ///	WHEN 0 THEN &apos;لا&apos;
+        ///END AS &apos;registered&apos;,
+        ///CASE completed 
+        ///	WHEN 1 THEN &apos;نعم&apos;
+        ///	WHEN 0 THEN &apos;لا&apos;
+        ///END AS &apos;completed&apos;,
+        ///authorized_units,
+        ///course_name,
+        ///course_symbol,
+        ///gpa,
+        ///passed_units,
+        ///required_units,
+        ///passed_subjects,
+        ///required_subjects
+        ///FROM courses 
+        ///WHERE student_id = &apos;{0}&apos;;.
+        /// </summary>
+        internal static string CoursesSQL {
+            get {
+                return ResourceManager.GetString("CoursesSQL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تفيــد كليــة الاتصــالات والالكترونيات بجــدة بأن فــتــرة الاخــتبــارات النهائيــة العمليــة والنظريــة
         ///
         ///للــفترة المــســائــيــــة للــفصــــل الــتــدريبي الــــثــــانــــي لــلــــعــــــــــام year1  /year2  
@@ -251,6 +278,15 @@ namespace SelfService.Properties {
         internal static string ExamBody {
             get {
                 return ResourceManager.GetString("ExamBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to هذا وقد أُعطيت له هذه الإفادة بناء على طلبه دون أدنى مسؤولية على الكلية ..
+        /// </summary>
+        internal static string ExamBodyEnd {
+            get {
+                return ResourceManager.GetString("ExamBodyEnd", resourceCulture);
             }
         }
         
@@ -384,6 +420,32 @@ namespace SelfService.Properties {
         internal static string Kingdom_En {
             get {
                 return ResourceManager.GetString("Kingdom_En", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تشهد كلية الاتصالات جدة بنين
+        /// 
+        ///بأن المتدرب: name
+        ///
+        ///ورقمه التدريبي: id 
+        ///
+        ///وقسمه program وتخصصه major 
+        ///
+        ///ضمن المتدربين المستمرين في term للعام التدريبي year2/year1 هـ 
+        ///
+        ///وقد أعطيت له هذه الشهادة بناء على طلبه لتقديمها الي : to  
+        ///
+        ///
+        ///                                                                    الختم الرسمي 
+        ///
+        ///
+        ///                                                                                                        
+        ///                                                                                  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LetterOfCertificate {
+            get {
+                return ResourceManager.GetString("LetterOfCertificate", resourceCulture);
             }
         }
         
@@ -559,11 +621,40 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خطاب تعريف لهيئة المهندسين.
+        ///   Looks up a localized string similar to الهيئة السعودية للمهندسين.
         /// </summary>
         internal static string SaudiCouncilOfEngineers {
             get {
                 return ResourceManager.GetString("SaudiCouncilOfEngineers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الممكلة العربية السعودية
+        ///المؤسسة العامة للتدريب التقني والمهني
+        ///term.
+        /// </summary>
+        internal static string SaudiCouncilOfEngineersHeader {
+            get {
+                return ResourceManager.GetString("SaudiCouncilOfEngineersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطاب تعريف لهيئة المهندسين.
+        /// </summary>
+        internal static string SaudiCouncilOfEngineersLetter {
+            get {
+                return ResourceManager.GetString("SaudiCouncilOfEngineersLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شهادة تعريف.
+        /// </summary>
+        internal static string SaudiCouncilOfEngineersTitle {
+            get {
+                return ResourceManager.GetString("SaudiCouncilOfEngineersTitle", resourceCulture);
             }
         }
         
@@ -613,11 +704,31 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الختم الرسمي.
+        /// </summary>
+        internal static string Stamp {
+            get {
+                return ResourceManager.GetString("Stamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اضغط هنا للبدأ.
         /// </summary>
         internal static string StartHere {
             get {
                 return ResourceManager.GetString("StartHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الممكلة العربية السعودية
+        ///المؤسسة العامة للتدريب التقني والمهني
+        ///الفصل term year1.
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
@@ -665,11 +776,20 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خطاب تعريف إلى من يهمه الأمر.
+        ///   Looks up a localized string similar to من يهمه الامر.
         /// </summary>
         internal static string ToWhomItMayConcern {
             get {
                 return ResourceManager.GetString("ToWhomItMayConcern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطاب تعريف إلى من يهمه الأمر.
+        /// </summary>
+        internal static string ToWhomItMayConcernLetter {
+            get {
+                return ResourceManager.GetString("ToWhomItMayConcernLetter", resourceCulture);
             }
         }
         

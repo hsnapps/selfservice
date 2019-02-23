@@ -5,22 +5,36 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace SelfService.Documents
 {
-    class ExaminationCertificateLetter : PrintDocument
+    class ExaminationCertificate : PrintDocument
     {
         Bitmap logo;
+        Bitmap frame;
+        readonly string startYear, startMonth, startDay, start;
+        readonly string endYear, endMonth, endDay, end;
+        readonly string year1, year2;
 
-        public ExaminationCertificateLetter(string start, string end) {
-            Start = start;
-            End = end;
+        public ExaminationCertificate(string start, string end) {
+            this.start = start;
+            this.end = end;
+
+            startYear = start.Substring(0, 4);
+            startMonth = start.Substring(5, 2);
+            startDay = start.Substring(8, 2);
+            Start = startDay + " / " + startMonth + " / " + startYear;
+
+            endYear = end.Substring(0, 4);
+            endMonth = end.Substring(5, 2);
+            endDay = end.Substring(8, 2);
+            End = endDay + " / " + endMonth + " / " + endYear;
+
+            year2 = end.Substring(0, 4);
+            year1 = (Int32.Parse(year2) - 1).ToString();
             LoadImages();
 
             PrinterSettings ps = new PrinterSettings();
@@ -38,12 +52,47 @@ namespace SelfService.Documents
                 logo = new Bitmap(stream);
                 stream.Close();
             }
+
+            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images.frame.png")) {
+                frame = new Bitmap(stream);
+                stream.Close();
+            }
         }
 
         protected override void OnPrintPage(PrintPageEventArgs e) {
+            e.Graphics.DrawImage(frame, new Rectangle(0, 0, 827, 1170));
+
             PrintHeader(e.Graphics);
             PrintTable(e.Graphics);
             PrintBody(e.Graphics);
+            PrintSignature(e.Graphics);
+        }
+
+        void PrintSignature(Graphics g) {
+            Rectangle rect1 = new Rectangle(0, 854, 827 - 100, 40);
+            Rectangle rect2 = new Rectangle(0, 930, 827, 40);
+            Rectangle rect3 = new Rectangle(0, 996, 827, 40);
+            string managerTitle = "", managerName = "";
+            DB.Execute.GetManager(ref managerTitle, ref managerName);
+            StringFormat near = new StringFormat {
+                Alignment = StringAlignment.Near,
+                LineAlignment = StringAlignment.Center,
+                FormatFlags = StringFormatFlags.DirectionRightToLeft,
+            };
+            StringFormat center = new StringFormat {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center,
+                FormatFlags = StringFormatFlags.DirectionRightToLeft,
+            };
+
+            using (Font font = new Font(Fonts.HeshamAlSharq, 16)) {
+                g.DrawString(managerTitle, font, Brushes.Black, rect1, near);
+                g.DrawString(managerName, font, Brushes.Black, rect2, center);
+            }
+
+            using (Font font = new Font(Fonts.HeshamAlSharq, 12)) {
+                g.DrawString(Resources.Stamp, font, Brushes.Black, rect3, center);
+            }
         }
 
         void PrintBody(Graphics g) {
@@ -54,22 +103,12 @@ namespace SelfService.Documents
                 Height = 175,
             };
 
-            string startYear = Start.Substring(0, 4);
-            string startMonth = Start.Substring(5, 2);
-            string startDay = Start.Substring(8, 2);
-            string start = startDay + " / " + startMonth + " / " + startYear;
-            string endYear = End.Substring(0, 4);
-            string endMonth = End.Substring(5, 2);
-            string endDay = End.Substring(8, 2);
-            string end = endDay + " / " + endMonth + " / " + endYear;
-
-            string year2 = End.Substring(0, 4);
-            string year1 = (Int32.Parse(year2) - 1).ToString();
             string body = Resources.ExamBody
-                .Replace("start", start)
-                .Replace("end", end)
+                .Replace("start", Start)
+                .Replace("end", End)
                 .Replace("year1", year1)
                 .Replace("year2", year2);
+            body = Tools.ToHindi(body);
             StringFormat format = new StringFormat {
                 Alignment = StringAlignment.Near,
                 LineAlignment = StringAlignment.Center,
@@ -79,6 +118,10 @@ namespace SelfService.Documents
 
             using (Font font = new Font(Fonts.ALMohanad, 15)) {
                 g.DrawString(body, font, Brushes.Black, rect, format);
+
+                rect = new Rectangle(0, 760, 827, 30);
+                format.Alignment = StringAlignment.Center;
+                g.DrawString(Resources.ExamBodyEnd, font, Brushes.Black, rect, format);
             }
         }
 
@@ -132,14 +175,14 @@ namespace SelfService.Documents
                 Resources.TraineeName,
                 Resources.Major,
                 Resources.ExamEnd
-            }; ;
+            };
             string[] valuesStrings = new string[] {
-                BaseForm.Student.ID,
+                Tools.ToHindi(BaseForm.Student.ID),
                 major,
-                End,
+                Tools.ToHindi(Start),
                 BaseForm.Student.Name_AR,
                 BaseForm.Student.Section,
-                Start
+                Tools.ToHindi(End)
             };
             StringFormat format = new StringFormat {
                 Alignment = StringAlignment.Center,

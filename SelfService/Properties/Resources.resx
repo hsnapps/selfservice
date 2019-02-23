@@ -187,10 +187,10 @@
   <data name="ExaminationCertificate" xml:space="preserve">
     <value>خطاب إفادة اختبارات</value>
   </data>
-  <data name="SaudiCouncilOfEngineers" xml:space="preserve">
+  <data name="SaudiCouncilOfEngineersLetter" xml:space="preserve">
     <value>خطاب تعريف لهيئة المهندسين</value>
   </data>
-  <data name="ToWhomItMayConcern" xml:space="preserve">
+  <data name="ToWhomItMayConcernLetter" xml:space="preserve">
     <value>خطاب تعريف إلى من يهمه الأمر</value>
   </data>
   <data name="ExamEnd" xml:space="preserve">
@@ -367,5 +367,73 @@ Admission &amp; Registration &amp; Trainees Services</value>
   </data>
   <data name="TraineeName" xml:space="preserve">
     <value>اســم المـــــتـــــــــــدرب</value>
+  </data>
+  <data name="ExamBodyEnd" xml:space="preserve">
+    <value>هذا وقد أُعطيت له هذه الإفادة بناء على طلبه دون أدنى مسؤولية على الكلية .</value>
+  </data>
+  <data name="Stamp" xml:space="preserve">
+    <value>الختم الرسمي</value>
+  </data>
+  <data name="LetterOfCertificate" xml:space="preserve">
+    <value>تشهد كلية الاتصالات جدة بنين
+ 
+بأن المتدرب: name
+
+ورقمه التدريبي: id 
+
+وقسمه program وتخصصه major 
+
+ضمن المتدربين المستمرين في term للعام التدريبي year2/year1 هـ 
+
+وقد أعطيت له هذه الشهادة بناء على طلبه لتقديمها الي : to  
+
+
+                                                                    الختم الرسمي 
+
+
+                                                                                                        
+                                                                                                    managerTitle 
+
+                                                                                                        managerName</value>
+  </data>
+  <data name="SaudiCouncilOfEngineersHeader" xml:space="preserve">
+    <value>الممكلة العربية السعودية
+المؤسسة العامة للتدريب التقني والمهني
+term</value>
+  </data>
+  <data name="SaudiCouncilOfEngineersTitle" xml:space="preserve">
+    <value>شهادة تعريف</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>الممكلة العربية السعودية
+المؤسسة العامة للتدريب التقني والمهني
+الفصل term year1</value>
+  </data>
+  <data name="SaudiCouncilOfEngineers" xml:space="preserve">
+    <value>الهيئة السعودية للمهندسين</value>
+  </data>
+  <data name="ToWhomItMayConcern" xml:space="preserve">
+    <value>من يهمه الامر</value>
+  </data>
+  <data name="CoursesSQL" xml:space="preserve">
+    <value>SELECT 
+CASE registered 
+	WHEN 1 THEN 'نعم'
+	WHEN 0 THEN 'لا'
+END AS 'registered',
+CASE completed 
+	WHEN 1 THEN 'نعم'
+	WHEN 0 THEN 'لا'
+END AS 'completed',
+authorized_units,
+course_name,
+course_symbol,
+gpa,
+passed_units,
+required_units,
+passed_subjects,
+required_subjects
+FROM courses 
+WHERE student_id = '{0}';</value>
   </data>
 </root>

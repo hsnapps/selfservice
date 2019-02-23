@@ -14,11 +14,14 @@ namespace SelfService
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            //Application.Run(new Start());
 
+#if DIRECT
             Models.Student student = DB.Execute.Login("114361625", "1101449047");
             BaseForm.Student = student;
-            Application.Run(new LetterPrint(new ExaminationCertificateLetter("1440-06-01", "1440-06-15")));
+            Application.Run(new Courses());
+#else
+            Application.Run(new Start());
+#endif
         }
     }
 }

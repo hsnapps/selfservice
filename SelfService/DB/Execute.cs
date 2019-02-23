@@ -8,6 +8,9 @@ using System.Data.SQLite;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
+using SelfService.Screens;
+using System.Data;
+using SelfService.Properties;
 
 namespace SelfService.DB
 {
@@ -93,6 +96,28 @@ namespace SelfService.DB
             }
 
             return "";
+        }
+
+        internal static void GetManager(ref string managerTitle, ref string managerName) {
+            string sql1 = "select value from settings where category = 'manager' and key = 'title';";
+            string sql2 = "select value from settings where category = 'manager' and key = 'name';";
+
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(sql1, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        managerTitle = reader.GetString(0);
+                    }
+                }
+                using (SQLiteCommand command = new SQLiteCommand(sql2, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        managerName = reader.GetString(0);
+                    }
+                }
+                connection.Close();
+            }
         }
 
         internal static string GetVideoPath() {
@@ -197,6 +222,69 @@ and id_num = '{1}';";
             }
 
             return data;
+        }
+
+        internal static Dictionary<string,string> GetValues(string category) {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+
+            string statement = "select key, value from settings where category = '" + category + "';";
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        var value = reader["value"].ToString();
+                        var key = reader["key"].ToString();
+                        data.Add(key, value);
+                    }
+                }
+                connection.Close();
+            }
+
+            return data;
+        }
+
+        internal static DataTable GetCourses() {
+            DataTable table = new DataTable("courses");
+            table.Columns.AddRange(new DataColumn[] {
+                //new DataColumn("id", typeof(Int32)),
+                new DataColumn("registered", typeof(String)),
+                new DataColumn("completed", typeof(String)),
+                new DataColumn("authorized_units", typeof(Int32)),
+                new DataColumn("course_name", typeof(String)),
+                new DataColumn("course_symbol", typeof(String)),
+                new DataColumn("gpa", typeof(Single)),
+                new DataColumn("passed_units", typeof(Single)),
+                new DataColumn("required_units", typeof(Int32)),
+                new DataColumn("passed_subjects", typeof(Int32)),
+                new DataColumn("required_subjects", typeof(Int32)),
+                new DataColumn("level_name", typeof(String)),
+                new DataColumn("level_id", typeof(String)),
+                new DataColumn("prog_gpa", typeof(Single)),
+                new DataColumn("accepted_prg_units", typeof(Int32)),
+                new DataColumn("required_prg_units", typeof(Int32)),
+                new DataColumn("accepted_prg_subjects", typeof(Int32)),
+                new DataColumn("required_prg_subjects", typeof(Int32)),
+                //new DataColumn("program", typeof(String)),
+                //new DataColumn("specialization", typeof(String)),
+                //new DataColumn("section", typeof(String)),
+                //new DataColumn("level", typeof(String)),
+                //new DataColumn("faculty", typeof(String)),
+                //new DataColumn("student", typeof(String)),
+                //new DataColumn("student_id", typeof(String)),
+            });
+
+            string statement = String.Format(Resources.CoursesSQL, BaseForm.Student.ID);
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    adapter.Fill(table);
+                }
+                connection.Close();
+            }
+
+            return table;
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using SelfService.Components;
+using SelfService.Documents;
 using SelfService.Properties;
-using SelfService.Screens.Letters;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,8 +17,8 @@ namespace SelfService.Screens
         public SelectLetters() {
             var x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
 
-            toWhomItMayConcern = new CommandButton(Resources.ToWhomItMayConcern);
-            saudiCouncilOfEngineers = new CommandButton(Resources.SaudiCouncilOfEngineers);
+            toWhomItMayConcern = new CommandButton(Resources.ToWhomItMayConcernLetter);
+            saudiCouncilOfEngineers = new CommandButton(Resources.SaudiCouncilOfEngineersLetter);
             examinationCertificate = new CommandButton(Resources.ExaminationCertificate);
             exit = new CommandButton(Resources.Close);
             panel = new FlowLayoutPanel {
@@ -30,8 +30,16 @@ namespace SelfService.Screens
             };
 
             examinationCertificate.Click += (s, e) => {
-                ExaminationCertificate form = new ExaminationCertificate();
+                var form = new Letters.ExaminationCertificate();
                 form.Show(this);
+            };
+            saudiCouncilOfEngineers.Click += (s, e) => {
+                var letter = new LetterPrint(new LetterOfCertificate(Resources.SaudiCouncilOfEngineers));
+                letter.Show();
+            };
+            toWhomItMayConcern.Click += (s, e) => {
+                var letter = new LetterPrint(new LetterOfCertificate(Resources.ToWhomItMayConcern));
+                letter.Show();
             };
 
             exit.Click += (s, e) => { Close(); };

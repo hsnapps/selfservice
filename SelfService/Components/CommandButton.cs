@@ -18,7 +18,12 @@ namespace SelfService.Components
             BackColor = Color.Transparent;
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
-            Text = text;
+            if (text.EndsWith("*")) {
+                Enabled = false;
+                Text = text.Substring(0, text.Length - 1);
+            } else {
+                Text = text; 
+            }
             Cursor = Cursors.Hand;
         }
 

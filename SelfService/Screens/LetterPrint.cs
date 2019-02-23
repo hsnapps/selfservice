@@ -9,15 +9,15 @@ namespace SelfService.Screens
 {
     class LetterPrint : BaseForm
     {
-        PrintPreviewControl preview;
-        CommandButton close, print;
-        Panel panel;
+        readonly PrintPreviewControl preview;
+        readonly CommandButton close, print;
+        readonly Panel panel;
 
         public LetterPrint(PrintDocument document) {
             preview = new PrintPreviewControl {
                 Dock = DockStyle.Fill,
                 Document = document,
-                Zoom = 1.25
+                Zoom = 0.85
             };
 
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
@@ -42,8 +42,8 @@ namespace SelfService.Screens
             panel.Controls.Add(close);
             panel.Controls.Add(print);
 
-            this.Controls.Add(panel);
             this.Controls.Add(preview);
+            this.Controls.Add(panel);
         }
 
         void OnPrintLetter(object sender, EventArgs e) {

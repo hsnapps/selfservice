@@ -82,6 +82,7 @@
     <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\Masks.cs" />
     <Compile Include="Code\PrintProperties.cs" />
+    <Compile Include="Code\Tools.cs" />
     <Compile Include="Code\YoutubeUrlResolver.cs" />
     <Compile Include="Code\YoutubeVideo.cs" />
     <Compile Include="Components\CommandButton.cs">
@@ -113,7 +114,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DB\Execute.cs" />
-    <Compile Include="Documents\ExaminationCertificateLetter.cs">
+    <Compile Include="Documents\ExaminationCertificate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Documents\LetterOfCertificate.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">
@@ -134,6 +138,9 @@
     <Compile Include="Screens\CommandsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Screens\Courses.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Screens\Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,8 +150,6 @@
     <Compile Include="Screens\Letters\ExaminationCertificate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\Letters\SaudiCouncilOfEngineers.cs" />
-    <Compile Include="Screens\Letters\ToWhomItMayConcern.cs" />
     <Compile Include="Screens\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\index.html" />
+    <EmbeddedResource Include="Images\frame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\Waiting-1.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
