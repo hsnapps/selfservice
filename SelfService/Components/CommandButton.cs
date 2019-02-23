@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -49,6 +50,10 @@ namespace SelfService.Components
         protected override void OnMouseUp(MouseEventArgs mevent) {
             BackgroundImage = button;
             base.OnMouseUp(mevent);
+        }
+
+        protected override void OnEnabledChanged(EventArgs e) {
+            ForeColor = Enabled ? Color.Black : Color.FromArgb(226, 226, 226);
         }
 
         public static int DefaultWidth = 420;
