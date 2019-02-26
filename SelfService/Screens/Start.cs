@@ -13,9 +13,7 @@ namespace SelfService.Screens
         Timer _timer;
         //Video video;
         CommandButton start;
-#if DEBUG
         CommandButton close;
-#endif
         AxWMPLib.AxWindowsMediaPlayer player;
         readonly string url;
 
@@ -56,16 +54,23 @@ namespace SelfService.Screens
             };
             _timer.Tick += OnTimer;
 
-#if DEBUG
-            close = new CommandButton(Resources.Exit) {
-                Left = x,
-                Top = y + CommandButton.DefaultHeight + 20,
-                Height = 90,
-            };
+            string[] args = System.Environment.GetCommandLineArgs();
+            bool exit = true;
+            foreach (var arg in args) {
+                if (arg.StartsWith("--exit=")) {
+                    exit = arg.EndsWith("true") || arg.EndsWith("1");
+                }
+            }
+            if (exit) {
+                close = new CommandButton(Resources.Exit) {
+                    Left = x,
+                    Top = y + CommandButton.DefaultHeight + 20,
+                    Height = 90,
+                };
 
-            close.Click += (s, e) => { Close(); };
-            Controls.Add(close);
-#endif
+                close.Click += (s, e) => { Close(); };
+                Controls.Add(close); 
+            }
         }
 
         void OnTimer(object s, EventArgs e) {

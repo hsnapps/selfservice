@@ -76,9 +76,17 @@ namespace SelfService.Screens
             Text = Resources.TVTC_En_Full;
             ResumeLayout(false);
 
-#if !DEBUG
-            Cursor.Hide(); 
-#endif
+            string[] args = System.Environment.GetCommandLineArgs();
+            bool touch = true;
+            foreach (var arg in args) {
+                if (arg.StartsWith("--touch=")) {
+                    touch = arg.EndsWith("true") || arg.EndsWith("1");
+                }
+            }
+
+            if (touch) {
+                Cursor.Hide(); 
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e) {
