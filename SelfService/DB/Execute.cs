@@ -205,10 +205,10 @@ and id_num = '{1}';";
             return timeout;
         }
 
-        internal static List<string> GetConfig(string category) {
+        internal static List<string> GetSubject(string category) {
             List<string> data = new List<string>();
 
-            string statement = "select value from settings where category = '" + category + "';";
+            string statement = "SELECT value FROM settings WHERE category = 'subjects' AND key = '" + category + "';";
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
@@ -286,6 +286,19 @@ and id_num = '{1}';";
 
             return table;
         }
+
+        internal static void Log(string key, string value) {
+            string statement = String.Format("INSERT INTO logs (student_id, key, value) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+                    try {
+                        command.ExecuteNonQuery();
+                    } catch (Exception) {
+
+                    }
+                }
+            }
+        }
     }
 
     public class Parameters
@@ -309,5 +322,14 @@ and id_num = '{1}';";
         public string Database { get; private set; }
         public string Username { get; private set; }
         public string Password { get; private set; }
+    }
+
+    public static class LogValues
+    {
+        public static string Login = "login";
+        public static string InvalidLogin = "login.invalid";
+        public static string LettersGlobal = "letters.global";
+        public static string LettersSCE = "letters.sce";
+        public static string LettersExam = "letters.examination";
     }
 }

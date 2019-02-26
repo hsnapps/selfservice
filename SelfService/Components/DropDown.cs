@@ -12,7 +12,7 @@ namespace SelfService.Components
         List<string> data;
 
         public DropDown(string text, string category) {
-            data = DB.Execute.GetConfig(category);
+            data = DB.Execute.GetSubject(category);
             InitializeComponent(text);
         }
 
