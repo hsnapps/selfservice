@@ -137,24 +137,30 @@ namespace SelfService.Screens
         void OnCommandsPanelCLosed(object sender, FormClosedEventArgs e) {
             switch (commands.Command) {
                 case Commands.Letters:
+                    // Log added to each selection
                     DisplayForm(new SelectLetters());
                     break;
 
                 case Commands.Calendar:
+                    DB.Execute.Log("calendar", "");
                     break;
 
                 case Commands.Schedual:
+                    DB.Execute.Log("schedual", "");
                     DisplayForm(new Schedule());
                     break;
 
                 case Commands.Plan:
+                    DB.Execute.Log("plan", "");
                     break;
 
                 case Commands.Requests:
+                    // Log added to each selection
                     DisplayForm(new RequestsScreen());
                     break;
 
                 case Commands.StudentGuide:
+                    DB.Execute.Log("studentguide", "");
                     DisplayForm(new StudentGuide());
                     break;
 
@@ -163,9 +169,11 @@ namespace SelfService.Screens
                     break;
 
                 case Commands.Map:
+                    DB.Execute.Log("map", "");
                     break;
 
                 case Commands.CommingSubjects:
+                    DB.Execute.Log("commingsubjects", "");
                     DisplayForm(new Courses());
                     break;
 

@@ -50,6 +50,7 @@ namespace SelfService.Screens.Requests
         }
 
         void OnSend(object s, EventArgs e) {
+            DB.Execute.Log("requests", "scard");
             string subject = Resources.RequestStudentCard + " - " + reason.Text;
             string body = Resources.StudentData
                 .Replace("<id>", BaseForm.Student.ID)

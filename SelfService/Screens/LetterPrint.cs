@@ -45,9 +45,5 @@ namespace SelfService.Screens
             this.Controls.Add(preview);
             this.Controls.Add(panel);
         }
-
-        void OnPrintLetter(object sender, EventArgs e) {
-
-        }
     }
 }

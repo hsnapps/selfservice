@@ -34,10 +34,12 @@ namespace SelfService.Screens
                 form.Show(this);
             };
             saudiCouncilOfEngineers.Click += (s, e) => {
+                DB.Execute.Log("letters", "saudicouncilofengineers");
                 var letter = new LetterPrint(new LetterOfCertificate(Resources.SaudiCouncilOfEngineers));
                 letter.Show();
             };
             toWhomItMayConcern.Click += (s, e) => {
+                DB.Execute.Log("letters", "towhomitmayconcern");
                 var letter = new LetterPrint(new LetterOfCertificate(Resources.ToWhomItMayConcern));
                 letter.Show();
             };

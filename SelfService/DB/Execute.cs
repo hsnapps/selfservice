@@ -288,15 +288,18 @@ and id_num = '{1}';";
         }
 
         internal static void Log(string key, string value) {
-            string statement = String.Format("INSERT INTO logs (student_id, key, value) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
+            string template = "INSERT INTO logs (student_id, key, value, created_at, updated_at) VALUES('{0}', '{1}', '{2}', '{3}', '{4}');";
+            string statement = String.Format(template, BaseForm.Student.ID, key, value, DateTime.Now, DateTime.Now);
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
+                connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
                     try {
                         command.ExecuteNonQuery();
                     } catch (Exception) {
-
+                        throw;
                     }
                 }
+                connection.Close();
             }
         }
     }

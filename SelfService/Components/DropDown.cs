@@ -9,7 +9,7 @@ namespace SelfService.Components
     {
         Label label;
         ComboBox box;
-        List<string> data;
+        readonly List<string> data;
 
         public DropDown(string text, string category) {
             data = DB.Execute.GetSubject(category);
@@ -41,7 +41,10 @@ namespace SelfService.Components
             box.TabIndex = 1;
             box.DropDownStyle = ComboBoxStyle.DropDownList;
             box.DataSource = data;
-            //box.Click += (s, e) => { (s as ComboBox).DroppedDown = true; };
+            box.SelectedIndexChanged += (s, e) => {
+                this.Value = (s as ComboBox).SelectedIndex.ToString();
+            }; ;
+
 
             int width = Screen.PrimaryScreen.Bounds.Width - 100;
 
@@ -57,5 +60,6 @@ namespace SelfService.Components
         }
 
         public override string Text { get => box.Text; set => box.Text = value; }
+        public string Value { get; private set; }
     }
 }

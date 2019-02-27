@@ -58,6 +58,7 @@ namespace SelfService.Screens.Requests
         }
 
         void OnSend(object s, EventArgs e) {
+            DB.Execute.Log("requests", "maintainance");
             string _subject = String.Format("{0} - {1}", lab.Text, subject.Text);
             string _body = String.Format("{0}\n{1}", Student.Name_AR, details.Text);
 
