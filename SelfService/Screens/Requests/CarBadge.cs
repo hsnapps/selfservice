@@ -63,6 +63,7 @@ namespace SelfService.Screens.Requests
         }
 
         void OnSend(object s, EventArgs e) {
+            DB.Execute.Log("letters", "car");
             string subject = Resources.RequestCarLicense;
             string body = Resources.CarData
                 .Replace("<id>", BaseForm.Student.ID)

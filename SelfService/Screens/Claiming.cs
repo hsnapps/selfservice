@@ -54,6 +54,8 @@ namespace SelfService.Screens
         }
 
         void OnSend(object s, EventArgs e) {
+            DB.Execute.Log("suggestions", requestType.Value);
+
             string subject = Resources.Suggestions + " - " + requestType.Text;
             string body = Resources.ClaimingData
                 .Replace("<id>", BaseForm.Student.ID)

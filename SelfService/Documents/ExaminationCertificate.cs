@@ -20,6 +20,8 @@ namespace SelfService.Documents
         readonly string year1, year2;
 
         public ExaminationCertificate(string start, string end) {
+            DB.Execute.Log("letters", "examinationcertificate");
+
             this.start = start;
             this.end = end;
 
