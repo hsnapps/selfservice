@@ -14,13 +14,35 @@ namespace SelfService.Screens
     class BaseForm : Form
     {
         Timer timer;
+        Timer connectionTimer;
         Bitmap background;
+        NoInternetConnection noInternetConnection;
         //Keyboard keyboard;
 
-        public BaseForm(bool disableTimer = false) {
-            //LoadFonts();
-            LoadImages();
+        public BaseForm(bool disableTimer = false, bool checkConnection = true) {            
             InitializeComponent();
+
+            if (checkConnection) {
+                connectionTimer = new Timer {
+                    Interval = 1000 * 5,
+                    Enabled = true,
+                };
+                connectionTimer.Tick += (s, e) => {
+                    if (!Tools.CheckConnection()) {
+                        (s as Timer).Stop();
+                        DisplayNoConnection();
+                    }
+                };
+            }
+
+            timer = new Timer {
+                Interval = DB.Execute.GetTimeout(),
+                Enabled = true,
+            };
+            timer.Tick += (s, e) => {
+                IsTimeout = true;
+                Close();
+            };
 
             if (disableTimer) {
                 DisableTimer();
@@ -36,27 +58,20 @@ namespace SelfService.Screens
             //keyboard.Hide();
         }
 
+        void DisplayNoConnection() {
+            noInternetConnection = new NoInternetConnection();
+            noInternetConnection.FormClosed += (s1, e1) => {
+                connectionTimer.Start();
+            };
+            noInternetConnection.Show();
+        }
+
         protected void ShowKeyboard(bool show) {
             //keyboard.Visible = show;
         }
 
-        void LoadImages() {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images.Background.png")) {
-                background = new Bitmap(stream);
-                stream.Close();
-            }
-        }
-
         void InitializeComponent() {
-            timer = new Timer {
-                Interval = DB.Execute.GetTimeout(),
-                Enabled = true,
-            };
-            timer.Tick += (s, e) => {
-                IsTimeout = true;
-                Close();
-            };
+            background = Tools.LoadImages("Background.png");
 
             SuspendLayout();
             // BaseForm

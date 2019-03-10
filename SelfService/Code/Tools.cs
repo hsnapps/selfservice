@@ -1,4 +1,10 @@
-﻿namespace SelfService.Code
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Net.NetworkInformation;
+using System.Reflection;
+
+namespace SelfService.Code
 {
     static class Tools
     {
@@ -16,6 +22,30 @@
                         .Replace(arabic[7], hindi[7])
                         .Replace(arabic[8], hindi[8])
                         .Replace(arabic[9], hindi[9]);
+        }
+
+        internal static bool CheckConnection() {
+            try {
+                Ping ping = new Ping();
+                string host = "selfservice.cf";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions options = new PingOptions();
+                PingReply reply = ping.Send(host, timeout, buffer, options);
+                return (reply.Status == IPStatus.Success);
+            } catch (Exception) {
+                return false;
+            }
+        }
+
+        internal static Bitmap LoadImages(string image) {
+            Bitmap bitmap;
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images." + image)) {
+                bitmap = new Bitmap(stream);
+                stream.Close();
+            }
+            return bitmap;
         }
 
         public static int PaperWidth { get => 827; }

@@ -1,0 +1,1 @@
+..\SelfService.exe --touch=true --exit=true --db=..\DB\database.sqlite

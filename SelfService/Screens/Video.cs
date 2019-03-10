@@ -54,7 +54,7 @@ namespace SelfService.Screens
             return background;
         }
 
-        private void player_ClickEvent(object sender, AxWMPLib._WMPOCXEvents_ClickEvent e) {
+        private void OnPlayerClick(object sender, AxWMPLib._WMPOCXEvents_ClickEvent e) {
             Close();
         }
     }

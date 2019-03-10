@@ -88,6 +88,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عودة.
+        /// </summary>
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Background {
@@ -243,23 +252,19 @@ namespace SelfService.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT 
-        ///CASE registered 
-        ///	WHEN 1 THEN &apos;نعم&apos;
-        ///	WHEN 0 THEN &apos;لا&apos;
-        ///END AS &apos;registered&apos;,
-        ///CASE completed 
-        ///	WHEN 1 THEN &apos;نعم&apos;
-        ///	WHEN 0 THEN &apos;لا&apos;
-        ///END AS &apos;completed&apos;,
-        ///authorized_units,
-        ///course_name,
-        ///course_symbol,
-        ///gpa,
-        ///passed_units,
-        ///required_units,
-        ///passed_subjects,
-        ///required_subjects
-        ///FROM courses 
+        ///yn1.title AS &apos;registered&apos;,
+        ///yn2.title AS &apos;completed&apos;,
+        ///c.authorized_units,
+        ///c.course_name,
+        ///c.course_symbol,
+        ///c.gpa,
+        ///c.passed_units,
+        ///c.required_units,
+        ///c.passed_subjects,
+        ///c.required_subjects
+        ///FROM courses c
+        ///INNER JOIN yesno yn1 ON yn1.id = c.registered
+        ///INNER JOIN yesno yn2 ON yn2.id = c.completed
         ///WHERE student_id = &apos;{0}&apos;;.
         /// </summary>
         internal static string CoursesSQL {
@@ -491,6 +496,15 @@ namespace SelfService.Properties {
         internal static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لا يوجد اتصال انترنت!.
+        /// </summary>
+        internal static string NoInternet {
+            get {
+                return ResourceManager.GetString("NoInternet", resourceCulture);
             }
         }
         

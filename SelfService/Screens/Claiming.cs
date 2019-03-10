@@ -55,7 +55,7 @@ namespace SelfService.Screens
 
         void OnSend(object s, EventArgs e) {
             string subject = Resources.Suggestions + " - " + requestType.Text;
-            string body = Resources.CarData
+            string body = Resources.ClaimingData
                 .Replace("<id>", BaseForm.Student.ID)
                 .Replace("<mobile>", BaseForm.Student.Mobile)
                 .Replace("<name_ar>", BaseForm.Student.Name_AR)

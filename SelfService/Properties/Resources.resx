@@ -417,23 +417,25 @@ term</value>
   </data>
   <data name="CoursesSQL" xml:space="preserve">
     <value>SELECT 
-CASE registered 
-	WHEN 1 THEN 'نعم'
-	WHEN 0 THEN 'لا'
-END AS 'registered',
-CASE completed 
-	WHEN 1 THEN 'نعم'
-	WHEN 0 THEN 'لا'
-END AS 'completed',
-authorized_units,
-course_name,
-course_symbol,
-gpa,
-passed_units,
-required_units,
-passed_subjects,
-required_subjects
-FROM courses 
+yn1.title AS 'registered',
+yn2.title AS 'completed',
+c.authorized_units,
+c.course_name,
+c.course_symbol,
+c.gpa,
+c.passed_units,
+c.required_units,
+c.passed_subjects,
+c.required_subjects
+FROM courses c
+INNER JOIN yesno yn1 ON yn1.id = c.registered
+INNER JOIN yesno yn2 ON yn2.id = c.completed
 WHERE student_id = '{0}';</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+    <value>لا يوجد اتصال انترنت!</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>عودة</value>
   </data>
 </root>

@@ -55,7 +55,7 @@ namespace SelfService.Screens
             _timer.Tick += OnTimer;
 
             string[] args = System.Environment.GetCommandLineArgs();
-            bool exit = true;
+            bool exit = false;
             foreach (var arg in args) {
                 if (arg.StartsWith("--exit=")) {
                     exit = arg.EndsWith("true") || arg.EndsWith("1");

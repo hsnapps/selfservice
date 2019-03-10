@@ -1,10 +1,10 @@
-﻿using System.Data.SQLite;
+﻿using System.Data;
 
 namespace SelfService.Models
 {
     class Student
     {
-        public Student(SQLiteDataReader reader) {
+        public Student(IDataReader reader) {
             ID = reader["id"].ToString();
             Email = reader["email"].ToString();
             Mobile = reader["mobile"].ToString();

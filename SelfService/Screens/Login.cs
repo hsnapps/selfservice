@@ -25,10 +25,10 @@ namespace SelfService.Screens
             var cancelLocation = new Point(left.X, left.Y + Input.DefaultHeight + 20);
 
             traineeNumber = new Input(Resources.TraineeNumber) {
-                Location = left,
-            };
-            idNumber = new Input(Resources.IdNumber) {
                 Location = right,
+            };
+            idNumber = new Input(Resources.IdNumber, true) {
+                Location = left,
             };
             login = new CommandButton(Resources.Login) {
                 Location = loginLocation,
@@ -64,8 +64,8 @@ namespace SelfService.Screens
 
             login.MouseUp += OnLogin;
 
-            this.Controls.Add(idNumber);
             this.Controls.Add(traineeNumber);
+            this.Controls.Add(idNumber);
             this.Controls.Add(login);
             this.Controls.Add(cancel);
             this.Controls.Add(lblMessage);

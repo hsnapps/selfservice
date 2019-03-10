@@ -1,0 +1,180 @@
+{
+  "panels": [
+    {
+      "colleges": [
+        {
+          "bachelor": [
+            {
+              "oldBachelor": [
+                {
+                  "medCollegesBachelor": [
+                    {
+                      "mechanical": [
+                        { "airConditioning": "https://cdd.tvtc.gov.sa/sites/default/files/document/_ltbryd_wtkyyf_lhw_0.pdf" },
+                        { "mechanicalProduction": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lntj_lmyknyky.pdf" },
+                        { "carsMechanics": "https://cdd.tvtc.gov.sa/sites/default/files/document/_myknyk_lsyrt.pdf" }
+                      ]
+                    },
+                    {
+                      "manegeTech": [
+                        { "accounting": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_lmhsb_lnsfy_lm_1438h.pdf" },
+                        { "officialManagement": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_ldr_lmktby_lnsfy_1438h.pdf" }
+                      ]
+                    },
+                    {
+                      "electronic": [
+                        { "industrial": "https://cdd.tvtc.gov.sa/sites/default/files/document/bklwryws_lktrwnyt_sny_wthkmfm.pdf" },
+                        { "medicalEquipment": "https://cdd.tvtc.gov.sa/sites/default/files/document/_ljhz_ltby.pdf" }
+                      ]
+                    },
+                    {
+                      "electrical": [
+                        { "electricalBachelor": "https://cdd.tvtc.gov.sa/sites/default/files/document/bklwryws_lkhrb_fm.pdf" }
+                      ]
+                    },
+                    {
+                      "computer": [
+                        { "network": "https://cdd.tvtc.gov.sa/sites/default/files/document/bklwryws_shbkt_lhsb_0.pdf" },
+                        { "helpdesk": "https://cdd.tvtc.gov.sa/sites/default/files/document/_dm_nzm_shbkt_lhsb.pdf" },
+                        { "programming": "https://cdd.tvtc.gov.sa/sites/default/files/document/_brmjyt_lhsb.pdf" }
+                      ]
+                    },
+                    {
+                      "telecomm": [
+                        { "telecommBachelor": "https://cdd.tvtc.gov.sa/sites/default/files/document/_ltslt_0.pdf" }
+                      ]
+                    },
+                    {
+                      "chemical ": [
+                        { "chemicalProduction": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lntj_lkymyyy_0.pdf" }
+                      ]
+                    },
+                    {
+                      "construction": [
+                        { "areaBachelor": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lmsh_0.pdf" },
+                        { "constructionBachelor": "https://cdd.tvtc.gov.sa/sites/default/files/document/_ltshyyd_1.pdf" }
+                      ]
+                    },
+                    {
+                      "general": "https://cdd.tvtc.gov.sa/sites/default/files/document/lmqrrt_lm_bklwryws.pdf"
+                    }
+                  ]
+                },
+                {
+                  "thirdCollegesBachelor": [
+                    { "third01": "https://cdd.tvtc.gov.sa/sites/default/files/document/_w_mrkbt.pdf" },
+                    { "third02": "https://cdd.tvtc.gov.sa/sites/default/files/document/_wtkyyf.pdf" },
+                    { "third03": "https://cdd.tvtc.gov.sa/sites/default/files/document/_nzm_lshbkt.pdf" },
+                    { "third04": "https://cdd.tvtc.gov.sa/sites/default/files/document/_myknyky.pdf" },
+                    { "third05": "https://cdd.tvtc.gov.sa/sites/default/files/document/_14.pdf" },
+                    { "third06": "https://cdd.tvtc.gov.sa/sites/default/files/document/_15.pdf" },
+                    { "third07": "https://cdd.tvtc.gov.sa/sites/default/files/document/_0_2.pdf" },
+                    { "third08": "https://cdd.tvtc.gov.sa/sites/default/files/document/_13.pdf" },
+                    { "third09": "https://cdd.tvtc.gov.sa/sites/default/files/document/_12.pdf" },
+                    { "third10": "https://cdd.tvtc.gov.sa/sites/default/files/document/_11.pdf" },
+                    { "third11": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lkymyyy.pdf" },
+                    { "third12": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lsny_wlthkm.pdf" },
+                    { "third13": "https://cdd.tvtc.gov.sa/sites/default/files/document/_tby.pdf" },
+                    { "third14": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lmktby_0.pdf" },
+                    { "third15": "https://cdd.tvtc.gov.sa/sites/default/files/document/_10.pdf" }
+                  ]
+                },
+                {
+                  "medSysFramework": [
+                    { "fw01": "https://cdd.tvtc.gov.sa/sites/default/files/document/_lmshtrk_ljmy_ltkhsst_fy_mrhl_lbklwryws.pdf" },
+                    { "fw02": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_shbkt_lhsb.pdf" },
+                    { "fw03": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_myknyk_lsyrt.pdf" },
+                    { "fw04": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_ntj_kymyyy.pdf" },
+                    { "fw05": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_brmjyt_lhsb_.pdf" },
+                    { "fw06": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_dm_nzm_shbkt_lhsb_.pdf" },
+                    { "fw07": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_lmsh.pdf" },
+                    { "fw08": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_lmhsb_.pdf" },
+                    { "fw09": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_ltshyyd.pdf" },
+                    { "fw10": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_lktrwnyt_sny_wthkm.pdf" },
+                    { "fw11": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_lkhrb_._.pdf" },
+                    { "fw12": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_lntj_lmyknyky.pdf" },
+                    { "fw13": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_ltbryd_wtkyyf_lhw_.pdf" },
+                    { "fw14": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_ltslt.pdf" },
+                    { "fw15": "https://cdd.tvtc.gov.sa/sites/default/files/document/_bklwryws_jhz_tby_.pdf" }
+                  ]
+                },
+                {
+                  "rayatBanner1438": [
+                    { "bnr01": "https://cdd.tvtc.gov.sa/sites/default/files/document/1-_lhnds_lmyknyky_-_lntj_lmyknyky_bnr_1438h.pdf" },
+                    { "bnr02": "https://cdd.tvtc.gov.sa/sites/default/files/document/14-_hnds_lmsh_wljywmtks_-_lmsh_bnr_1438h_0.pdf" },
+                    { "bnr03": "https://cdd.tvtc.gov.sa/sites/default/files/document/4-_lhnds_lkhrbyy_-_lkhrb_bnr_1438h.pdf" },
+                    { "bnr04": "https://cdd.tvtc.gov.sa/sites/default/files/document/2-_lhnds_lmyknyky_-_myknyk_lsyrt_bnr_1438h_0.pdf" },
+                    { "bnr05": "https://cdd.tvtc.gov.sa/sites/default/files/document/15-_lhnds_lmdny_wlmmry_-_ltshyyd_bnr_1438h.pdf" },
+                    { "bnr06": "https://cdd.tvtc.gov.sa/sites/default/files/document/13-_llwm_ldry_-_lmhsb_bnr_1438h.pdf" },
+                    { "bnr07": "https://cdd.tvtc.gov.sa/sites/default/files/document/12-_llwm_ldry_-_ldr_lmktby_bnr_1438h.pdf" },
+                    { "bnr08": "https://cdd.tvtc.gov.sa/sites/default/files/document/10-_hnds_ltslt-_ltslt_bnr_1438h.pdf" },
+                    { "bnr09": "https://cdd.tvtc.gov.sa/sites/default/files/document/11-_lhnds_lkymyyy-_lntj_lkymyyy_bnr_1438h.pdf" },
+                    { "bnr10": "https://cdd.tvtc.gov.sa/sites/default/files/document/9-_hnds_lhsb_wtqny_lmlwmt-_shbkt_lhsb_bnr_1438h.pdf" },
+                    { "bnr11": "https://cdd.tvtc.gov.sa/sites/default/files/document/8-_hnds_lhsb_wtqny_lmlwmt-_dm_nzm_shbkt_lhsb_bnr_1438h.pdf" },
+                    { "bnr12": "https://cdd.tvtc.gov.sa/sites/default/files/document/7-_hnds_lhsb_wtqny_lmlwmt-_brmjyt_lhsb_bnr_1438h.pdf" },
+                    { "bnr13": "https://cdd.tvtc.gov.sa/sites/default/files/document/6-_lhnds_llktrwny_-_ljhz_ltby_bnr_1438h.pdf" },
+                    { "bnr14": "https://cdd.tvtc.gov.sa/sites/default/files/document/5-_lhnds_llktrwny_-_llktrwnyt_lsny_wlthkm_bnr_1438h.pdf" },
+                    { "bnr15": "https://cdd.tvtc.gov.sa/sites/default/files/document/3-_lhnds_lmyknyky_-_ltbryd_wtkyyf_lhw_bnr_1438h.pdf" }
+                  ]
+                }
+              ]
+            },
+            {
+              "modernBachelor": [
+                { "modern01": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_ltslt_0.pdf" },
+                { "modern02": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_lmhsb_0.pdf" },
+                { "modern03": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_ldr_lm.pdf" },
+                { "modern04": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_lkhrb.pdf" },
+                { "modern05": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_brmjyt_lhsb_0.pdf" },
+                { "modern06": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_lntj_lkymyyy.pdf" },
+                { "modern07": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwyws_tqny_tshyyd_ltfsyly.pdf" },
+                { "modern08": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwrws_lntj_lmyknyky.pdf" },
+                { "modern09": "https://cdd.tvtc.gov.sa/sites/default/files/document/lkht_ltdryby_bklwryws_tkhss_msh.pdf" },
+                { "modern10": "https://cdd.tvtc.gov.sa/sites/default/files/document/lkht_ltfsyly_lktrwnyt_sny.pdf" },
+                { "modern11": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_shbkt_lhsb.pdf" },
+                { "modern12": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_ltbryd_wtkyyf_lhw.pdf" },
+                { "modern13": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_ljhz_ltby.pdf" },
+                { "modern14": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_dm_nzm_shbkt_lhsb.pdf" },
+                { "modern15": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_bklwryws_myknyk_lsyrt.pdf" }
+              ]
+            }
+          ]
+        },
+        {
+          "deploma": [
+            {
+              "rayatDeploma": [
+                {
+                  "arabic": [
+                    {
+                      "arabic0": [
+                        { "arabic00": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_lntj_lmyknyky_-_bnr_1.pdf" },
+                        { "arabic01": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_khrb_wlktrwnyt_lsyrt_-_bnr_1.pdf" },
+                        { "arabic02": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_syn_lalt_lmyknyky_-_bnr_1.pdf" },
+                        { "arabic03": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_myknyk_lsyrt_-_bnr.pdf" },
+                        { "arabic04": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_ltbryd_wtkyyf_lhw_-_bnr.pdf" }
+                      ]
+                    },
+                    {
+                      "arabic1": [
+                        { "arabic10": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_ltq_lmtjdd_-_bnr.pdf" },
+                        { "arabic11": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_lalt_wlmdt_lkhrbyy_-_bnr_2.pdf" },
+                        { "arabic12": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_lqw_lkhrbyy_-_bnr.pdf" },
+                        { "arabic13": "https://cdd.tvtc.gov.sa/sites/default/files/document/kht_mshgl_lwh_thkm_khrbyy_-_bnr_1.pdf" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            { "deploma1": "" },
+            { "deploma2": "" }
+          ]
+        }
+      ]
+    },
+    { "institutes": [] },
+    { "courseDescription": [] },
+    { "sharedProgramsPlans": [] }
+  ]
+}

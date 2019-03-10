@@ -1,6 +1,7 @@
 ﻿using SelfService.Code;
 using SelfService.Components;
 using SelfService.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace SelfService.Screens
                 Format = "N0",
                 NullValue = 0,
                 Font = new Font(Fonts.TimesNewRoman, 13),
-            };
+            };            
 
             DataGridViewTextBoxColumn registered = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -30,7 +31,7 @@ namespace SelfService.Screens
                 HeaderText = "مسجل حاليا",
                 Name = "registered",
                 ReadOnly = true,
-                ValueType = typeof(string),
+                ValueType = typeof(String),
             };
             DataGridViewTextBoxColumn completed = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -38,6 +39,7 @@ namespace SelfService.Screens
                 HeaderText = "مستوفى",
                 Name = "completed",
                 ReadOnly = true,
+                ValueType = typeof(String),
             };
             DataGridViewTextBoxColumn authorized_units = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -113,7 +115,6 @@ namespace SelfService.Screens
                 RightToLeft = RightToLeft.Yes,
                 TabStop = false,
                 AutoGenerateColumns = false,
-                DataSource = courses,
                 MultiSelect = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
             };
@@ -129,7 +130,7 @@ namespace SelfService.Screens
                 passed_subjects,
                 required_subjects,
             });
-            grid.DataMemberChanged += OnDataMemberChanged;
+            grid.DataSource = courses;
 
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
             close = new CommandButton(Resources.Close) {
@@ -155,12 +156,9 @@ namespace SelfService.Screens
 
             Font = new Font(Fonts.ALMohanad, 13);
 
+            Padding = new Padding(0, 60, 0, 0);
             Controls.Add(grid);
             Controls.Add(panel);
-        }
-
-        void OnDataMemberChanged(object sender, System.EventArgs e) {
-            throw new System.NotImplementedException();
         }
     }
 }

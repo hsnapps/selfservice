@@ -38,7 +38,7 @@
             this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
             this.player.Size = new System.Drawing.Size(417, 275);
             this.player.TabIndex = 0;
-            this.player.ClickEvent += new AxWMPLib._WMPOCXEvents_ClickEventHandler(this.player_ClickEvent);
+            this.player.ClickEvent += new AxWMPLib._WMPOCXEvents_ClickEventHandler(this.OnPlayerClick);
             // 
             // Video
             // 
