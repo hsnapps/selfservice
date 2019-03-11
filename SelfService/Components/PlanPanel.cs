@@ -10,12 +10,14 @@ namespace SelfService.SelfService.Components
     class PlanPanel : FlowLayoutPanel
     {
         Dictionary<string, string> buttons;
+        bool setFlowBreak;
 
         public PlanPanel(string screen, PlanClickCallback callback) {
             Dock = DockStyle.Fill;
+            BackColor = Color.Transparent;
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            Padding = new Padding(x, 150, 0, 0);
             Name = screen;
+            FlowDirection = FlowDirection.RightToLeft;
 
             LoadButtons(screen, callback);
         }
@@ -24,6 +26,13 @@ namespace SelfService.SelfService.Components
             Controls.Clear();
 
             buttons = DB.Execute.ReadPlanButtons(screen);
+            setFlowBreak = buttons.Count < 6;
+            if (setFlowBreak) {
+                int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
+                Padding = new Padding(x, 250, 0, 0);
+            } else {
+                Padding = new Padding(50, 150, 50, 0);
+            }
             foreach (var button in buttons) {
                 string text = Tools.ReadPlanResource(button.Key);
                 CommandButton command = new CommandButton(text) { Tag = button.Value };
@@ -36,28 +45,9 @@ namespace SelfService.SelfService.Components
             }
         }
 
-        public PlanPanel(List<string> screens, PlanClickCallback callback) {
-            Dock = DockStyle.Fill;
-            BackColor = Color.Transparent;
-            int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            Padding = new Padding(x, 150, 0, 0);
-            Name = "الخطط التدريبية";
-
-            foreach (var button in screens) {
-                string text = Tools.ReadPlanResource(button);
-                CommandButton command = new CommandButton(text) { Tag = button };
-                command.MouseUp += OnCommandClick;
-                Controls.Add(command);
-            }
-
-            if (PlanClick == null) {
-                PlanClick += callback; 
-            }
-        }
-
         protected override void OnControlAdded(ControlEventArgs e) {
             e.Control.Margin = new Padding(10);
-            SetFlowBreak(e.Control, true);
+            if(setFlowBreak) SetFlowBreak(e.Control, true);
         }
 
         public override string ToString() {

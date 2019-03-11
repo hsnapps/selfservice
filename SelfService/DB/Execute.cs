@@ -48,11 +48,14 @@ namespace SelfService.DB
             return data;
         }
 
-        internal static Dictionary<string, string> ReadPlanButtons(string screen) {
+        internal static Dictionary<string, string> ReadPlanButtons(string screen = null) {
             Dictionary<string, string> data = new Dictionary<string, string>();
 
             try {
                 string statement = "SELECT `button`, `to_screen`, `to_url` FROM `plans` WHERE `screen` = '" + screen + "';";
+                if (String.IsNullOrEmpty(screen)) {
+                    statement = "SELECT `button`, `to_screen`, `to_url` FROM `plans` WHERE ISNULL(`screen`);";
+                }
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(statement, connection)) {

@@ -10,30 +10,34 @@ namespace SelfService.Screens
 {
     class Plan : BaseForm
     {
-        readonly Panel footer;
-        readonly CommandButton close;
-        readonly CommandButton back;
-        readonly List<string> screens;
         PlanPanel panel;
+        Stack<string> screensStack;
+        string currentScreen;
 
         public Plan() {
-            screens = DB.Execute.ReadPlans();
-            panel = new PlanPanel(screens, PanelButtonClick);
+            panel = new PlanPanel("", PanelButtonClick);
 
-            close = new CommandButton(Resources.Close) {
+            CommandButton close = new CommandButton(Resources.Close) {
                 Location = new Point(5, 1),
                 TabStop = false,
             };
             close.Click += (s, e) => { this.Close(); };
 
-            back = new CommandButton(Resources.Back) {
+            screensStack = new Stack<string>();
+            CommandButton back = new CommandButton(Resources.Back) {
                 Location = new Point((Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth - 5), 1),
                 TabStop = false,
                 Name = "back",
             };
-            back.Click += (s, e) => {};
+            back.Click += (s, e) => {
+                if (screensStack.Count == 0) {
+                    return;
+                }
+                currentScreen = screensStack.Pop();
+                panel.LoadButtons(currentScreen, PanelButtonClick);
+            };
 
-            footer = new Panel {
+            Panel footer = new Panel {
                 Dock = DockStyle.Bottom,
                 Height = CommandButton.DefaultHeight + 2,
             };
@@ -44,13 +48,15 @@ namespace SelfService.Screens
             Controls.Add(footer);
         }
 
-        void PanelButtonClick(object s, string tag) {
-            if (tag.EndsWith(".pdf")) {
-                var view = new ViewPlan(tag);
+        void PanelButtonClick(object s, string screen) {
+            if (screen.EndsWith(".pdf")) {
+                var view = new ViewPlan(screen);
                 view.Show(this);
                 return;
             }
-            panel.LoadButtons(tag, PanelButtonClick);
+            screensStack.Push(currentScreen);
+            currentScreen = screen;
+            panel.LoadButtons(screen, PanelButtonClick);
         }
     }
 }
