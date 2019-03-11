@@ -348,4 +348,91 @@
   <data name="techTourism" xml:space="preserve">
     <value>تقنية السياحة والضيافة</value>
   </data>
+  <data name="cpEngine" xml:space="preserve">
+    <value>مشغل لوحة التحكم</value>
+  </data>
+  <data name="electricalEquipment" xml:space="preserve">
+    <value>الآلات والمعدات الكهربائية</value>
+  </data>
+  <data name="electricalForces" xml:space="preserve">
+    <value>القوى الكهربائية</value>
+  </data>
+  <data name="precisionMachines" xml:space="preserve">
+    <value>أجهزة وآلات دقيقة</value>
+  </data>
+  <data name="renewableEnergy" xml:space="preserve">
+    <value>الطافة المتجددة</value>
+  </data>
+  <data name="accounting" xml:space="preserve">
+    <value>المحاسبة</value>
+  </data>
+  <data name="chemicalLabs" xml:space="preserve">
+    <value>المختبرات الكيميائية</value>
+  </data>
+  <data name="chemicalProduction" xml:space="preserve">
+    <value>الإنتاج الكيميائي</value>
+  </data>
+  <data name="computerNetworks" xml:space="preserve">
+    <value>شبكات الحاسب</value>
+  </data>
+  <data name="cooking" xml:space="preserve">
+    <value>إنتاج الطعام (الطهي)</value>
+  </data>
+  <data name="ecommerce" xml:space="preserve">
+    <value>التجارة الإلكترونية</value>
+  </data>
+  <data name="events" xml:space="preserve">
+    <value>إدارة الفعاليات</value>
+  </data>
+  <data name="guiding" xml:space="preserve">
+    <value>الإرشاد السياحي</value>
+  </data>
+  <data name="hajj" xml:space="preserve">
+    <value>خدمات الحج والعمرة</value>
+  </data>
+  <data name="helpdesk" xml:space="preserve">
+    <value>الدعم الفني للحاسب</value>
+  </data>
+  <data name="hospitality" xml:space="preserve">
+    <value>الفندقة</value>
+  </data>
+  <data name="hosting" xml:space="preserve">
+    <value>خدمة الطعام (الضيافة)</value>
+  </data>
+  <data name="hr" xml:space="preserve">
+    <value>إدارة الموارد البشرية</value>
+  </data>
+  <data name="industrialElectronics" xml:space="preserve">
+    <value>الإلكترونيات الصناعية والتحكم</value>
+  </data>
+  <data name="insurance" xml:space="preserve">
+    <value>التأمين</value>
+  </data>
+  <data name="libraries" xml:space="preserve">
+    <value>الإدارة المكتبية</value>
+  </data>
+  <data name="marrketing" xml:space="preserve">
+    <value>التسويق</value>
+  </data>
+  <data name="medicalEquipment" xml:space="preserve">
+    <value>الأجهزة الطبية</value>
+  </data>
+  <data name="multimedia" xml:space="preserve">
+    <value>الوسائط المتعددة وتقنيات الويب</value>
+  </data>
+  <data name="networksAdmin" xml:space="preserve">
+    <value>إدارة أنظمة شبكات الحاسب</value>
+  </data>
+  <data name="softwareEngineering" xml:space="preserve">
+    <value>برمجيات الحاسب</value>
+  </data>
+  <data name="stores" xml:space="preserve">
+    <value>إدارة المستودعات</value>
+  </data>
+  <data name="telecom" xml:space="preserve">
+    <value>الاتصالات</value>
+  </data>
+  <data name="tourism" xml:space="preserve">
+    <value>السفر والسياحة</value>
+  </data>
 </root>
