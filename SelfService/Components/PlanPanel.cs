@@ -25,12 +25,15 @@ namespace SelfService.SelfService.Components
 
             buttons = DB.Execute.ReadPlanButtons(screen);
             foreach (var button in buttons) {
-                CommandButton command = new CommandButton(button.Key) { Tag = button.Value };
+                string text = Tools.ReadPlanResource(button.Key);
+                CommandButton command = new CommandButton(text) { Tag = button.Value };
                 command.MouseUp += OnCommandClick;
                 Controls.Add(command);
             }
 
-            PlanClick += callback;
+            if (PlanClick == null) {
+                PlanClick += callback; 
+            }
         }
 
         public PlanPanel(List<string> screens, PlanClickCallback callback) {
@@ -41,12 +44,15 @@ namespace SelfService.SelfService.Components
             Name = "الخطط التدريبية";
 
             foreach (var button in screens) {
-                CommandButton command = new CommandButton(button) { Tag = button };
+                string text = Tools.ReadPlanResource(button);
+                CommandButton command = new CommandButton(text) { Tag = button };
                 command.MouseUp += OnCommandClick;
                 Controls.Add(command);
             }
 
-            PlanClick += callback;
+            if (PlanClick == null) {
+                PlanClick += callback; 
+            }
         }
 
         protected override void OnControlAdded(ControlEventArgs e) {

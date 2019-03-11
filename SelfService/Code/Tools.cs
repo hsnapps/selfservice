@@ -3,12 +3,13 @@ using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Resources;
 
 namespace SelfService.Code
 {
     static class Tools
     {
-        public static string ToHindi(this string input) {
+        internal static string ToHindi(this string input) {
             char[] arabic = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             char[] hindi = new char[] { '٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩' };
 
@@ -36,6 +37,12 @@ namespace SelfService.Code
             } catch (Exception) {
                 return false;
             }
+        }
+
+        internal static string ReadPlanResource(string resource) {
+            ResourceManager rm = new ResourceManager("SelfService.Screens.Plans.PlansResource", Assembly.GetExecutingAssembly());
+            string str = rm.GetString(resource);
+            return str;
         }
 
         internal static Bitmap LoadImages(string image) {

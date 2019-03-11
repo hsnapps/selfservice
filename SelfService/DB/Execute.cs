@@ -362,8 +362,8 @@ and id_num = '{1}';";
 
         internal static void Log(string key, string value) {
             string statement = String.Format("INSERT INTO logs (student_id, key, value) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) {
-                using (SQLiteCommand command = new SQLiteCommand(statement, connection)) {
+            using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                using (MySqlCommand command = new MySqlCommand(statement, connection)) {
                     try {
                         command.ExecuteNonQuery();
                     } catch (Exception) {
@@ -372,37 +372,5 @@ and id_num = '{1}';";
                 }
             }
         }
-    }
-
-    public class Parameters
-    {
-        public Parameters(string connection, string host, string port, string database, string username, string password) {
-            Connection = connection;
-            Host = host;
-            Port = port;
-            Database = database;
-            Username = username;
-            Password = password;
-        }
-
-        public Parameters(params string[] args) : this(args[0], args[1], args[2], args[3], args[4], args[5]) {
-
-        }
-
-        public string Connection { get; private set; }
-        public string Host { get; private set; }
-        public string Port { get; private set; }
-        public string Database { get; private set; }
-        public string Username { get; private set; }
-        public string Password { get; private set; }
-    }
-
-    public static class LogValues
-    {
-        public static string Login = "login";
-        public static string InvalidLogin = "login.invalid";
-        public static string LettersGlobal = "letters.global";
-        public static string LettersSCE = "letters.sce";
-        public static string LettersExam = "letters.examination";
     }
 }

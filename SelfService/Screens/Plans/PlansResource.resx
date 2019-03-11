@@ -117,34 +117,115 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bachelor" xml:space="preserve">
+  <data name="bachelor" xml:space="preserve">
     <value>بكالوريوس</value>
   </data>
-  <data name="Colleges" xml:space="preserve">
+  <data name="chemical" xml:space="preserve">
+    <value>الهندسة الكيميائية</value>
+  </data>
+  <data name="colleges" xml:space="preserve">
     <value>كليات</value>
   </data>
-  <data name="CourseDescription" xml:space="preserve">
+  <data name="computer" xml:space="preserve">
+    <value>هندسة الحاسب وتقنية المعلومات</value>
+  </data>
+  <data name="courseDescription" xml:space="preserve">
     <value>وصف المقررات</value>
   </data>
-  <data name="Deploma" xml:space="preserve">
+  <data name="deploma" xml:space="preserve">
     <value>دبلوم</value>
   </data>
-  <data name="Institutes" xml:space="preserve">
+  <data name="electrical" xml:space="preserve">
+    <value>الهندسة الكهربائية</value>
+  </data>
+  <data name="electronic" xml:space="preserve">
+    <value>الهندسة الالكترونية</value>
+  </data>
+  <data name="institutes" xml:space="preserve">
     <value>معاهد</value>
   </data>
-  <data name="MedCollegesBachelor" xml:space="preserve">
+  <data name="manegeTech" xml:space="preserve">
+    <value>التقنية الإدارية</value>
+  </data>
+  <data name="medCollegesBachelor" xml:space="preserve">
     <value>خطط الكليات النصفية بكالوريوس</value>
   </data>
-  <data name="MedSysFramework" xml:space="preserve">
+  <data name="medSysFramework" xml:space="preserve">
     <value>إطار النظام النصفي بكالوريوس</value>
   </data>
-  <data name="RayatFramework" xml:space="preserve">
+  <data name="modernBachelor" xml:space="preserve">
+    <value>خطط برامج البكالوريوس المطورة 1439</value>
+  </data>
+  <data name="oldBachelor" xml:space="preserve">
+    <value>قديم البكالوريوس</value>
+  </data>
+  <data name="rayatBanner1438" xml:space="preserve">
     <value>أطر خطط نظام رايات (بنر) 1438</value>
   </data>
-  <data name="SharedProgramsPlans" xml:space="preserve">
+  <data name="sharedProgramsPlans" xml:space="preserve">
     <value>خطط البرامج المشتركة</value>
   </data>
-  <data name="ThirdCollegesBachelor" xml:space="preserve">
+  <data name="telecomm" xml:space="preserve">
+    <value>هندسة الاتصالات</value>
+  </data>
+  <data name="thirdCollegesBachelor" xml:space="preserve">
     <value>خطط الكليات الثلثية بكالوريوس</value>
+  </data>
+  <data name="bachelorAccounting" xml:space="preserve">
+    <value>بكالوريوس المحاسبة</value>
+  </data>
+  <data name="bachelorAirCond" xml:space="preserve">
+    <value>بكالوريوس التبريد وتكييف الهواء</value>
+  </data>
+  <data name="bachelorArea" xml:space="preserve">
+    <value>بكالوريوس المساحة</value>
+  </data>
+  <data name="bachelorCarMechanic" xml:space="preserve">
+    <value>بكالوريوس ميكانيكا السيارات</value>
+  </data>
+  <data name="bachelorChemicalProd" xml:space="preserve">
+    <value>بكالوريوس الانتاج الكيميائي</value>
+  </data>
+  <data name="bachelorConstruction" xml:space="preserve">
+    <value>بكالوريوس التشييد</value>
+  </data>
+  <data name="bachelorElectrisity" xml:space="preserve">
+    <value>بكالوريوس الكهرباء</value>
+  </data>
+  <data name="bachelorGeneral" xml:space="preserve">
+    <value>المقررات العامة للبكالوريوس</value>
+  </data>
+  <data name="bachelorHelpdesk" xml:space="preserve">
+    <value>بكالوريوس دعم أنظمة شبكات الحاسب</value>
+  </data>
+  <data name="bachelorIndElect" xml:space="preserve">
+    <value>بكالوريوس الإلكترونيات الصناعية والتحكم</value>
+  </data>
+  <data name="bachelorMechanicalProd" xml:space="preserve">
+    <value>بكالوريوس الإنتاج الميكانيكي</value>
+  </data>
+  <data name="bachelorMedicalEq" xml:space="preserve">
+    <value>بكالوريوس الأجهزة الطبية</value>
+  </data>
+  <data name="bachelorNetworks" xml:space="preserve">
+    <value>بكالوريوس شبكات الحاسب</value>
+  </data>
+  <data name="bachelorOfficeMgmt" xml:space="preserve">
+    <value>بكالوريوس الإدارة المكتبية</value>
+  </data>
+  <data name="bachelorSWEng" xml:space="preserve">
+    <value>بكالوريوس برمجيات الحاسب</value>
+  </data>
+  <data name="bachelorTelecom" xml:space="preserve">
+    <value>بكالوريوس الاتصالات</value>
+  </data>
+  <data name="construction" xml:space="preserve">
+    <value>هندسة التشييد</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>المقررات العامة للبكالوريوس</value>
+  </data>
+  <data name="mechanical" xml:space="preserve">
+    <value>الهندسة الميكانيكية</value>
   </data>
 </root>

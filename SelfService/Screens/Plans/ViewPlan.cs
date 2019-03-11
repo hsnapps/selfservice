@@ -1,24 +1,21 @@
 ﻿using SelfService.Components;
 using SelfService.Properties;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SelfService.Screens
+namespace SelfService.Screens.Plans
 {
-    class StudentGuide : BaseForm
+    class ViewPlan : BaseForm
     {
         WebBrowser web;
         CommandButton button, prev, next;
         Panel panel;
-        //PictureBox pic;
 
-        public StudentGuide() {
+        public ViewPlan(string pdf) {
             web = new WebBrowser {
                 Dock = DockStyle.Fill,
             };
-            var path = Application.StartupPath + @"\Pdf\StudentGuide.pdf?toolbar=0&navpanes=0&scrollbar=0";
-            web.Navigate(path);
+            web.Navigate(pdf);
 
             button = new CommandButton(Resources.Close) {
                 Location = new Point(5, 1),
@@ -35,16 +32,15 @@ namespace SelfService.Screens
 
             button.Click += (s, e) => { this.Close(); };
             prev.Click += (s, e) => {
-                SendKeys.Send("{TAB}{PGUP}");
+                web.Focus();
+                Application.DoEvents();
+                SendKeys.Send("{PGUP}");
             };
             next.Click += (s, e) => {
-                SendKeys.Send("{TAB}{PGDN}");
+                web.Focus();
+                Application.DoEvents();
+                SendKeys.Send("{PGDN}");
             };
-
-            //pic = new PictureBox {
-            //    Dock = DockStyle.Fill,
-            //    Tag = path,
-            //};            
 
             panel = new Panel {
                 Dock = DockStyle.Bottom,

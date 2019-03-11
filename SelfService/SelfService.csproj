@@ -53,19 +53,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>66CB62CDC2623CDAC06662E57F2A0917A6AF29DC</ManifestCertificateThumbprint>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SelfService_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -208,6 +202,9 @@
     <Compile Include="Screens\Plan.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Screens\Plans\ViewPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Screens\Requests\ATMCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,9 +281,6 @@
     <EmbeddedResource Include="Fonts\EngraversMTBold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
     <EmbeddedResource Include="DB\plans.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -306,6 +300,7 @@
     <EmbeddedResource Include="Pdf\StudentGuide.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -327,7 +322,6 @@
     <EmbeddedResource Include="run\touch-no-exit.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="SelfService_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

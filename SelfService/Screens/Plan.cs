@@ -1,5 +1,6 @@
 ﻿using SelfService.Components;
 using SelfService.Properties;
+using SelfService.Screens.Plans;
 using SelfService.SelfService.Components;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,8 +31,7 @@ namespace SelfService.Screens
                 TabStop = false,
                 Name = "back",
             };
-            back.Click += (s, e) => {
-            };
+            back.Click += (s, e) => {};
 
             footer = new Panel {
                 Dock = DockStyle.Bottom,
@@ -45,6 +45,11 @@ namespace SelfService.Screens
         }
 
         void PanelButtonClick(object s, string tag) {
+            if (tag.EndsWith(".pdf")) {
+                var view = new ViewPlan(tag);
+                view.Show(this);
+                return;
+            }
             panel.LoadButtons(tag, PanelButtonClick);
         }
     }
