@@ -228,4 +228,124 @@
   <data name="mechanical" xml:space="preserve">
     <value>الهندسة الميكانيكية</value>
   </data>
+  <data name="modern1" xml:space="preserve">
+    <value>خطة بكالوريوس الاتصالات</value>
+  </data>
+  <data name="modern10" xml:space="preserve">
+    <value>خطة بكالوريوس الإلكترونيات الصناعية</value>
+  </data>
+  <data name="modern11" xml:space="preserve">
+    <value>خطة بكالوريوس شبكات الحاسب</value>
+  </data>
+  <data name="modern12" xml:space="preserve">
+    <value>خطة بكالوريوس التبريد وتكييف الهواء</value>
+  </data>
+  <data name="modern13" xml:space="preserve">
+    <value>خطة بكالوريوس الأجهزة الطبية</value>
+  </data>
+  <data name="modern14" xml:space="preserve">
+    <value>خطة بكالوريوس دعم أنظمة شبكات الحاسب</value>
+  </data>
+  <data name="modern15" xml:space="preserve">
+    <value>خطة بكالوريوس ميكانيكا السيارات</value>
+  </data>
+  <data name="modern2" xml:space="preserve">
+    <value>خطة بكالوريوس المحاسبة</value>
+  </data>
+  <data name="modern3" xml:space="preserve">
+    <value>خطة بكالوريوس الإدارة العامة</value>
+  </data>
+  <data name="modern4" xml:space="preserve">
+    <value>خطة بكالوريوس الكهرباء</value>
+  </data>
+  <data name="modern5" xml:space="preserve">
+    <value>خطة بكالوريوس برمجيات الحاسب</value>
+  </data>
+  <data name="modern6" xml:space="preserve">
+    <value>خطة بكالوريوس إلانتاج الكيميائي</value>
+  </data>
+  <data name="modern7" xml:space="preserve">
+    <value>خطة بكالوريوس تقنية التشييد</value>
+  </data>
+  <data name="modern8" xml:space="preserve">
+    <value>خطة بكالوريوس الإنتاج الميكانيكي</value>
+  </data>
+  <data name="modern9" xml:space="preserve">
+    <value>خطة بكالوريوس المساحة</value>
+  </data>
+  <data name="airConditioning" xml:space="preserve">
+    <value>تبريد وتكييف الهواء</value>
+  </data>
+  <data name="arabic" xml:space="preserve">
+    <value>عربي</value>
+  </data>
+  <data name="carMechanical" xml:space="preserve">
+    <value>ميكانيكا السيارات</value>
+  </data>
+  <data name="carsElectronics" xml:space="preserve">
+    <value>كهرباء وإلكترونيات السيارات</value>
+  </data>
+  <data name="deploma01" xml:space="preserve">
+    <value>خطط الكليات النصفية دبلوم (رايات)</value>
+  </data>
+  <data name="deploma02" xml:space="preserve">
+    <value>الخطط القديمة</value>
+  </data>
+  <data name="deploma03" xml:space="preserve">
+    <value>البرامج المرنة</value>
+  </data>
+  <data name="english" xml:space="preserve">
+    <value>انجليزي</value>
+  </data>
+  <data name="mechanicalMaintainance" xml:space="preserve">
+    <value>صيانة الآلات الميكانيكية</value>
+  </data>
+  <data name="mechanicalProduction" xml:space="preserve">
+    <value>الإنتاج الميكانيكي</value>
+  </data>
+  <data name="techChemical" xml:space="preserve">
+    <value>التقنية الكيميائية</value>
+  </data>
+  <data name="techCloths" xml:space="preserve">
+    <value>تقنية تصميم الملابس</value>
+  </data>
+  <data name="techConstruction" xml:space="preserve">
+    <value>تقنية التشييد</value>
+  </data>
+  <data name="techDressing" xml:space="preserve">
+    <value>تقنية التزيين والتجميل</value>
+  </data>
+  <data name="techElectric" xml:space="preserve">
+    <value>التقنية الكهربائية</value>
+  </data>
+  <data name="techElectronic" xml:space="preserve">
+    <value>التقنية الالكترونية</value>
+  </data>
+  <data name="techFood" xml:space="preserve">
+    <value>تقنية الغذاء والبيئة</value>
+  </data>
+  <data name="techGeneral" xml:space="preserve">
+    <value>المقررات العامة للدبلوم</value>
+  </data>
+  <data name="techIT" xml:space="preserve">
+    <value>الحاسب وتقنية المعلومات</value>
+  </data>
+  <data name="techManagemnt" xml:space="preserve">
+    <value>التقنية الإدارية</value>
+  </data>
+  <data name="techMechanic" xml:space="preserve">
+    <value>التقنية الميكانيكية</value>
+  </data>
+  <data name="techMedia" xml:space="preserve">
+    <value>تقنية الانتاج الاعلامي</value>
+  </data>
+  <data name="techSpecial" xml:space="preserve">
+    <value>التقنية الخاصة</value>
+  </data>
+  <data name="techTelecom" xml:space="preserve">
+    <value>تقنية الاتصالات</value>
+  </data>
+  <data name="techTourism" xml:space="preserve">
+    <value>تقنية السياحة والضيافة</value>
+  </data>
 </root>

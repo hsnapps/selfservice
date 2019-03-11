@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SelfService.Code;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -19,11 +20,15 @@ namespace SelfService.Components
             BackColor = Color.Transparent;
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
+            Font = new Font(Fonts.HeshamAlSharq, 22.0f);
             if (text.EndsWith("*")) {
                 Enabled = false;
                 Text = text.Substring(0, text.Length - 1);
             } else {
                 Text = text; 
+            }
+            if (Text.Length > 26) {
+                Font = new Font(Fonts.HeshamAlSharq, 18.0f);
             }
             Cursor = Cursors.Hand;
         }
