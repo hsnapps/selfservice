@@ -30,8 +30,12 @@ namespace SelfService.Screens
             };
 
             examinationCertificate.Click += (s, e) => {
-                var form = new Letters.ExaminationCertificate();
-                form.Show(this);
+                DB.Execute.Log("letters", "examinationCertificate");
+                var start = "";
+                var end = "";
+                DB.Execute.GetExamDuration(ref start, ref end);
+                LetterPrint letter = new LetterPrint(new Documents.ExaminationCertificate(start, end));
+                letter.Show(this);
             };
             saudiCouncilOfEngineers.Click += (s, e) => {
                 DB.Execute.Log("letters", "saudicouncilofengineers");

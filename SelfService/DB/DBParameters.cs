@@ -55,7 +55,7 @@ namespace SelfService.DB
                     break;
 
                 default:
-                    ConnectionString = String.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4};", Host, Port, Database, Username, Password);
+                    ConnectionString = String.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4};CharSet=utf8;", Host, Port, Database, Username, Password);
                     break;
             }
         }

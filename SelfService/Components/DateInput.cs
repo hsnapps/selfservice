@@ -165,5 +165,16 @@ namespace SelfService.Components
             }
             get { return year.Text + separator_1.Text + month.Text + separator_2.Text + day.Text; }
         }
+
+        public bool ReadOnly {
+            get {
+                return year.ReadOnly && month.ReadOnly && day.ReadOnly;
+            }
+            set {
+                year.ReadOnly = value;
+                month.ReadOnly = value;
+                day.ReadOnly = value;
+            }
+        }
     }
 }

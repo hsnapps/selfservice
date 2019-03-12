@@ -79,6 +79,32 @@ namespace SelfService.DB
             return data;
         }
 
+        internal static void GetExamDuration(ref string start, ref string end) {
+            try {
+                string sql1 = "select value from settings where `category` = 'academic' and `key` = 'examStart';";
+                string sql2 = "select value from settings where `category` = 'academic' and `key` = 'examEnd';";
+
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(sql1, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            start = reader.GetString(0);
+                        }
+                    }
+                    using (MySqlCommand command = new MySqlCommand(sql2, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            end = reader.GetString(0);
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+
+            }
+        }
+
         internal static string GetEmail(string config) {
             string email = "";
 

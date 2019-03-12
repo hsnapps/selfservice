@@ -28,8 +28,9 @@ namespace SelfService.Documents
 
         protected override void OnPrintPage(PrintPageEventArgs e) {
             var academic = DB.Execute.GetValues("academic");
-            var currentYear = academic["currentYear"];
-            var nextYear = academic["nextYear"];
+            var academicYear = academic["currentYear"];
+            var years = academicYear.Split('/');
+            //var nextYear = academic["nextYear"];
             var currentTerm = academic["currentTerm"];
             string managerTitle = "", managerName = "";
             StringFormat near = new StringFormat {
@@ -42,7 +43,7 @@ namespace SelfService.Documents
                 LineAlignment = StringAlignment.Center,
                 FormatFlags = StringFormatFlags.DirectionRightToLeft,
             };
-            Rectangle headerRectangle = new Rectangle(500, 135, 210, 70);
+            Rectangle headerRectangle = new Rectangle(500, 135, 250, 70);
             Rectangle logoRectangle = new Rectangle(324, 88, 120, 70);
             Rectangle titleRectangle = new Rectangle(0, 220, Tools.PaperWidth, 43);
             Rectangle bodyRectangle = new Rectangle(50, 340, Tools.PaperWidth - 90, 377);
@@ -53,14 +54,15 @@ namespace SelfService.Documents
                 .Replace("id", student.ID)
                 .Replace("program", student.Section)
                 .Replace("major", student.Program)
-                .Replace("year1", currentYear)
-                .Replace("year2", nextYear)
+                .Replace("year1", years[0])
+                .Replace("year2", years[1])
                 .Replace("term", student.Term)
                 .Replace("managerTitle", managerTitle)
                 .Replace("managerName", managerName)
                 .Replace("to", to);
-            string header = Resources.SaudiCouncilOfEngineersHeader.Replace("term", student.Term);
+            string header = Resources.SaudiCouncilOfEngineersHeader.Replace("term", currentTerm);
 
+            e.Graphics.FillRectangle(Brushes.Yellow, headerRectangle);
             using (Font font = new Font("Arial", 11.5f, FontStyle.Bold)) {
                 e.Graphics.DrawString(Tools.ToHindi(header), font, Brushes.Black, headerRectangle, near);
                 e.Graphics.DrawImage(logo, logoRectangle);

@@ -25,9 +25,11 @@ namespace SelfService.Screens.Letters
 
             startDate = new DateInput(Resources.ExamStart) {
                 Location = right,
+                ReadOnly = true
             };
             endDate = new DateInput(Resources.ExamEnd) {
                 Location = left,
+                ReadOnly = true
             };
             print = new CommandButton(Resources.Print) {
                 Location = loginLocation,
@@ -55,10 +57,11 @@ namespace SelfService.Screens.Letters
 
             close.MouseUp += (s, e) => { Close(); };
 
-#if DEBUG
-            startDate.Date = "1440-06-12";
-            endDate.Date = "1440-06-30";
-#endif
+            var start = "";
+            var end = "";
+            DB.Execute.GetExamDuration(ref start, ref end);
+            startDate.Date = start;
+            endDate.Date = end;
 
             Controls.Add(startDate);
             Controls.Add(endDate);            

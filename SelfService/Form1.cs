@@ -27,7 +27,7 @@ namespace SelfService
             var path = Application.StartupPath + @"\DB\env.txt";
             string[] lines = File.ReadAllLines(path);
             var parameters = new DBParameters(ConnectionType.MySQL, lines[1], lines[2], lines[3], lines[4], lines[5]);
-            var connectionString = parameters.ConnectionString+ "CharSet=utf8;";
+            var connectionString = parameters.ConnectionString+ "";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString)) {
                 connection.Open();

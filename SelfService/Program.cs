@@ -1,4 +1,5 @@
 ﻿#define DIRECT
+#undef DIRECT
 
 using SelfService.Screens;
 using System;
@@ -28,7 +29,7 @@ namespace SelfService
             BaseForm.Student = new Models.Student("", "prog.hasan@gmail.com", "0569163852", "حسن علي باعبدالله", "Hassan A. Baabdullah", "1046328777", "بكالوريوس علوم الحاسب الآلي", "", "", "", "");
             Application.Run(new Form1());
 #else
-            Application.Run(new Form1());
+            Application.Run(new Start());
 #endif
         }
     }

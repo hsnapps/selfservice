@@ -335,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\index.html" />
+    <EmbeddedResource Include="Images\Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\NoInternet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
