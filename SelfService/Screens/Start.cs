@@ -49,7 +49,7 @@ namespace SelfService.Screens
             //video.FormClosed += (s, e) => { _timer.Start(); };
 
             _timer = new Timer {
-                Interval = DB.Execute.GetTimeout(),
+                Interval = DB.Execute.GetTimeout() * 60 * 100,
                 Enabled = true,
             };
             _timer.Tick += OnTimer;
@@ -152,6 +152,7 @@ namespace SelfService.Screens
 
                 case Commands.Plan:
                     DB.Execute.Log("plan", "");
+                    DisplayForm(new Plan());
                     break;
 
                 case Commands.Requests:
@@ -170,6 +171,7 @@ namespace SelfService.Screens
 
                 case Commands.Map:
                     DB.Execute.Log("map", "");
+                    DisplayForm(new Map());
                     break;
 
                 case Commands.CommingSubjects:

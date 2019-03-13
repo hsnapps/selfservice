@@ -135,6 +135,9 @@
     <Compile Include="Components\DropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\Footer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\InlineInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +197,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\Map.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\NoInternetConnection.cs">

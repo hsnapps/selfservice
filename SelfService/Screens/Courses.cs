@@ -9,9 +9,6 @@ namespace SelfService.Screens
 {
     class Courses : BaseForm
     {
-        readonly CommandButton close, print;
-        readonly Panel panel;
-
         public Courses() {
             var courses = DB.Execute.GetCourses();
             var decimalStyle = new DataGridViewCellStyle {
@@ -132,33 +129,14 @@ namespace SelfService.Screens
             });
             grid.DataSource = courses;
 
-            int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            close = new CommandButton(Resources.Close) {
-                Location = new Point(x, 0),
-                Font = base.Font
-            };
-            close.Click += (s, e) => {
-                Close();
-            };
-
-            print = new CommandButton(Resources.Print) {
-                Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
-            };
-            print.Click += (s, e) => {
-
-            };
-
-            panel = new Panel {
-                Dock = DockStyle.Bottom,
-                Height = CommandButton.DefaultHeight + 2,
-            };
-            panel.Controls.Add(close);
-
             Font = new Font(Fonts.ALMohanad, 13);
 
+            Footer footer = new Footer(Resources.Back);
+            footer.SetCallback(0, (s, e) => { Close(); });
+
             Padding = new Padding(0, 60, 0, 0);
-            Controls.Add(grid);
-            Controls.Add(panel);
+            Controls.Add(footer);
+            Controls.Add(grid);            
         }
     }
 }

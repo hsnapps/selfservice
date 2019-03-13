@@ -389,6 +389,37 @@ and id_num = '{1}';";
             return table;
         }
 
+        internal static DataTable GetSchedule() {
+            DataTable table = new DataTable("schedules");
+
+            try {
+                table.Columns.AddRange(new DataColumn[] {
+                new DataColumn("course_symbol", typeof(String)),
+                new DataColumn("course_name", typeof(String)),
+                new DataColumn("supervisor_name", typeof(String)),
+            });
+
+                string sql = @"
+SELECT 
+`course_symbol`,
+`course_name`,
+`supervisor_name`
+FROM schedules WHERE student_id = '{0}'";
+                string statement = String.Format(sql, BaseForm.Student.ID);
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        adapter.Fill(table);
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+            }
+
+            return table;
+        }
+
         internal static void Log(string key, string value) {
             string statement = String.Format("INSERT INTO logs (student_id, key, value) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
             using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {

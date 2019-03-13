@@ -1,6 +1,5 @@
 ﻿using SelfService.Code;
 using SelfService.Components;
-using SelfService.Models;
 using SelfService.Properties;
 using System;
 using System.Collections.Generic;
@@ -20,17 +19,18 @@ namespace SelfService.Screens
             this.Command = Commands.Exit;
 
             commands = new CommandButton[10];
-            dictionary = new Dictionary<string, string>();
-            dictionary.Add("Calendar", Resources.Calendar + "*");
-            dictionary.Add("Letters", Resources.Letters);
-            dictionary.Add("Plan", Resources.Plan + "*");
-            dictionary.Add("Schedual", Resources.Schedual + "*");
-            dictionary.Add("StudentGuide", Resources.StudentGuide);
-            dictionary.Add("Requests", Resources.Requirements);
-            dictionary.Add("Map", Resources.Map + "*");
-            dictionary.Add("Suggestions", Resources.Suggestions);
-            dictionary.Add("Exit", Resources.Exit);
-            dictionary.Add("CommingSubjects", Resources.CommingSubjects);
+            dictionary = new Dictionary<string, string> {
+                { "Calendar", Resources.Calendar + "*" },
+                { "Letters", Resources.Letters },
+                { "Plan", Resources.Plan },
+                { "Schedual", Resources.Schedual },
+                { "StudentGuide", Resources.StudentGuide },
+                { "Requests", Resources.Requirements },
+                { "Map", Resources.Map },
+                { "Suggestions", Resources.Suggestions },
+                { "Exit", Resources.Back },
+                { "CommingSubjects", Resources.CommingSubjects }
+            };
 
             var x = DEFAULT_X;
             var y = 0;

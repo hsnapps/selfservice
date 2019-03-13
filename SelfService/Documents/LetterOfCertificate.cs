@@ -56,13 +56,12 @@ namespace SelfService.Documents
                 .Replace("major", student.Program)
                 .Replace("year1", years[0])
                 .Replace("year2", years[1])
-                .Replace("term", student.Term)
+                .Replace("term", currentTerm)
                 .Replace("managerTitle", managerTitle)
                 .Replace("managerName", managerName)
                 .Replace("to", to);
             string header = Resources.SaudiCouncilOfEngineersHeader.Replace("term", currentTerm);
 
-            e.Graphics.FillRectangle(Brushes.Yellow, headerRectangle);
             using (Font font = new Font("Arial", 11.5f, FontStyle.Bold)) {
                 e.Graphics.DrawString(Tools.ToHindi(header), font, Brushes.Black, headerRectangle, near);
                 e.Graphics.DrawImage(logo, logoRectangle);

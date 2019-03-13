@@ -1,5 +1,7 @@
-﻿using SelfService.Components;
+﻿using SelfService.Code;
+using SelfService.Components;
 using SelfService.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,29 +9,68 @@ namespace SelfService.Screens
 {
     class Schedule : BaseForm
     {
-        CommandButton close, print;
-        Panel panel;
-
         public Schedule() {
-            int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            close = new CommandButton(Resources.Close) {
-                Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
-            };
-            close.Click += (s, e) => { Close(); };
+            Padding = new Padding(0, 60, 0, 0);
 
-            print = new CommandButton(Resources.Print) {
-                Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
+            var schedules = DB.Execute.GetSchedule();
+            var style = new DataGridViewCellStyle {
+                NullValue = "",
+                Font = new Font(Fonts.TimesNewRoman, 16),
             };
-            //print.Click += (s, e) => {};
-
-            panel = new Panel {
-                Dock = DockStyle.Bottom,
-                Height = CommandButton.DefaultHeight + 2,
+            DataGridViewTextBoxColumn course_symbol = new DataGridViewTextBoxColumn {
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                DataPropertyName = "course_symbol",
+                HeaderText = "رمز المادة",
+                Name = "course_symbol",
+                ReadOnly = true,
+                ValueType = typeof(String),
+                DefaultCellStyle = style,
             };
-            panel.Controls.Add(close);
-            panel.Controls.Add(print);
+            DataGridViewTextBoxColumn supervisor_name = new DataGridViewTextBoxColumn {
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                DataPropertyName = "supervisor_name",
+                HeaderText = "اسم المدرب",
+                Name = "supervisor_name",
+                ReadOnly = true,
+                ValueType = typeof(String),
+                DefaultCellStyle = style,
+            };
+            DataGridViewTextBoxColumn course_name = new DataGridViewTextBoxColumn {
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                DataPropertyName = "course_name",
+                HeaderText = "اسم المادة",
+                Name = "course_name",
+                ReadOnly = true,
+                ValueType = typeof(String),
+                DefaultCellStyle = style,
+            };
+            DataGridView grid = new DataGridView {
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
+                Dock = DockStyle.Fill,
+                Margin = new Padding(5),
+                Name = "grid",
+                ReadOnly = true,
+                RightToLeft = RightToLeft.Yes,
+                TabStop = false,
+                //AutoGenerateColumns = false,
+                MultiSelect = false,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                RowTemplate = new DataGridViewRow { Height = 34 },
+            };
+            grid.Columns.AddRange(new DataGridViewColumn[] {
+                course_symbol,
+                course_name,
+                supervisor_name,
+            });
+            grid.DataSource = schedules;
 
-            Controls.Add(panel);
+            Footer footer = new Footer(Resources.Back);
+            footer.SetCallback(0, (s, e) => { Close(); });
+
+            Controls.Add(footer);
+            Controls.Add(grid);
         }
     }
 }

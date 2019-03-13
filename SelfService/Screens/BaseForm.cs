@@ -19,7 +19,7 @@ namespace SelfService.Screens
         NoInternetConnection noInternetConnection;
         //Keyboard keyboard;
 
-        public BaseForm(bool disableTimer = false, bool checkConnection = true) {            
+        public BaseForm(bool disableTimer = false, bool checkConnection = true) {
             InitializeComponent();
 
             if (checkConnection) {
@@ -36,7 +36,7 @@ namespace SelfService.Screens
             }
 
             timer = new Timer {
-                Interval = DB.Execute.GetTimeout(),
+                Interval = DB.Execute.GetTimeout() * 60 * 1000,
                 Enabled = true,
             };
             timer.Tick += (s, e) => {
@@ -100,7 +100,7 @@ namespace SelfService.Screens
             }
 
             if (touch) {
-                Cursor.Hide(); 
+                Cursor.Hide();
             }
         }
 

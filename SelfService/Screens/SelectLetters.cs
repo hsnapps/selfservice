@@ -34,7 +34,7 @@ namespace SelfService.Screens
                 var start = "";
                 var end = "";
                 DB.Execute.GetExamDuration(ref start, ref end);
-                LetterPrint letter = new LetterPrint(new Documents.ExaminationCertificate(start, end));
+                LetterPrint letter = new LetterPrint(new ExaminationCertificate(start, end));
                 letter.Show(this);
             };
             saudiCouncilOfEngineers.Click += (s, e) => {
