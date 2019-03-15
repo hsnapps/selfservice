@@ -14,7 +14,7 @@ namespace SelfService.Screens
         public NoInternetConnection(){
             InitializeComponent();
             //TopMost = true;
-            noConnection = Tools.LoadImages("NoInternet.png");
+            noConnection = Tools.LoadImage("NoInternet.png");
 
             checkConnection = new Timer {
                 Interval = 1000 * 5,
@@ -29,7 +29,7 @@ namespace SelfService.Screens
         }
 
         void InitializeComponent() {
-            background = Tools.LoadImages("Background.png");
+            background = Tools.LoadImage("Background.png");
 
             SuspendLayout();
             // BaseForm

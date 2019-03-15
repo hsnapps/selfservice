@@ -143,6 +143,7 @@ namespace SelfService.Screens
 
                 case Commands.Calendar:
                     DB.Execute.Log("calendar", "");
+                    DisplayForm(new Calendar());
                     break;
 
                 case Commands.Schedual:

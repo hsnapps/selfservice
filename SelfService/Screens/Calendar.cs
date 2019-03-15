@@ -8,19 +8,18 @@ using System.Windows.Forms;
 
 namespace SelfService.Screens
 {
-    internal class Map : BaseForm
+    class Calendar : BaseForm
     {
-        public Map() {
+        public Calendar() {
             Footer footer = new Footer(Resources.Back);
             footer.SetCallback(0, (s, e) => { Close(); });
-            var url = DB.Execute.GetConfig("map");
+            var url = DB.Execute.GetConfig("calendar");
             Image loading = Tools.LoadImageFromPath("Waiting-2.gif");
 
             PictureBox box = new PictureBox {
                 Dock = DockStyle.Fill,
                 BorderStyle = BorderStyle.None,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = loading,
             };
 
             bool fromInternet = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
@@ -33,7 +32,7 @@ namespace SelfService.Screens
                 box.Image = Tools.LoadImageFromPath(url);
             }
 
-            Controls.AddRange(new Control[] { box, footer });
+            Controls.AddRange(new Control[] {  box , footer });
         }
     }
 }

@@ -71,7 +71,7 @@ namespace SelfService.Screens
         }
 
         void InitializeComponent() {
-            background = Tools.LoadImages("Background.png");
+            background = Tools.LoadImage("Background.png");
 
             SuspendLayout();
             // BaseForm

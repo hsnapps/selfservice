@@ -18,6 +18,28 @@ namespace SelfService.DB
     {
         static string CONNECTION_STRING = "";
 
+        internal static string GetConfig(string key) {
+            string value = "";
+
+            try {
+                string statement = "select value from settings where `category` = 'config' and `key` = '" + key + "';";
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            value = reader.GetString(0);
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+
+            }
+
+            return value;
+        }
+
         static Execute() {
             var path = Application.StartupPath + @"\DB\env.txt";
             string[] lines = File.ReadAllLines(path);
@@ -121,7 +143,7 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-                
+
             }
 
             return email;
@@ -203,7 +225,7 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-                
+
             }
         }
 

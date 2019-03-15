@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Resources;
+using System.Windows.Forms;
 
 namespace SelfService.Code
 {
@@ -45,7 +46,7 @@ namespace SelfService.Code
             return str;
         }
 
-        internal static Bitmap LoadImages(string image) {
+        internal static Bitmap LoadImage(string image) {
             Bitmap bitmap;
             Assembly assembly = Assembly.GetExecutingAssembly();
             using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images." + image)) {
@@ -53,6 +54,16 @@ namespace SelfService.Code
                 stream.Close();
             }
             return bitmap;
+        }
+
+        internal static Image LoadImageFromPath(string imageName) {
+            var path = Application.StartupPath + "\\Images\\" + imageName;
+            if (File.Exists(path)) {
+                Image image = Image.FromFile(path);
+                return image;
+            }
+
+            return null;
         }
 
         public static int PaperWidth { get => 827; }

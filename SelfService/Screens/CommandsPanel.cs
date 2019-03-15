@@ -20,7 +20,7 @@ namespace SelfService.Screens
 
             commands = new CommandButton[10];
             dictionary = new Dictionary<string, string> {
-                { "Calendar", Resources.Calendar + "*" },
+                { "Calendar", Resources.Calendar },
                 { "Letters", Resources.Letters },
                 { "Plan", Resources.Plan },
                 { "Schedual", Resources.Schedual },

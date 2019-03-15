@@ -178,6 +178,9 @@
     <Compile Include="Screens\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Screens\Calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Screens\Claiming.cs">
       <SubType>Form</SubType>
     </Compile>
