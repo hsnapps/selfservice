@@ -2,6 +2,7 @@
 using SelfService.Components;
 using SelfService.Models;
 using SelfService.Properties;
+using System;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -14,25 +15,23 @@ namespace SelfService.Screens
     class BaseForm : Form
     {
         Timer timer;
-        Timer connectionTimer;
+        //Timer connectionTimer;
         Bitmap background;
-        NoInternetConnection noInternetConnection;
-        //Keyboard keyboard;
 
         public BaseForm(bool disableTimer = false, bool checkConnection = true) {
             InitializeComponent();
 
             if (checkConnection) {
-                connectionTimer = new Timer {
-                    Interval = 1000 * 5,
-                    Enabled = true,
-                };
-                connectionTimer.Tick += (s, e) => {
-                    if (!Tools.CheckConnection()) {
-                        (s as Timer).Stop();
-                        DisplayNoConnection();
-                    }
-                };
+                //connectionTimer = new Timer {
+                //    Interval = 1000 * 5,
+                //    Enabled = false,
+                //};
+                //connectionTimer.Tick += (s, e) => {
+                //    if (!Tools.CheckConnection()) {
+                //        (s as Timer).Stop();
+                //        //DisplayNoConnection();
+                //    }
+                //};
             }
 
             timer = new Timer {
@@ -58,14 +57,6 @@ namespace SelfService.Screens
             //keyboard.Hide();
         }
 
-        void DisplayNoConnection() {
-            noInternetConnection = new NoInternetConnection();
-            noInternetConnection.FormClosed += (s1, e1) => {
-                connectionTimer.Start();
-            };
-            noInternetConnection.Show();
-        }
-
         protected void ShowKeyboard(bool show) {
             //keyboard.Visible = show;
         }
@@ -89,6 +80,7 @@ namespace SelfService.Screens
             Size = Screen.PrimaryScreen.Bounds.Size;
             Name = "BaseForm";
             Text = Resources.TVTC_En_Full;
+            KeyPreview = true;
             ResumeLayout(false);
 
             string[] args = System.Environment.GetCommandLineArgs();
@@ -117,6 +109,20 @@ namespace SelfService.Screens
                 e.Graphics.DrawString(BaseForm.Student.Name_AR, font, Brushes.RoyalBlue, layoutRectangle, format);
             }
         }
+
+#if DEBUG
+        //protected override void OnFormClosing(FormClosingEventArgs e) {
+        //    MessageBox.Show(e.CloseReason.ToString());
+        //} 
+
+        protected override void OnKeyDown(KeyEventArgs e) {
+            if (e.Control && e.KeyCode == Keys.K) {
+                Keyboard keyboard = new Keyboard();
+                keyboard.Show();
+            }
+            base.OnKeyDown(e);
+        }
+#endif
 
         public void ResetTimer() {
             timer.Stop();

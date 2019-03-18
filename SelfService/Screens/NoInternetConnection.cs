@@ -13,7 +13,7 @@ namespace SelfService.Screens
 
         public NoInternetConnection(){
             InitializeComponent();
-            //TopMost = true;
+            TopMost = true;
             noConnection = Tools.LoadImage("NoInternet.png");
 
             checkConnection = new Timer {

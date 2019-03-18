@@ -122,6 +122,9 @@
     <Compile Include="Code\Tools.cs" />
     <Compile Include="Code\YoutubeUrlResolver.cs" />
     <Compile Include="Code\YoutubeVideo.cs" />
+    <Compile Include="Components\CharacterButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\CommandButton.cs">
       <SubType>Component</SubType>
     </Compile>

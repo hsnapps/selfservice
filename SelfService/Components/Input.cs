@@ -48,8 +48,10 @@ namespace SelfService.Components
                 PasswordChar = password ? '*' : '\0',
                 TextAlign = HorizontalAlignment.Center,
             };
-            box.GotFocus += (s, e) => {
-                InputGotFocus?.Invoke(this, e);
+            box.Click += (s, e) => {
+                //InputGotFocus?.Invoke(this, e);
+                Keyboard keyboard = new Keyboard(box);
+                keyboard.Show();
             };
 
             AutoScaleMode = AutoScaleMode.None;
@@ -70,8 +72,9 @@ namespace SelfService.Components
             set => box.MaxLength = value;
         }
         public Masks Mask { get; set; }
+        public bool IsNumaric { get; set; }
 
-        public event InputGotFocusCallback InputGotFocus;
+        //public event InputGotFocusCallback InputGotFocus;
 
         public override string Text {
             get => box.Text;

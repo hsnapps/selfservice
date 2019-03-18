@@ -26,6 +26,7 @@ namespace SelfService.Screens
 
             traineeNumber = new Input(Resources.TraineeNumber) {
                 Location = right,
+                IsNumaric = true
             };
             idNumber = new Input(Resources.IdNumber, true) {
                 Location = left,
@@ -55,8 +56,8 @@ namespace SelfService.Screens
             traineeNumber.Text = "114343617";
 #endif
 
-            idNumber.InputGotFocus += OnInputGotFocus;
-            traineeNumber.InputGotFocus += OnInputGotFocus;
+            //idNumber.InputGotFocus += OnInputGotFocus;
+            //traineeNumber.InputGotFocus += OnInputGotFocus;
 
             cancel.MouseUp += (s, e) => {
                 this.Close();

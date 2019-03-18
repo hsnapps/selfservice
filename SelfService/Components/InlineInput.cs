@@ -54,10 +54,12 @@ namespace SelfService.Components
             box.Height = multiline ? 100 : 50;
 
             box.Click += (s, e) => {
-                string osk = Environment.SystemDirectory + "osk.exe";
-                if (File.Exists(osk)) {
-                    Process.Start(osk);
-                }
+                //string osk = Environment.SystemDirectory + "osk.exe";
+                //if (File.Exists(osk)) {
+                //    Process.Start(osk);
+                //}
+                Keyboard keyboard = new Keyboard(box);
+                keyboard.Show();
             };
         }
 

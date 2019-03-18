@@ -13,15 +13,17 @@ namespace SelfService.Components
         const int BTNWIDTH = 77;
         const int BTNHEIGHT = 68;
 
+        readonly Control myControl;
         Button[] buttons = new Button[12];
         readonly string numbers;
 
-        public NumaricKeyboard() {
+        public NumaricKeyboard(Control control = null) {
             numbers = "123456789˂0˅";
             InitializeComponent();
         }
 
-        public NumaricKeyboard(Point location) {
+        public NumaricKeyboard(Point location, Control ctrl = null) {
+            myControl = ctrl;
             numbers = "123456789,0.";
             InitializeComponent();
             Location = location;
@@ -43,6 +45,7 @@ namespace SelfService.Components
                     TabIndex = 0,
                     Text = numbers[i].ToString(),
                     UseVisualStyleBackColor = false,
+                    Cursor = Cursors.Hand,
                 };
                 buttons[i].Click += OnKeyClick;
 
@@ -101,7 +104,8 @@ namespace SelfService.Components
         }
 
         void DoSendKeys(string text) {
-            SendKeys.SendWait(text);
+            //SendKeys.SendWait(text);
+            if (myControl != null) myControl.Text += text;
         }
 
         public Control Control { get; set; }

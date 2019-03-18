@@ -16,7 +16,7 @@ namespace SelfService.DB
 {
     static class Execute
     {
-        static string CONNECTION_STRING = "";
+        static readonly string CONNECTION_STRING = "";
 
         internal static string GetConfig(string key) {
             string value = "";
