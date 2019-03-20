@@ -49,9 +49,9 @@ namespace SelfService.Screens
 
             Font = new Font(Fonts.HeshamAlSharq, 22f);
 
-            KeyUp += (s, e) => {
-                base.OnKeyUp(e);
-            };
+            //KeyUp += (s, e) => {
+            //    base.OnKeyUp(e);
+            //};
 
             //keyboard = new Keyboard();
             //keyboard.Hide();

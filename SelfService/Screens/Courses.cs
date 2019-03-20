@@ -134,7 +134,7 @@ namespace SelfService.Screens
             Footer footer = new Footer(Resources.Back);
             footer.SetCallback(0, (s, e) => { Close(); });
 
-            Padding = new Padding(0, 60, 0, 0);
+            Padding = new Padding(0, 110, 0, 0);
             Controls.Add(footer);
             Controls.Add(grid);            
         }

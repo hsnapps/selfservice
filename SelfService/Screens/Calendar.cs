@@ -20,6 +20,7 @@ namespace SelfService.Screens
                 Dock = DockStyle.Fill,
                 BorderStyle = BorderStyle.None,
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = loading,
             };
 
             bool fromInternet = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)

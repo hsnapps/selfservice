@@ -10,7 +10,7 @@ namespace SelfService.Screens
     class Schedule : BaseForm
     {
         public Schedule() {
-            Padding = new Padding(0, 60, 0, 0);
+            Padding = new Padding(0, 110, 0, 0);
 
             var schedules = DB.Execute.GetSchedule();
             var style = new DataGridViewCellStyle {
@@ -58,6 +58,7 @@ namespace SelfService.Screens
                 MultiSelect = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 RowTemplate = new DataGridViewRow { Height = 34 },
+                BackgroundColor = Color.White
             };
             grid.Columns.AddRange(new DataGridViewColumn[] {
                 course_symbol,

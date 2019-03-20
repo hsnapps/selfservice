@@ -1,1 +1,1 @@
-..\SelfService.exe --touch=false --exit=true --db=..\DB\database.sqlite
+..\SelfService.exe --touch=false --exit=true
