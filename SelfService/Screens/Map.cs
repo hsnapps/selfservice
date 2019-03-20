@@ -14,7 +14,7 @@ namespace SelfService.Screens
             Footer footer = new Footer(Resources.Back);
             footer.SetCallback(0, (s, e) => { Close(); });
             var url = DB.Execute.GetConfig("map");
-            Image loading = Tools.LoadImageFromPath("Waiting-2.gif");
+            Image loading = Tools.LoadImage("Waiting-2.gif");
 
             PictureBox box = new PictureBox {
                 Dock = DockStyle.Fill,
@@ -30,7 +30,7 @@ namespace SelfService.Screens
                 box.WaitOnLoad = false;
                 box.LoadAsync(url);
             } else {
-                box.Image = Tools.LoadImageFromPath(url);
+                box.Image = Tools.LoadImage(url);
             }
 
             Controls.AddRange(new Control[] { box, footer });

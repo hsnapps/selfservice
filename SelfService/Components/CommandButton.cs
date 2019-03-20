@@ -1,20 +1,19 @@
 ﻿using SelfService.Code;
+using SelfService.Properties;
 using System;
 using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace SelfService.Components
 {
     class CommandButton : Button
     {
-        Bitmap button, buttonDown;
+        Image buttonUpImage, buttonDownImage;
 
         public CommandButton(string text) {
-            LoadImages();
+            LoadImages(text);
 
-            BackgroundImage = button;
+            BackgroundImage = buttonUpImage;
             BackgroundImageLayout = ImageLayout.Stretch;
             Size = new Size(DefaultWidth, DefaultHeight);
             BackColor = Color.Transparent;
@@ -35,25 +34,25 @@ namespace SelfService.Components
 
         public CommandButton():this("Button") {}
 
-        void LoadImages() {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream("SelfService.Images.Button.png");
-            button = new Bitmap(stream);
-
-            stream = assembly.GetManifestResourceStream("SelfService.Images.ButtonDown.png");
-            buttonDown = new Bitmap(stream);
-
-            stream.Close();
-            stream.Dispose();
+        void LoadImages(string text) {
+            if (text.Equals(Resources.Back) || text.Equals(Resources.Exit) || text.Equals(Resources.Close)) {
+                buttonUpImage = Code.Settings.BackButtonUpImage;
+                buttonDownImage = Code.Settings.BackButtonDnImage;
+                ForeColor = Code.Settings.BackButtonForeColor;
+            } else {
+                buttonUpImage = Code.Settings.ButtonUpImage;
+                buttonDownImage = Code.Settings.ButtonDownImage;
+                ForeColor = Code.Settings.ButtonForeColor;
+            }            
         }
 
         protected override void OnMouseDown(MouseEventArgs e) {
-            BackgroundImage = buttonDown;
+            BackgroundImage = buttonDownImage;
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent) {
-            BackgroundImage = button;
+            BackgroundImage = buttonUpImage;
             base.OnMouseUp(mevent);
         }
 

@@ -8,8 +8,8 @@ namespace SelfService.Screens
     class NoInternetConnection : Form
     {
         Timer checkConnection;
-        Bitmap noConnection;
-        Bitmap background;
+        Image noConnection;
+        Image background;
 
         public NoInternetConnection(){
             InitializeComponent();

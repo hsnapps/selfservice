@@ -46,14 +46,16 @@ namespace SelfService.Code
             return str;
         }
 
-        internal static Bitmap LoadImage(string image) {
-            Bitmap bitmap;
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images." + image)) {
-                bitmap = new Bitmap(stream);
-                stream.Close();
-            }
-            return bitmap;
+        internal static Image LoadImage(string image) {
+            //Bitmap bitmap;
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            //using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images." + image)) {
+            //    bitmap = new Bitmap(stream);
+            //    stream.Close();
+            //}
+            //return bitmap;
+
+            return Bitmap.FromFile("Images/" + image);
         }
 
         internal static Image LoadImageFromPath(string imageName) {

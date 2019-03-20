@@ -16,7 +16,7 @@ namespace SelfService.Screens
     {
         Timer timer;
         //Timer connectionTimer;
-        Bitmap background;
+        Image background;
 
         public BaseForm(bool disableTimer = false, bool checkConnection = true) {
             InitializeComponent();
@@ -62,7 +62,7 @@ namespace SelfService.Screens
         }
 
         void InitializeComponent() {
-            background = Tools.LoadImage("Background.png");
+            background = Code.Settings.Background;
 
             SuspendLayout();
             // BaseForm
@@ -99,14 +99,28 @@ namespace SelfService.Screens
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
             if (BaseForm.Student != null) {
-                var font = new Font("Arial", 18f, FontStyle.Bold);
-                var layoutRectangle = new RectangleF(new Point(0, 20), new Size(Screen.PrimaryScreen.Bounds.Width, 30));
-                var format = new StringFormat {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center,
-                    FormatFlags = StringFormatFlags.DirectionRightToLeft
-                };
-                e.Graphics.DrawString(BaseForm.Student.Name_AR, font, Brushes.RoyalBlue, layoutRectangle, format);
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(1, 39, 94))) {
+                    var size = new Size(Screen.PrimaryScreen.Bounds.Width / 2, 70);
+                    var x = (Screen.PrimaryScreen.Bounds.Width / 2) - (size.Width / 2);
+                    var point = new Point(x, 20);
+                    var layoutRectangle = new RectangleF(point, size);
+                    var shadowRectangle = new RectangleF(new Point(point.X + 3, point.Y + 3), size);
+
+                    using (SolidBrush shadow = new SolidBrush(Color.FromArgb(128, 128, 128))) {
+                        e.Graphics.FillRectangle(shadow, shadowRectangle);
+                    }
+
+                    e.Graphics.FillRectangle(brush, layoutRectangle);
+
+                    using (Font font = new Font("Arial", 22f, FontStyle.Bold)) {
+                        var format = new StringFormat {
+                            Alignment = StringAlignment.Center,
+                            LineAlignment = StringAlignment.Center,
+                            FormatFlags = StringFormatFlags.DirectionRightToLeft
+                        };
+                        e.Graphics.DrawString(BaseForm.Student.Name_AR, font, Brushes.White, layoutRectangle, format);
+                    } 
+                }
             }
         }
 

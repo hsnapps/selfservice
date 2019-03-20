@@ -119,6 +119,7 @@
     <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\Masks.cs" />
     <Compile Include="Code\PrintProperties.cs" />
+    <Compile Include="Code\Settings.cs" />
     <Compile Include="Code\Tools.cs" />
     <Compile Include="Code\YoutubeUrlResolver.cs" />
     <Compile Include="Code\YoutubeVideo.cs" />
@@ -347,33 +348,54 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\index.html" />
-    <EmbeddedResource Include="Images\Map.png">
+    <None Include="Images\Background2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\NoInternet.png">
+    </None>
+    <None Include="Images\Button 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\frame.png">
+    </None>
+    <None Include="Images\Button 2 .png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\Waiting-1.gif">
+    </None>
+    <None Include="Images\Button 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\Waiting-2.gif">
+    </None>
+    <None Include="Images\ButtonDown 1 .png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\Logo.png">
+    </None>
+    <None Include="Images\ButtonDown 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\Button.png">
+    </None>
+    <None Include="Images\ButtonDown 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\ButtonDown.png">
+    </None>
+    <None Include="Images\Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\Background.png">
+    </None>
+    <None Include="Images\NoInternet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
+    <None Include="Images\frame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Waiting-1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Waiting-2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\ButtonDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="Screens\Plans\PlansResource.resx" />
     <EmbeddedResource Include="Screens\Video.resx">
       <DependentUpon>Video.cs</DependentUpon>
