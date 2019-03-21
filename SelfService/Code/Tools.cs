@@ -55,7 +55,12 @@ namespace SelfService.Code
             //}
             //return bitmap;
 
-            return Bitmap.FromFile("Images/" + image);
+            var file = Application.StartupPath + "\\Images\\" + image;
+            if (File.Exists(file)) {
+                return Bitmap.FromFile(file);
+            }
+
+            return null;
         }
 
         internal static Image LoadImageFromPath(string imageName) {
