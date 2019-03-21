@@ -22,14 +22,20 @@ namespace SelfService.Components
             UseVisualStyleBackColor = false;
 
             if (ar == '@') {
-                Text = ('\u00D2').ToString();
-                Font = new Font(Fonts.Wingdings2, 25f);
+                Text = "";
+                Tag = ('\u00D2').ToString();
+                //Font = new Font(Fonts.Wingdings2, 25f);
+                this.Image = Tools.LoadImage("Back.png");
+                this.ImageAlign = ContentAlignment.MiddleCenter;
                 Ignore = true;
             }
 
             if (ar == '$') {
-                Text = ('\u0037').ToString();
-                Font = new Font(Fonts.Wingdings, 25f);
+                Text = "";
+                Tag = ('\u00D2').ToString();
+                //Font = new Font(Fonts.Wingdings2, 25f);
+                this.Image = Tools.LoadImage("Globe.png");
+                this.ImageAlign = ContentAlignment.MiddleCenter;
                 Ignore = true;
             }
 

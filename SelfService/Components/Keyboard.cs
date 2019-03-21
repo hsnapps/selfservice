@@ -117,28 +117,29 @@ namespace SelfService.Components
         void OnCharacterKeyClick(object s, EventArgs e) {
             string back = ('\u00D2').ToString();
             string lang = ('\u0037').ToString();
-            string text = (s as Control).Text;
+            //string text = (s as Control).Text;
+            string tag = (s as Control).Tag.ToString();
             int max = (s as Input).MaxLength;
             bool isNumaric = (s as Input).IsNumaric;
 
-            if (text.Equals(back)) {
+            if (tag.Equals(back)) {
                 myControl.Text = myControl.Text.Substring(0, myControl.Text.Length - 1);
                 return;
             }
 
-            if (text.Equals(lang)) {
+            if (tag.Equals(lang)) {
                 arabic = !arabic;
                 ChangeLayout();
                 return;
             }
 
             if (s is Button) {
-                myControl.Text += text;
+                myControl.Text += tag;
                 return;
             }
 
             if (myControl != null) {
-                char ch = text[0];
+                char ch = tag[0];
                 if (!Char.IsNumber(ch)) {
                     if (isNumaric) {
                         return;

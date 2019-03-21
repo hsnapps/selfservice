@@ -348,54 +348,60 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\index.html" />
-    <None Include="Images\Background2.png">
+    <Content Include="Images\Back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Button 1.png">
+    </Content>
+    <Content Include="Images\Background2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Button 2 .png">
+    </Content>
+    <Content Include="Images\Button 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Button 3.png">
+    </Content>
+    <Content Include="Images\Button 2 .png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\ButtonDown 1 .png">
+    </Content>
+    <Content Include="Images\Button 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\ButtonDown 2.png">
+    </Content>
+    <Content Include="Images\ButtonDown 1 .png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\ButtonDown 3.png">
+    </Content>
+    <Content Include="Images\ButtonDown 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Map.png">
+    </Content>
+    <Content Include="Images\ButtonDown 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\NoInternet.png">
+    </Content>
+    <Content Include="Images\Globe.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\frame.png">
+    </Content>
+    <Content Include="Images\Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Waiting-1.gif">
+    </Content>
+    <Content Include="Images\NoInternet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Waiting-2.gif">
+    </Content>
+    <Content Include="Images\frame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Logo.png">
+    </Content>
+    <Content Include="Images\Waiting-1.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Button.png">
+    </Content>
+    <Content Include="Images\Waiting-2.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\ButtonDown.png">
+    </Content>
+    <Content Include="Images\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Images\Background.png">
+    </Content>
+    <Content Include="Images\Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="Images\ButtonDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Screens\Plans\PlansResource.resx" />
     <EmbeddedResource Include="Screens\Video.resx">
       <DependentUpon>Video.cs</DependentUpon>
