@@ -2,6 +2,7 @@
 using SelfService.Models;
 using SelfService.Properties;
 using SelfService.Screens;
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -65,6 +66,9 @@ namespace SelfService.Documents
             using (Font font = new Font("Arial", 28.0f, FontStyle.Bold)) {
                 e.Graphics.DrawString(Tools.ToHindi(Resources.SaudiCouncilOfEngineersTitle), font, Brushes.Black, titleRectangle, center);
             }
+
+            Tools.PrintFooter(e.Graphics);
+            Tools.PrintStamp(e.Graphics, new Rectangle(100, 700, 160, 160));
         }
     }
 }

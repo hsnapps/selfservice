@@ -13,5 +13,6 @@
         public static string Wingdings { get => "Wingdings"; }
         public static string Wingdings2 { get => "Wingdings 2"; }
         public static string Wingdings3 { get => "Wingdings 3"; }
+        public static string Arial { get => "Arial"; }
     }
 }

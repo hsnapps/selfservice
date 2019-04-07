@@ -590,6 +590,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to * تم طباعة هذا الخطاب إلكترونياً. في حال الرغبة في التأكد من هذا الخطاب الاتصال على الرقم: {0} أو التواصل على الإيميل: {1}.
+        /// </summary>
+        internal static string PrintFooter {
+            get {
+                return ResourceManager.GetString("PrintFooter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to طلب بطاقة صراف.
         /// </summary>
         internal static string RequestATMCard {

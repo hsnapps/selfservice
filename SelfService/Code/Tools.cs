@@ -1,4 +1,5 @@
 ﻿using SelfService.Components;
+using SelfService.Properties;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -119,6 +120,30 @@ namespace SelfService.Code
 
         private static void Document_PrintPage(object sender, PrintPageEventArgs e) {
             throw new NotImplementedException();
+        }
+
+        internal static void PrintFooter(Graphics g) {
+            Rectangle rect = new Rectangle(0, 1100, 800, 40);
+            var email = DB.Execute.GetConfig("official-email");
+            var phone = DB.Execute.GetConfig("official-phone");
+            string footer = String.Format(Resources.PrintFooter, Tools.ToHindi(phone), email);
+            StringFormat near = new StringFormat {
+                Alignment = StringAlignment.Near,
+                LineAlignment = StringAlignment.Center,
+                FormatFlags = StringFormatFlags.DirectionRightToLeft,
+            };
+            using (Font font = new Font(Fonts.Arial, 10, FontStyle.Bold)) {
+                g.DrawString(footer, font, Brushes.Black, rect, near);
+            }
+        }
+
+        internal static void PrintStamp(Graphics g) {
+            Tools.PrintStamp(g, new Rectangle(300, 950, 160, 160));
+        }
+
+        internal static void PrintStamp(Graphics g, Rectangle rect) {
+            Image image = Tools.LoadImage("stamp.png");
+            g.DrawImage(image, rect);
         }
 
         public static int PaperWidth { get => 827; }

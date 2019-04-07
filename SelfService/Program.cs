@@ -28,7 +28,7 @@ namespace SelfService
             // open screen directly
             Models.Student student = DB.Execute.Login("114343617", "1087534176");
             BaseForm.Student = student; // new Models.Student("", "prog.hasan@gmail.com", "0569163852", "حسن علي باعبدالله", "Hassan A. Baabdullah", "1046328777", "بكالوريوس علوم الحاسب الآلي", "", "", "", "");
-            Application.Run(new Schedule());
+            Application.Run(new SelectLetters());
 #else
             Application.Run(new Start());
 #endif

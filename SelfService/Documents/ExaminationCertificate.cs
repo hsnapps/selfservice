@@ -54,12 +54,15 @@ namespace SelfService.Documents
         }
 
         protected override void OnPrintPage(PrintPageEventArgs e) {
-            e.Graphics.DrawImage(frame, new Rectangle(0, 0, 827, 1170));
+            // Print frame
+            // e.Graphics.DrawImage(frame, new Rectangle(0, 0, 827, 1170));
 
             PrintHeader(e.Graphics);
             PrintTable(e.Graphics);
             PrintBody(e.Graphics);
             PrintSignature(e.Graphics);
+            Tools.PrintStamp(e.Graphics);
+            Tools.PrintFooter(e.Graphics);
         }
 
         void PrintSignature(Graphics g) {
