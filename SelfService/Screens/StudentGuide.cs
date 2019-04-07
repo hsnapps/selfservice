@@ -17,7 +17,7 @@ namespace SelfService.Screens
             var path = Application.StartupPath + @"\Pdf\StudentGuide.pdf?toolbar=0&navpanes=0&scrollbar=0";
             web.Navigate(path);
 
-            Footer footer = new Footer(Resources.Close, "<", ">");
+            Footer footer = new Footer(Resources.Back, "<", ">");
             footer.SetCallback(0, (s, e) => { this.Close(); });
             footer.SetCallback(1, (s, e) => { web.Focus(); SendKeys.Send("{PGDN}"); });
             footer.SetCallback(2, (s, e) => { web.Focus(); SendKeys.Send("{PGDN}"); });

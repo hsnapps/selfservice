@@ -35,7 +35,10 @@ namespace SelfService.Components
         public CommandButton():this("Button") {}
 
         void LoadImages(string text) {
-            if (text.Equals(Resources.Back) || text.Equals(Resources.Exit) || text.Equals(Resources.Close)) {
+            if (text.Equals(Resources.Back) ||
+                text.Equals(Resources.Exit) ||
+                text.Equals(Resources.Cancel) ||
+                text.Equals(Resources.Close)) {
                 buttonUpImage = Code.Settings.BackButtonUpImage;
                 buttonDownImage = Code.Settings.BackButtonDnImage;
                 ForeColor = Code.Settings.BackButtonForeColor;

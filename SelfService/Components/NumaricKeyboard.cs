@@ -13,17 +13,19 @@ namespace SelfService.Components
         const int BTNWIDTH = 77;
         const int BTNHEIGHT = 68;
 
-        readonly Control myControl;
+        readonly Input myControl;
+        readonly TextBox textBox;
         Button[] buttons = new Button[12];
         readonly string numbers;
 
-        public NumaricKeyboard(Control control = null) {
-            numbers = "123456789˂0˅";
-            InitializeComponent();
-        }
+        //public NumaricKeyboard(Control control = null) {
+        //    numbers = "123456789˂0˅";
+        //    InitializeComponent();
+        //}
 
-        public NumaricKeyboard(Point location, Control ctrl = null) {
+        public NumaricKeyboard(Point location, Input ctrl, TextBox box) {
             myControl = ctrl;
+            textBox = box;
             numbers = "123456789,0.";
             InitializeComponent();
             Location = location;
@@ -69,7 +71,7 @@ namespace SelfService.Components
         void OnKeyClick(object sender, EventArgs e) {
             Button me = (Button)sender;
 
-            if (Control == null) {
+            if (myControl == null) {
                 //this.Visible = false;
                 DoSendKeys(me.Text);
                 return;
@@ -78,9 +80,9 @@ namespace SelfService.Components
             switch (me.Text) {
                 case "˂":
                     try {
-                        Control.Text = Control.Text.Remove(Control.Text.Length - 1);
+                        myControl.Text = myControl.Text.Remove(myControl.Text.Length - 1);
                     } catch (ArgumentOutOfRangeException) {
-                        Control.Text = "";
+                        myControl.Text = "";
                     }
                     break;
 
@@ -89,18 +91,14 @@ namespace SelfService.Components
                     break;
 
                 default:
-                    int maxLength = 0;
-                    if (Control is Input) {
-                        maxLength = (Control as Input).MaxLength;
-                    }
-                    if (Control is DateInput) {
-                        maxLength = (Control as DateInput).MaxLength;
-                    }
-                    if (Control.Text.Length < maxLength) {
-                        Control.Text = Control.Text + (sender as Button).Text;
+                    int maxLength = myControl.MaxLength;
+                    if (myControl.Text.Length < maxLength) {
+                        myControl.Text = myControl.Text + (sender as Button).Text;
                     }
                     break;
             }
+
+            textBox.Text = myControl.Text;
         }
 
         void DoSendKeys(string text) {
@@ -108,7 +106,7 @@ namespace SelfService.Components
             if (myControl != null) myControl.Text += text;
         }
 
-        public Control Control { get; set; }
+        //public Control Control { get; set; }
         public static int DefaultWidth { get { return (BTNWIDTH * 3) + (6 * 2); } }
         public static int DefaultHeight { get { return (BTNHEIGHT * 3) + (6 * 2); } }
     }

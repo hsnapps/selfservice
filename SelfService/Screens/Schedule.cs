@@ -17,6 +17,8 @@ namespace SelfService.Screens
                 NullValue = "",
                 Font = new Font(Fonts.TimesNewRoman, 16),
             };
+            var rowTemplate = new DataGridViewRow { Height = 40 };
+
             DataGridViewTextBoxColumn course_symbol = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                 DataPropertyName = "course_symbol",
@@ -57,21 +59,22 @@ namespace SelfService.Screens
                 //AutoGenerateColumns = false,
                 MultiSelect = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                RowTemplate = new DataGridViewRow { Height = 34 },
-                BackgroundColor = Color.White
+                RowTemplate = rowTemplate,
+                BackgroundColor = Color.White,
             };
             grid.Columns.AddRange(new DataGridViewColumn[] {
                 course_symbol,
                 course_name,
-                supervisor_name,
+                supervisor_name,                
             });
             grid.DataSource = schedules;
 
-            Footer footer = new Footer(Resources.Back);
+            Footer footer = new Footer(CommandButton.DefaultHeight + 40, new Padding(0, 5, 0, 5), Resources.Back, Resources.Print);
             footer.SetCallback(0, (s, e) => { Close(); });
+            footer.SetCallback(1, (s, e) => { Tools.PrintDataGrid(grid, false); });
 
-            Controls.Add(footer);
-            Controls.Add(grid);
+            Padding = new Padding(0, 125, 0, 0);
+            Controls.AddRange(new Control[] { grid, footer });
         }
     }
 }

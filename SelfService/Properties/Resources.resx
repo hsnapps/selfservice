@@ -438,4 +438,16 @@ WHERE student_id = '{0}';</value>
   <data name="Back" xml:space="preserve">
     <value>عودة</value>
   </data>
+  <data name="MaxPrint" xml:space="preserve">
+    <value>لقد وصلت إلى الحد اليومي الأعلى للطباعة!</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>مرحباً... {0}</value>
+  </data>
+  <data name="ExamSchedule" xml:space="preserve">
+    <value>جدول الاختبارات</value>
+  </data>
+  <data name="NormalSchedule" xml:space="preserve">
+    <value>الجدول الدراسي</value>
+  </data>
 </root>

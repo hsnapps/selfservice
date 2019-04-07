@@ -175,7 +175,7 @@ namespace SelfService.Screens
                     DisplayForm(new Map());
                     break;
 
-                case Commands.CommingSubjects:
+                case Commands.RestCourses:
                     DB.Execute.Log("commingsubjects", "");
                     DisplayForm(new Courses());
                     break;

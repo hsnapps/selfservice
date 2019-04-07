@@ -395,8 +395,14 @@ and id_num = '{1}';";
                 new DataColumn("accepted_prg_subjects", typeof(Int32)),
                 new DataColumn("required_prg_subjects", typeof(Int32)),
             });
-
-                string statement = String.Format(Resources.CoursesSQL, BaseForm.Student.ID);
+                string sql = @"
+SELECT yn1.title AS 'registered', yn2.title AS 'completed', c.authorized_units, c.course_name,
+c.course_symbol, c.gpa, c.passed_units, c.required_units, c.passed_subjects, c.required_subjects
+FROM courses c
+INNER JOIN yesno yn1 ON yn1.id = c.registered
+INNER JOIN yesno yn2 ON yn2.id = c.completed
+WHERE student_id = '{0}';";
+                string statement = String.Format(sql, BaseForm.Student.ID);
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(statement, connection)) {
@@ -422,7 +428,7 @@ and id_num = '{1}';";
             });
 
                 string sql = @"
-SELECT 
+SELECT DISTINCT
 `course_symbol`,
 `course_name`,
 `supervisor_name`
@@ -453,6 +459,127 @@ FROM schedules WHERE student_id = '{0}'";
                     }
                 }
             }
+        }
+
+        internal static void RemoveOldCopies() {
+            try {
+                string sql = @"DELETE FROM print_restrictions WHERE student_id = '{0}' AND print_date != CURDATE();";
+                string statement = String.Format(sql, BaseForm.Student.ID);
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
+        }
+
+        internal static int CurrentCopy() {
+            bool add = !CheckIfStudentExistsInPrintRestriction();
+            if (add) {
+                AddStudentIdToPrintRestrictions();
+            }
+
+            RemoveOldCopies();
+
+            int copies = 0;
+
+            try {
+                string sql = @"SELECT copies FROM print_restrictions p WHERE p.student_id = '{0}' AND print_date = CURDATE();";
+                string statement = String.Format(sql, BaseForm.Student.ID);
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            copies = Convert.ToInt32(reader.GetString(0));
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw; 
+#endif
+            }
+
+            return copies;
+        }
+
+        internal static bool CheckIfStudentExistsInPrintRestriction() {
+            int found = 0;
+
+            try {
+                string statement = String.Format("SELECT COUNT(*) FROM print_restrictions p WHERE p.student_id = '{0}';", BaseForm.Student.ID);
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            found = Convert.ToInt32(reader.GetString(0));
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
+
+            return found > 0;
+        }
+
+        internal static void AddStudentIdToPrintRestrictions() {
+            string statement = String.Format("INSERT INTO print_restrictions (student_id, print_date) VALUES('{0}', CURDATE());", BaseForm.Student.ID);
+            try {
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
+        }
+
+        internal static void IncreaseCopies() {
+            try {
+                int copies = CurrentCopy() + 1;
+
+                string statement = String.Format("UPDATE print_restrictions SET copies = {0} WHERE student_id = '{1}';", copies, BaseForm.Student.ID);
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
+        }
+
+        internal static int GetMaxCopies() {
+            int max = 2;
+
+            string _max = GetConfig("max_print");
+            if (!String.IsNullOrEmpty(_max)) {
+                Int32.TryParse(_max, out max);
+            }
+
+            return max;
         }
     }
 }

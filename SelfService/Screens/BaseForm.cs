@@ -3,6 +3,7 @@ using SelfService.Components;
 using SelfService.Models;
 using SelfService.Properties;
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -118,10 +119,27 @@ namespace SelfService.Screens
                             LineAlignment = StringAlignment.Center,
                             FormatFlags = StringFormatFlags.DirectionRightToLeft
                         };
-                        e.Graphics.DrawString(BaseForm.Student.Name_AR, font, Brushes.White, layoutRectangle, format);
+
+                        var name = String.Format(Resources.Welcome, BaseForm.Student.Name_AR);
+                        e.Graphics.DrawString(name, font, Brushes.White, layoutRectangle, format);
                     } 
                 }
             }
+        }
+
+        protected override void OnLoad(EventArgs e) {
+            try {
+                IEnumerator enumerator = Application.OpenForms.GetEnumerator();
+                while (enumerator.MoveNext()) {
+                    Form form = (Form)enumerator.Current;
+                    if (form is Keyboard) {
+                        form.Close();
+                    }
+                }
+            } catch (Exception) {
+                
+            }
+            base.OnLoad(e);
         }
 
 #if DEBUG

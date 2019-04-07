@@ -1,4 +1,5 @@
-﻿using SelfService.Components;
+﻿using SelfService.Code;
+using SelfService.Components;
 using SelfService.Properties;
 using System;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace SelfService.Screens
             };
 
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            close = new CommandButton(Resources.Close) {
+            close = new CommandButton(Resources.Back) {
                 Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
             };
             close.Click += (s, e) => {
@@ -32,7 +33,18 @@ namespace SelfService.Screens
                 Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
             };
             print.Click += (s, e) => {
-                document.Print();
+                int currentCopy = DB.Execute.CurrentCopy();
+                int max = DB.Execute.GetMaxCopies();
+                if (currentCopy < max) {
+                    DB.Execute.IncreaseCopies();
+#if DEBUG
+                    MessageBox.Show("print");
+#else
+                    document.Print(); 
+#endif
+                } else {
+                    Tools.ShowToss(Resources.MaxPrint);
+                }
             };
 
             panel = new Panel {

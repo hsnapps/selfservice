@@ -10,9 +10,9 @@ namespace SelfService.Screens.Requests
     class Maintainance : BaseForm
     {
         readonly DropDown subject;
-        readonly InlineInput building;
-        readonly InlineInput lab;
-        readonly InlineInput details;
+        readonly Input building;
+        readonly Input lab;
+        readonly Input details;
         readonly CommandButton send;
         readonly CommandButton close;
         readonly Panel footer;
@@ -20,9 +20,9 @@ namespace SelfService.Screens.Requests
 
         public Maintainance() {
             subject = new DropDown(Resources.Subject, "maintainence");
-            building = new InlineInput(Resources.Building) { MaxLength = 5 };
-            lab = new InlineInput(Resources.HallOrLab) { MaxLength = 5 };
-            details = new InlineInput(Resources.RequestDetails, true) { MaxLength = 250 };
+            building = new Input(Resources.Building, true, false) { MaxLength = 5 };
+            lab = new Input(Resources.HallOrLab, true, false) { MaxLength = 5 };
+            details = new Input(Resources.RequestDetails, true, true) { MaxLength = 250 };
 
             panel = new FlowLayoutPanel {
                 Dock = DockStyle.Fill,

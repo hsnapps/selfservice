@@ -10,7 +10,7 @@ namespace SelfService.Screens
     class Claiming : BaseForm
     {
         readonly DropDown requestType;
-        readonly InlineInput requestDetails;
+        readonly Input requestDetails;
         readonly CommandButton send;
         readonly CommandButton close;
         readonly Panel footer;
@@ -18,7 +18,7 @@ namespace SelfService.Screens
 
         public Claiming() {
             requestType = new DropDown(Resources.RequestType, "claiming");
-            requestDetails = new InlineInput(Resources.RequestDetails, true) { MaxLength = 250 };
+            requestDetails = new Input(Resources.RequestDetails, true, true) { MaxLength = 250 };
 
             panel = new FlowLayoutPanel {
                 Dock = DockStyle.Fill,
@@ -31,7 +31,7 @@ namespace SelfService.Screens
             };
 
             int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            close = new CommandButton(Resources.Close) {
+            close = new CommandButton(Resources.Back) {
                 Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
             };
             close.Click += (s, e) => { Close(); };

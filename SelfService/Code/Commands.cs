@@ -10,7 +10,7 @@
         StudentGuide,
         Suggestions,
         Map,
-        CommingSubjects,
+        RestCourses,
         Exit
     }
 }

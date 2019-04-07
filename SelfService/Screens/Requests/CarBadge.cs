@@ -9,9 +9,9 @@ namespace SelfService.Screens.Requests
 {
     class CarBadge : BaseForm
     {
-        readonly InlineInput carModel;
-        readonly InlineInput paletLetters;
-        readonly InlineInput paletNumbers;
+        readonly Input carModel;
+        readonly Input paletLetters;
+        readonly Input paletNumbers;
         readonly Label label;
         readonly CommandButton send;
         readonly CommandButton close;
@@ -19,9 +19,9 @@ namespace SelfService.Screens.Requests
         readonly FlowLayoutPanel panel;
 
         public CarBadge() {
-            carModel = new InlineInput(Resources.CarModel);
-            paletLetters = new InlineInput(Resources.PaletLetters) { MaxLength = 3 };
-            paletNumbers = new InlineInput(Resources.PaletNumbers) { MaxLength = 4 };
+            carModel = new Input(Resources.CarModel, true, false);
+            paletLetters = new Input(Resources.PaletLetters, true, false) { MaxLength = 3 };
+            paletNumbers = new Input(Resources.PaletNumbers, true, false) { MaxLength = 4 };
             label = new Label {
                 Font = new Font(Fonts.ALMohanadBold, 25),
                 AutoSize = false,

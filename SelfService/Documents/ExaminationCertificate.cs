@@ -13,8 +13,8 @@ namespace SelfService.Documents
 {
     class ExaminationCertificate : PrintDocument
     {
-        Bitmap logo;
-        Bitmap frame;
+        Image logo;
+        Image frame;
         readonly string startYear, startMonth, startDay, start;
         readonly string endYear, endMonth, endDay, end;
         readonly string year1, year2;
@@ -49,16 +49,8 @@ namespace SelfService.Documents
         }
 
         void LoadImages() {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images.Logo.png")) {
-                logo = new Bitmap(stream);
-                stream.Close();
-            }
-
-            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images.frame.png")) {
-                frame = new Bitmap(stream);
-                stream.Close();
-            }
+            logo = Tools.LoadImage("Logo.png");
+            frame = Tools.LoadImage("frame.png");
         }
 
         protected override void OnPrintPage(PrintPageEventArgs e) {

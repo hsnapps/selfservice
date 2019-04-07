@@ -11,17 +11,12 @@ namespace SelfService.Documents
 {
     class LetterOfCertificate : PrintDocument
     {
-        readonly Bitmap logo;
+        readonly Image logo;
         readonly Student student;
         readonly string to;
 
         public LetterOfCertificate(string to) {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream("SelfService.Images.Logo.png")) {
-                logo = new Bitmap(stream);
-                stream.Close();
-            }
-
+            logo = Tools.LoadImage("Logo.png");
             student = BaseForm.Student;
             this.to = to;
         }

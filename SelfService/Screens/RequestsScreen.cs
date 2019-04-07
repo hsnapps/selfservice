@@ -19,7 +19,7 @@ namespace SelfService.Screens
             scard = new CommandButton(Resources.RequestStudentCard) { Margin = new Padding(0, 0, 0, 20) };
             atm = new CommandButton(Resources.RequestATMCard) { Margin = new Padding(0, 0, 0, 20) };
             car = new CommandButton(Resources.RequestCarLicense) { Margin = new Padding(0, 0, 0, 20) };
-            exit = new CommandButton(Resources.Close);
+            exit = new CommandButton(Resources.Back);
 
             panel = new FlowLayoutPanel {
                 Left = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2,

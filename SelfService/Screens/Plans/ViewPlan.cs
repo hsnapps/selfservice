@@ -15,7 +15,7 @@ namespace SelfService.Screens.Plans
             web = new WebBrowser {
                 Dock = DockStyle.Fill,
             };
-            web.Navigate(pdf);
+            web.Navigate(pdf + "#toolbar=0&navpanes=1&scrollbar=1");
 
             button = new CommandButton(Resources.Close) {
                 Location = new Point(5, 1),

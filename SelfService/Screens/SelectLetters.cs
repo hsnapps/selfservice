@@ -20,7 +20,7 @@ namespace SelfService.Screens
             toWhomItMayConcern = new CommandButton(Resources.ToWhomItMayConcernLetter);
             saudiCouncilOfEngineers = new CommandButton(Resources.SaudiCouncilOfEngineersLetter);
             examinationCertificate = new CommandButton(Resources.ExaminationCertificate);
-            exit = new CommandButton(Resources.Close);
+            exit = new CommandButton(Resources.Back);
             panel = new FlowLayoutPanel {
                 Left = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2,
                 Top = 250 + CommandButton.DefaultHeight,

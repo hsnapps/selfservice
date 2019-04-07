@@ -29,7 +29,7 @@ namespace SelfService.Screens
                 { "Map", Resources.Map },
                 { "Suggestions", Resources.Suggestions },
                 { "Exit", Resources.Back },
-                { "CommingSubjects", Resources.CommingSubjects }
+                { "RestCourses", Resources.CommingSubjects }
             };
 
             var x = DEFAULT_X;

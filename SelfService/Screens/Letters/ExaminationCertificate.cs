@@ -13,7 +13,7 @@ namespace SelfService.Screens.Letters
         Label lblMessage;
         CommandButton print;
         CommandButton close;
-        NumaricKeyboard keyboard;
+        // NumaricKeyboard keyboard;
 
         public ExaminationCertificate() {
             var x = (Screen.PrimaryScreen.Bounds.Width - DateInput.DefaultWidth) / 2;
@@ -49,10 +49,10 @@ namespace SelfService.Screens.Letters
                 RightToLeft = RightToLeft.Yes,
                 Visible = false,
             };
-            keyboard = new NumaricKeyboard();
+            //keyboard = new NumaricKeyboard();
 
-            endDate.InputGotFocus += OnInputGotFocus;
-            startDate.InputGotFocus += OnInputGotFocus;
+            //endDate.InputGotFocus += OnInputGotFocus;
+            //startDate.InputGotFocus += OnInputGotFocus;
             print.Click += OnPrint;
 
             close.MouseUp += (s, e) => { Close(); };
@@ -68,7 +68,7 @@ namespace SelfService.Screens.Letters
             Controls.Add(print);
             Controls.Add(close);
             Controls.Add(lblMessage);
-            Controls.Add(keyboard);
+            //Controls.Add(keyboard);
         }
 
         void OnPrint(object sender, EventArgs e) {
@@ -77,14 +77,14 @@ namespace SelfService.Screens.Letters
                 return;
             }
 
-            keyboard.Visible = false;
+            //keyboard.Visible = false;
             LetterPrint letter = new LetterPrint(new Documents.ExaminationCertificate(startDate.Date, endDate.Date));
             letter.Show(this);
         }
 
-        void OnInputGotFocus(object sender, EventArgs e) {
-            keyboard.Control = (sender as DateInput);
-            keyboard.Visible = true;
-        }
+        //void OnInputGotFocus(object sender, EventArgs e) {
+        //    keyboard.Control = (sender as DateInput);
+        //    keyboard.Visible = true;
+        //}
     }
 }

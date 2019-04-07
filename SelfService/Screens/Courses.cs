@@ -14,13 +14,18 @@ namespace SelfService.Screens
             var decimalStyle = new DataGridViewCellStyle {
                 Format = "N2",
                 NullValue = 0,
-                Font = new Font(Fonts.TimesNewRoman, 13),
+                Font = new Font(Fonts.TimesNewRoman, 16),
             };
             var integerStyle = new DataGridViewCellStyle {
                 Format = "N0",
                 NullValue = 0,
-                Font = new Font(Fonts.TimesNewRoman, 13),
-            };            
+                Font = new Font(Fonts.TimesNewRoman, 16),
+            };
+            var style = new DataGridViewCellStyle {
+                NullValue = "",
+                Font = new Font(Fonts.ALMohanad, 16),
+            };
+            var rowTemplate = new DataGridViewRow { Height = 40 };
 
             DataGridViewTextBoxColumn registered = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -29,6 +34,7 @@ namespace SelfService.Screens
                 Name = "registered",
                 ReadOnly = true,
                 ValueType = typeof(String),
+                DefaultCellStyle = style,
             };
             DataGridViewTextBoxColumn completed = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -37,6 +43,7 @@ namespace SelfService.Screens
                 Name = "completed",
                 ReadOnly = true,
                 ValueType = typeof(String),
+                DefaultCellStyle = style,
             };
             DataGridViewTextBoxColumn authorized_units = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -52,6 +59,7 @@ namespace SelfService.Screens
                 HeaderText = "إسم المقرر",
                 Name = "course_name",
                 ReadOnly = true,
+                DefaultCellStyle = style,
             };
             DataGridViewTextBoxColumn course_symbol = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -59,6 +67,7 @@ namespace SelfService.Screens
                 HeaderText = "رمز المقرر",
                 Name = "course_symbol",
                 ReadOnly = true,
+                DefaultCellStyle = style,
             };
             DataGridViewTextBoxColumn gpa = new DataGridViewTextBoxColumn {
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -114,6 +123,7 @@ namespace SelfService.Screens
                 AutoGenerateColumns = false,
                 MultiSelect = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                RowTemplate = rowTemplate
             };
             grid.Columns.AddRange(new DataGridViewColumn[] {
                 registered,
@@ -131,12 +141,12 @@ namespace SelfService.Screens
 
             Font = new Font(Fonts.ALMohanad, 13);
 
-            Footer footer = new Footer(Resources.Back);
+            Footer footer = new Footer(CommandButton.DefaultHeight + 40, new Padding(0, 5, 0, 5), Resources.Back, Resources.Print);
             footer.SetCallback(0, (s, e) => { Close(); });
+            footer.SetCallback(1, (s, e) => { Tools.PrintDataGrid(grid); });
 
-            Padding = new Padding(0, 110, 0, 0);
-            Controls.Add(footer);
-            Controls.Add(grid);            
+            Padding = new Padding(0, 125, 0, 0);
+            Controls.AddRange(new Control[] { grid, footer });
         }
     }
 }

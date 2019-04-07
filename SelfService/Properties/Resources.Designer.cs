@@ -314,6 +314,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to جدول الاختبارات.
+        /// </summary>
+        internal static string ExamSchedule {
+            get {
+                return ResourceManager.GetString("ExamSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to بـدايـة الاختبارات.
         /// </summary>
         internal static string ExamStart {
@@ -491,6 +500,15 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لقد وصلت إلى الحد اليومي الأعلى للطباعة!.
+        /// </summary>
+        internal static string MaxPrint {
+            get {
+                return ResourceManager.GetString("MaxPrint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لا.
         /// </summary>
         internal static string No {
@@ -505,6 +523,15 @@ namespace SelfService.Properties {
         internal static string NoInternet {
             get {
                 return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الجدول الدراسي.
+        /// </summary>
+        internal static string NormalSchedule {
+            get {
+                return ResourceManager.GetString("NormalSchedule", resourceCulture);
             }
         }
         
@@ -869,6 +896,15 @@ namespace SelfService.Properties {
             get {
                 object obj = ResourceManager.GetObject("Waiting_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مرحباً... {0}.
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         

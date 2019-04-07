@@ -14,7 +14,7 @@ namespace SelfService.Screens
         Label lblMessage;
         CommandButton login;
         CommandButton cancel;
-        NumaricKeyboard keyboard;
+        // NumaricKeyboard keyboard;
 
         public Login() {
             var x = (Screen.PrimaryScreen.Bounds.Width - Input.DefaultWidth) / 2;
@@ -26,10 +26,12 @@ namespace SelfService.Screens
 
             traineeNumber = new Input(Resources.TraineeNumber) {
                 Location = right,
-                IsNumaric = true
+                IsNumaric = true,
+                MaxLength = 9,
             };
             idNumber = new Input(Resources.IdNumber, true) {
                 Location = left,
+                MaxLength = 10,
             };
             login = new CommandButton(Resources.Login) {
                 Location = loginLocation,
@@ -49,7 +51,7 @@ namespace SelfService.Screens
                 RightToLeft = RightToLeft.Yes,
                 Visible = false,
             };
-            keyboard = new NumaricKeyboard();
+            // keyboard = new NumaricKeyboard();
 
 #if DEBUG
             idNumber.Text = "1087534176";
@@ -70,14 +72,14 @@ namespace SelfService.Screens
             this.Controls.Add(login);
             this.Controls.Add(cancel);
             this.Controls.Add(lblMessage);
-            this.Controls.Add(keyboard);
+            //this.Controls.Add(keyboard);
         }
 
-        void OnInputGotFocus(object sender, EventArgs e) {
-            keyboard.Control = (sender as Input);
-            keyboard.Visible = true;
-            //base.ShowKeyboard(true);
-        }
+        //void OnInputGotFocus(object sender, EventArgs e) {
+        //    keyboard.Control = (sender as Input);
+        //    keyboard.Visible = true;
+        //    //base.ShowKeyboard(true);
+        //}
 
         void OnLogin(object sender, MouseEventArgs e) {
             Student student = DB.Execute.Login(traineeNumber.Text, idNumber.Text);

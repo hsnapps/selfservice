@@ -19,7 +19,7 @@ namespace SelfService.Screens
             PictureBox box = new PictureBox {
                 Dock = DockStyle.Fill,
                 BorderStyle = BorderStyle.None,
-                SizeMode = PictureBoxSizeMode.StretchImage,
+                SizeMode = PictureBoxSizeMode.CenterImage,
                 Image = loading,
             };
 
@@ -32,6 +32,10 @@ namespace SelfService.Screens
             } else {
                 box.Image = Tools.LoadImageFromPath(url);
             }
+
+            box.LoadCompleted += (s, e) => {
+                box.SizeMode = PictureBoxSizeMode.StretchImage;
+            };
 
             Controls.AddRange(new Control[] {  box , footer });
         }
