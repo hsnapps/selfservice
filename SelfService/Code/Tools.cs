@@ -118,6 +118,44 @@ namespace SelfService.Code
             grd.Rows[selected].Selected = true;
         }
 
+        internal static void PrintDataGrid(DataGridView grd, int headerHeigt, int rowHeigt,bool landscape = true) {
+            Bitmap bitmap;
+            int height = headerHeigt + (rowHeigt * grd.Rows.Count);
+            ScrollBars scroll = grd.ScrollBars;
+            int selected = grd.SelectedRows[0].Index;
+
+            grd.ScrollBars = ScrollBars.None;
+            grd.Height = grd.RowCount * grd.RowTemplate.Height * 2;
+            grd.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
+            bitmap = new Bitmap(grd.Width, grd.Height);
+            grd.DrawToBitmap(bitmap, new Rectangle(0, 0, grd.Width, height));
+
+            PrintDocument document = new PrintDocument {
+                DefaultPageSettings = new PageSettings {
+                    Landscape = landscape,
+                    PaperSize = new PaperSize("A4", 825, 1175),
+                    Margins = new Margins(50, 50, 50, 50)
+                },
+            };
+            document.PrintPage += (s, e) => {
+                if (landscape) {
+                    e.Graphics.DrawImage(bitmap, 10, 10, 1155, grd.Height);
+                } else {
+                    e.Graphics.DrawImage(bitmap, 10, 10, 775, grd.Height);
+                }
+            };
+
+            PrintPreviewDialog dialog = new PrintPreviewDialog {
+                Document = document,
+            };
+            dialog.Show();
+
+            grd.Height = height;
+            grd.ScrollBars = scroll;
+            grd.Rows[selected].Selected = true;
+        }
+
         private static void Document_PrintPage(object sender, PrintPageEventArgs e) {
             throw new NotImplementedException();
         }

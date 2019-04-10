@@ -177,7 +177,7 @@ namespace SelfService.Screens
 
                 case Commands.RestCourses:
                     DB.Execute.Log("commingsubjects", "");
-                    DisplayForm(new Courses());
+                    DisplayForm(new RestCourses());
                     break;
 
                 default:

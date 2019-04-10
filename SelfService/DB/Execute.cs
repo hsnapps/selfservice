@@ -34,7 +34,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-
+#if DEBUG
+                throw; 
+#endif
             }
 
             return value;
@@ -65,6 +67,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return data;
@@ -96,6 +101,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return data;
@@ -123,7 +131,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-
+#if DEBUG
+                throw;
+#endif
             }
         }
 
@@ -143,7 +153,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-
+#if DEBUG
+                throw;
+#endif
             }
 
             return email;
@@ -225,7 +237,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
-
+#if DEBUG
+                throw;
+#endif
             }
         }
 
@@ -253,6 +267,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return video;
@@ -274,6 +291,9 @@ namespace SelfService.DB
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return selection;
@@ -300,7 +320,9 @@ and id_num = '{1}';";
                     connection.Close();
                 }
             } catch (Exception) {
-
+#if DEBUG
+                throw;
+#endif
             }
 
             return student;
@@ -322,6 +344,9 @@ and id_num = '{1}';";
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return timeout;
@@ -344,6 +369,9 @@ and id_num = '{1}';";
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return data;
@@ -367,41 +395,34 @@ and id_num = '{1}';";
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return data;
         }
 
-        internal static DataTable GetCourses() {
+        internal static DataTable GetRestCourses() {
             DataTable table = new DataTable("courses");
 
             try {
                 table.Columns.AddRange(new DataColumn[] {
-                new DataColumn("registered", typeof(String)),
-                new DataColumn("completed", typeof(String)),
-                new DataColumn("authorized_units", typeof(Int32)),
-                new DataColumn("course_name", typeof(String)),
-                new DataColumn("course_symbol", typeof(String)),
-                new DataColumn("gpa", typeof(Single)),
-                new DataColumn("passed_units", typeof(Single)),
-                new DataColumn("required_units", typeof(Int32)),
-                new DataColumn("passed_subjects", typeof(Int32)),
-                new DataColumn("required_subjects", typeof(Int32)),
-                new DataColumn("level_name", typeof(String)),
-                new DataColumn("level_id", typeof(String)),
-                new DataColumn("prog_gpa", typeof(Single)),
-                new DataColumn("accepted_prg_units", typeof(Int32)),
-                new DataColumn("required_prg_units", typeof(Int32)),
-                new DataColumn("accepted_prg_subjects", typeof(Int32)),
-                new DataColumn("required_prg_subjects", typeof(Int32)),
-            });
+                    new DataColumn("course_code", typeof(String)),
+                    new DataColumn("title", typeof(String)),
+                    new DataColumn("approved_units_completed", typeof(Int32)),
+                    new DataColumn("approved_units_required", typeof(String)),
+                    new DataColumn("courses_completed", typeof(String)),
+                    new DataColumn("courses_required", typeof(Single)),
+                    new DataColumn("approved_units_required_for_program", typeof(Single)),
+                    new DataColumn("finshed_hours", typeof(Int32)),
+                });
                 string sql = @"
-SELECT yn1.title AS 'registered', yn2.title AS 'completed', c.authorized_units, c.course_name,
-c.course_symbol, c.gpa, c.passed_units, c.required_units, c.passed_subjects, c.required_subjects
-FROM courses c
-INNER JOIN yesno yn1 ON yn1.id = c.registered
-INNER JOIN yesno yn2 ON yn2.id = c.completed
-WHERE student_id = '{0}';";
+SELECT r.course_code, c.title, r.approved_units_completed, r.approved_units_required,
+r.courses_completed, r.courses_required, r.approved_units_required_for_program
+FROM `tvtc`.`rest_courses` r
+LEFT JOIN `tvtc`.`course_titles` c ON r.course_code = c.`code2`
+WHERE r.student_id = '{0}';";
                 string statement = String.Format(sql, BaseForm.Student.ID);
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
@@ -412,6 +433,9 @@ WHERE student_id = '{0}';";
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return table;
@@ -443,21 +467,28 @@ FROM schedules WHERE student_id = '{0}'";
                     connection.Close();
                 }
             } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
             }
 
             return table;
         }
 
         internal static void Log(string key, string value) {
-            string statement = String.Format("INSERT INTO logs (student_id, key, value) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
+            string statement = String.Format("INSERT INTO `logs` (`student_id`, `key`, `value`) VALUES('{0}', '{1}', '{2}');", BaseForm.Student.ID, key, value);
             using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                connection.Open();
                 using (MySqlCommand command = new MySqlCommand(statement, connection)) {
                     try {
                         command.ExecuteNonQuery();
                     } catch (Exception) {
-
+#if DEBUG
+                        throw;
+#endif
                     }
                 }
+                connection.Close();
             }
         }
 
