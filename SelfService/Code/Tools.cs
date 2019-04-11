@@ -1,5 +1,6 @@
 ﻿using SelfService.Components;
 using SelfService.Properties;
+using SelfService.Screens;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -80,7 +81,7 @@ namespace SelfService.Code
             new Toss(text).Show();
         }
 
-        internal static void PrintDataGrid(DataGridView grd, bool landscape = true) {
+        internal static void PrintDataGrid(DataGridView grd, string title, bool landscape = true) {
             Bitmap bitmap;
             int height = grd.Height;
             ScrollBars scroll = grd.ScrollBars;
@@ -118,31 +119,71 @@ namespace SelfService.Code
             grd.Rows[selected].Selected = true;
         }
 
-        internal static void PrintDataGrid(DataGridView grd, int headerHeigt, int rowHeigt,bool landscape = true) {
+        internal static void PrintDataGrid(DataGridView grd, string title, int headerHeigt, int rowHeigt, bool landscape = true) {
             Bitmap bitmap;
             int height = headerHeigt + (rowHeigt * grd.Rows.Count);
             ScrollBars scroll = grd.ScrollBars;
             int selected = grd.SelectedRows[0].Index;
+            int paperHeight = landscape ? 1175 : 825 ;
+            int paperWidth = landscape ? 825 : 1175 ;
 
             grd.ScrollBars = ScrollBars.None;
             grd.Height = grd.RowCount * grd.RowTemplate.Height * 2;
             grd.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
             bitmap = new Bitmap(grd.Width, grd.Height);
-            grd.DrawToBitmap(bitmap, new Rectangle(0, 0, grd.Width, height));
+            grd.DrawToBitmap(bitmap, new Rectangle(0, 250, grd.Width, height));
 
             PrintDocument document = new PrintDocument {
                 DefaultPageSettings = new PageSettings {
                     Landscape = landscape,
-                    PaperSize = new PaperSize("A4", 825, 1175),
+                    PaperSize = new PaperSize("A4", paperWidth, paperHeight),
                     Margins = new Margins(50, 50, 50, 50)
                 },
             };
             document.PrintPage += (s, e) => {
+                using (Font font = new Font(Fonts.ALMohanad, 13)) {
+                    int x = 50;
+                    int y = 50;
+                    int margin = 100;
+                    
+                    StringFormat format = new StringFormat {
+                        Alignment = StringAlignment.Near,
+                        LineAlignment = StringAlignment.Center,
+                        FormatFlags = StringFormatFlags.DirectionRightToLeft
+                    };
+                    Rectangle rect = new Rectangle(x, y, paperHeight - margin, 25);
+                    e.Graphics.DrawString(Resources.TVTC_Ar_Full, font, Brushes.Black, rect, format);
+                    y += 25;
+                    rect = new Rectangle(x, y, paperHeight - margin, 25);
+                    e.Graphics.DrawString(Resources.College_Ar, font, Brushes.Black, rect, format);
+                    y += 25;
+                    rect = new Rectangle(x, y, paperHeight - margin, 25);
+                    e.Graphics.DrawString(Resources.AppTitle, font, Brushes.Black, rect, format);
+
+                    using (Font font18 = new Font(Fonts.ALMohanadBold, 18, FontStyle.Bold)) {
+                        format.Alignment = StringAlignment.Center;
+                        y += 30;
+                        rect = new Rectangle(x, y, paperHeight - margin, 60);
+                        e.Graphics.DrawString(title, font18, Brushes.Black, rect, format); 
+                    }
+
+                    using (Font font12 = new Font(Fonts.ALMohanad, 12.5f)) {
+                        format.Alignment = StringAlignment.Center;
+                        y += 30;
+                        rect = new Rectangle(x, y, paperHeight - margin, 60);
+                        string name = String.Format("{0} - {1}", BaseForm.Student.Name_AR, BaseForm.Student.Section);
+                        e.Graphics.DrawString(name, font12, Brushes.Black, rect, format);
+                    }
+
+                    Image logo = Tools.LoadImage("Logo.png");
+                    e.Graphics.DrawImage(logo, new PointF(50, 50));
+                }
+
                 if (landscape) {
-                    e.Graphics.DrawImage(bitmap, 10, 10, 1155, grd.Height);
+                    e.Graphics.DrawImage(bitmap, 10, 10, paperHeight - 20, grd.Height);
                 } else {
-                    e.Graphics.DrawImage(bitmap, 10, 10, 775, grd.Height);
+                    e.Graphics.DrawImage(bitmap, 10, 10, paperWidth - 50, grd.Height);
                 }
             };
 

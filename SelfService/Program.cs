@@ -1,4 +1,5 @@
 ﻿#define DIRECT
+#undef DIRECT
 
 using SelfService.Screens;
 using System;
@@ -27,7 +28,7 @@ namespace SelfService
             // open screen directly
             Models.Student student = DB.Execute.Login("114343617", "1087534176");
             BaseForm.Student = student; // new Models.Student("", "prog.hasan@gmail.com", "0569163852", "حسن علي باعبدالله", "Hassan A. Baabdullah", "1046328777", "بكالوريوس علوم الحاسب الآلي", "", "", "", "");
-            Application.Run(new RestCourses());
+            Application.Run(new Screens.Temp.Schedule());
 #else
             Application.Run(new Start());
 #endif

@@ -446,10 +446,10 @@ WHERE r.student_id = '{0}';";
 
             try {
                 table.Columns.AddRange(new DataColumn[] {
-                new DataColumn("course_symbol", typeof(String)),
-                new DataColumn("course_name", typeof(String)),
-                new DataColumn("supervisor_name", typeof(String)),
-            });
+                    new DataColumn("course_symbol", typeof(String)),
+                    new DataColumn("course_name", typeof(String)),
+                    new DataColumn("supervisor_name", typeof(String)),
+                });
 
                 string sql = @"
 SELECT DISTINCT
@@ -472,6 +472,90 @@ FROM schedules WHERE student_id = '{0}'";
 #endif
             }
 
+            return table;
+        }
+
+        internal static DataTable GetDailySchedule() {
+            DataTable table = new DataTable("daily_schedules");
+            string sql = @"
+SELECT * FROM `groups` g 
+WHERE g.computer_num IN (
+	SELECT s.teacher_id 
+	FROM student_records s 
+	WHERE s.std_no = '{0}'
+)
+AND g.reference_num IN (
+	SELECT s.section_code 
+	FROM student_records s 
+	WHERE s.std_no = '{1}' 
+);";
+            string statement = String.Format(sql, BaseForm.Student.ID, BaseForm.Student.ID);
+            table.Columns.AddRange(new DataColumn[] {
+                new DataColumn("course_code", typeof(String)),
+                new DataColumn("course_title", typeof(String)),
+                new DataColumn("group_type", typeof(String)),
+                new DataColumn("days", typeof(String)),
+                new DataColumn("times", typeof(String)),
+                new DataColumn("hall", typeof(String)),
+                new DataColumn("trainer", typeof(String)),
+            });
+
+            try {
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        adapter.Fill(table);
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw; 
+#endif
+            }
+            return table;
+        }
+
+        internal static DataTable GetExamSchedule() {
+            DataTable table = new DataTable("daily_schedules");
+            string sql = @"
+SELECT * FROM `exam_schedules` e 
+WHERE e.teacher_id IN (
+	SELECT s.teacher_id 
+	FROM student_records s 
+	WHERE s.std_no = '{0}'
+)
+AND e.`group` IN (
+	SELECT s.section_code 
+	FROM student_records s 
+	WHERE s.std_no = '{1}' 
+);";
+            string statement = String.Format(sql, BaseForm.Student.ID, BaseForm.Student.ID);
+            table.Columns.AddRange(new DataColumn[] {
+                new DataColumn("code", typeof(String)),
+                new DataColumn("title", typeof(String)),
+                new DataColumn("group", typeof(String)),
+                new DataColumn("exa_date", typeof(String)),
+                new DataColumn("exam_time", typeof(String)),
+                new DataColumn("time", typeof(String)),
+                new DataColumn("place1", typeof(String)),
+            });
+
+            try {
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        adapter.Fill(table);
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
             return table;
         }
 
@@ -611,6 +695,6 @@ FROM schedules WHERE student_id = '{0}'";
             }
 
             return max;
-        }
+        }       
     }
 }

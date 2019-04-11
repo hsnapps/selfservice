@@ -453,4 +453,7 @@ WHERE student_id = '{0}';</value>
   <data name="PrintFooter" xml:space="preserve">
     <value>* تم طباعة هذا الخطاب إلكترونياً. في حال الرغبة في التأكد من هذا الخطاب الاتصال على الرقم: {0} أو التواصل على الإيميل: {1}</value>
   </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>نظام الخدمة الذاتية</value>
+  </data>
 </root>
