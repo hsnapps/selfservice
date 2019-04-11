@@ -439,7 +439,7 @@ WHERE student_id = '{0}';</value>
     <value>عودة</value>
   </data>
   <data name="MaxPrint" xml:space="preserve">
-    <value>لقد وصلت إلى الحد اليومي الأعلى للطباعة!</value>
+    <value>لا يمكنك طباعة هذا المستند! الرجاء مراجعة الجهة المختصة.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>مرحباً... {0}</value>

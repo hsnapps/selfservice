@@ -18,8 +18,8 @@ namespace SelfService.DB
     {
         static readonly string CONNECTION_STRING = "";
 
-        internal static string GetConfig(string key) {
-            string value = "";
+        internal static string GetConfig(string key, string defaultValue = "") {
+            string value = defaultValue;
 
             try {
                 string statement = "select value from settings where `category` = 'config' and `key` = '" + key + "';";
@@ -35,7 +35,7 @@ namespace SelfService.DB
                 }
             } catch (Exception) {
 #if DEBUG
-                throw; 
+                throw;
 #endif
             }
 
@@ -511,7 +511,7 @@ AND g.reference_num IN (
                 }
             } catch (Exception) {
 #if DEBUG
-                throw; 
+                throw;
 #endif
             }
             return table;
@@ -576,57 +576,50 @@ AND e.`group` IN (
             }
         }
 
-        internal static void RemoveOldCopies() {
+        #region PRINT RESTRICTIONS
+        internal static bool CanPrint(string document) {
+            bool exists = IsStudentIdExists();
+            bool canPrint = false;
+            if (!exists) {
+                AddStudentToPrintRestriction(document);
+                return true;
+            }
+
             try {
-                string sql = @"DELETE FROM print_restrictions WHERE student_id = '{0}' AND print_date != CURDATE();";
-                string statement = String.Format(sql, BaseForm.Student.ID);
+                DateTime today = DateTime.Today;
+                int max = Int32.Parse(GetConfig("max_print", "90"));
+                string sql = @"SELECT can_print_on FROM print_restrictions WHERE student_id = '{0}' AND document = '{1}';";
+                string statement = String.Format(sql, BaseForm.Student.ID, document);
+
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(statement, connection)) {
-                        command.ExecuteNonQuery();
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            DateTime canPrintOn = Convert.ToDateTime(reader.GetString(0));
+                            canPrint = today > canPrintOn;
+                        } else {
+                            AddStudentToPrintRestriction(document);
+                            canPrint = true;
+                        }
                     }
-                    connection.Close();
                 }
             } catch (Exception) {
 #if DEBUG
                 throw;
 #endif
             }
-        }
 
-        internal static int CurrentCopy() {
-            bool add = !CheckIfStudentExistsInPrintRestriction();
-            if (add) {
-                AddStudentIdToPrintRestrictions();
+            if (canPrint) {
+                UpdateCanPrintOn(document);
+            } else {
+                Tools.ShowToss(Resources.MaxPrint);
             }
 
-            RemoveOldCopies();
-
-            int copies = 0;
-
-            try {
-                string sql = @"SELECT copies FROM print_restrictions p WHERE p.student_id = '{0}' AND print_date = CURDATE();";
-                string statement = String.Format(sql, BaseForm.Student.ID);
-                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
-                    connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
-                        MySqlDataReader reader = command.ExecuteReader();
-                        if (reader.Read()) {
-                            copies = Convert.ToInt32(reader.GetString(0));
-                        }
-                    }
-                    connection.Close();
-                }
-            } catch (Exception) {
-#if DEBUG
-                throw; 
-#endif
-            }
-
-            return copies;
+            return canPrint;
         }
 
-        internal static bool CheckIfStudentExistsInPrintRestriction() {
+        internal static bool IsStudentIdExists() {
             int found = 0;
 
             try {
@@ -650,8 +643,8 @@ AND e.`group` IN (
             return found > 0;
         }
 
-        internal static void AddStudentIdToPrintRestrictions() {
-            string statement = String.Format("INSERT INTO print_restrictions (student_id, print_date) VALUES('{0}', CURDATE());", BaseForm.Student.ID);
+        internal static void AddStudentToPrintRestriction(string document) {
+            string statement = String.Format("INSERT INTO print_restrictions (student_id, document, can_print_on) VALUES('{0}', '{1}', CURDATE());", BaseForm.Student.ID, document);
             try {
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
@@ -661,17 +654,14 @@ AND e.`group` IN (
                     connection.Close();
                 }
             } catch (Exception) {
-#if DEBUG
                 throw;
-#endif
             }
+
         }
 
-        internal static void IncreaseCopies() {
+        internal static void UpdateCanPrintOn(string document) {
+            string statement = String.Format("UPDATE print_restrictions SET can_print_on = CURDATE() WHERE student_id = '{0}' AND document = '{1}';", BaseForm.Student.ID, document);
             try {
-                int copies = CurrentCopy() + 1;
-
-                string statement = String.Format("UPDATE print_restrictions SET copies = {0} WHERE student_id = '{1}';", copies, BaseForm.Student.ID);
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(statement, connection)) {
@@ -680,21 +670,9 @@ AND e.`group` IN (
                     connection.Close();
                 }
             } catch (Exception) {
-#if DEBUG
                 throw;
-#endif
             }
         }
-
-        internal static int GetMaxCopies() {
-            int max = 2;
-
-            string _max = GetConfig("max_print");
-            if (!String.IsNullOrEmpty(_max)) {
-                Int32.TryParse(_max, out max);
-            }
-
-            return max;
-        }       
+        #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace SelfService
         /// </summary>
         [STAThread]
         static void Main(string[] args) {
-            CultureInfo culture = new CultureInfo("ar-SA");
+            CultureInfo culture = new CultureInfo("en-SA");
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
 

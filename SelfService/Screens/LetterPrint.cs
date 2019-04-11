@@ -33,17 +33,12 @@ namespace SelfService.Screens
                 Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
             };
             print.Click += (s, e) => {
-                int currentCopy = DB.Execute.CurrentCopy();
-                int max = DB.Execute.GetMaxCopies();
-                if (currentCopy < max) {
-                    DB.Execute.IncreaseCopies();
+                if (DB.Execute.CanPrint(document.DocumentName)) {
 #if DEBUG
                     MessageBox.Show("print");
 #else
                     document.Print(); 
 #endif
-                } else {
-                    Tools.ShowToss(Resources.MaxPrint);
                 }
             };
 

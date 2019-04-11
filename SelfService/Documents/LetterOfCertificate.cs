@@ -20,6 +20,7 @@ namespace SelfService.Documents
             logo = Tools.LoadImage("Logo.png");
             student = BaseForm.Student;
             this.to = to;
+            this.DocumentName = to.Equals(Resources.ToWhomItMayConcern) ? "ToWhomItMayConcern" : "SaudiCouncilOfEngineers";
         }
 
         protected override void OnPrintPage(PrintPageEventArgs e) {

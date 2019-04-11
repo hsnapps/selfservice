@@ -509,7 +509,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لقد وصلت إلى الحد اليومي الأعلى للطباعة!.
+        ///   Looks up a localized string similar to لا يمكنك طباعة هذا المستند! الرجاء مراجعة الجهة المختصة..
         /// </summary>
         internal static string MaxPrint {
             get {

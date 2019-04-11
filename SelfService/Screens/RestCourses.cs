@@ -97,7 +97,11 @@ namespace SelfService.Screens
 
             Footer footer = new Footer(CommandButton.DefaultHeight + 120, new Padding(0, 5, 0, 5), Resources.Back, Resources.Print);
             footer.SetCallback(0, (s, e) => { Close(); });
-            footer.SetCallback(1, (s, e) => { Tools.PrintDataGrid(grid, Resources.CommingSubjects, 60, 41); });
+            footer.SetCallback(1, (s, e) => {
+                if (DB.Execute.CanPrint("RestCourses")) {
+                    Tools.PrintDataGrid(grid, Resources.CommingSubjects, 60, 41);
+                }
+            });
 
             Padding = new Padding(0, 150, 0, 0);
             Controls.AddRange(new Control[] { grid, footer });

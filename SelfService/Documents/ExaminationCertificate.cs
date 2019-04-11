@@ -24,6 +24,7 @@ namespace SelfService.Documents
 
             this.start = start;
             this.end = end;
+            this.DocumentName = "ExaminationCertificate";
 
             startYear = start.Substring(0, 4);
             startMonth = start.Substring(5, 2);

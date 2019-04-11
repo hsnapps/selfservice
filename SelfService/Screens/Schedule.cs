@@ -57,9 +57,13 @@ namespace SelfService.Screens
             footer.SetCallback(0, (s, e) => { Close(); });
             footer.SetCallback(1, (s, e) => {
                 if (tabControl.SelectedIndex == 0) {
-                    Tools.PrintDataGrid(grid1, "الجدول الدراسي", 60, 41);
+                    if (DB.Execute.CanPrint("DailySchedules")) {
+                        Tools.PrintDataGrid(grid1, "الجدول الدراسي", 60, 41); 
+                    }
                 } else {
-                    Tools.PrintDataGrid(grid2, "جدول الاختبارات", 60, 41);
+                    if (DB.Execute.CanPrint("ExamSchedules")) {
+                        Tools.PrintDataGrid(grid2, "جدول الاختبارات", 60, 41); 
+                    }
                 }
             });
 
