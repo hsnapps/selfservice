@@ -9,10 +9,8 @@ namespace SelfService.Components
     {
         const int LEFT = 10;
         const int TOP = 40;
-        //const int BTNWIDTH = 77;
-        //const int BTNHEIGHT = 68;
-        //const int CharacterButton.XStep = 90;
-        //const int CharacterButton.YStep = 80;
+
+        static bool shown;
 
         readonly Input myControl;
         readonly string[] rows = new string[6];
@@ -57,6 +55,8 @@ namespace SelfService.Components
                 TextAlign = HorizontalAlignment.Right,
                 Text = myControl != null ? myControl.Text : "",
             };
+
+            if (myControl.IsPassword) box.Text = "";
 
             rows[0] = @"ض ص ث ق ف غ ع ه خ ح ج د";
             rows[1] = @"ش س ي ب ل ا ت ن م ك ط ذ";
@@ -148,6 +148,7 @@ namespace SelfService.Components
             if (tag.Equals(back)) {
                 myControl.Text = myControl.Text.Substring(0, myControl.Text.Length - 1);
                 box.Text = myControl.Text;
+                box.PasswordChar = myControl.PasswordChar;
                 return;
             }
 
@@ -169,9 +170,10 @@ namespace SelfService.Components
                 }
             }
 
+            
             var btn = (s as CharacterButton);
             myControl.Text += arabic ? btn.ArabicChar : btn.EnglishChar;
-            box.Text = myControl.Text;
+            if (!myControl.IsPassword) box.Text = myControl.Text;
         }
 
         void ChangeLayout() {
@@ -189,6 +191,20 @@ namespace SelfService.Components
 
         void OnCloseKeyClick(object s, EventArgs e) {
             Close();
+        }
+
+        protected override void OnLoad(EventArgs e) {
+            if (shown) {
+                Close();
+                return;
+            }
+            shown = true;
+            base.OnLoad(e);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            shown = false;
+            base.OnFormClosing(e);
         }
     }
 }

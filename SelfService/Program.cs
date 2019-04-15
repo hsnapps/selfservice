@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Media;
+using SelfService.Code;
 
 namespace SelfService
 {
@@ -24,9 +26,14 @@ namespace SelfService
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
 
+            var sound = Tools.LoadSound();
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = sound;
+            player.PlayLooping();
+
 #if DIRECT
             // open screen directly
-            Models.Student student = DB.Execute.Login("114343617", "1087534176");
+            Models.Student student = DB.Execute.Login("438138585", "1052124888");
             BaseForm.Student = student; // new Models.Student("", "prog.hasan@gmail.com", "0569163852", "حسن علي باعبدالله", "Hassan A. Baabdullah", "1046328777", "بكالوريوس علوم الحاسب الآلي", "", "", "", "");
             Application.Run(new Screens.Temp.Schedule());
 #else

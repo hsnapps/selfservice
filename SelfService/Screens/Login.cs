@@ -54,8 +54,8 @@ namespace SelfService.Screens
             // keyboard = new NumaricKeyboard();
 
 #if DEBUG
-            idNumber.Text = "1087534176";
-            traineeNumber.Text = "114343617";
+            idNumber.Text = "1052124888";
+            traineeNumber.Text = "438138585";
 #endif
 
             //idNumber.InputGotFocus += OnInputGotFocus;

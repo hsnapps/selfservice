@@ -30,6 +30,15 @@ namespace SelfService.Code
                         .Replace(arabic[9], hindi[9]);
         }
 
+        internal static string LoadSound() {
+            var file = Application.StartupPath + "\\Sounds\\soundtrack.wav";
+            if (File.Exists(file)) {
+                return file;
+            }
+
+            return null;
+        }
+
         internal static bool CheckConnection() {
             try {
                 Ping ping = new Ping();

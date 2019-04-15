@@ -13,6 +13,7 @@ namespace SelfService.Components
 
         public Input(string caption, bool password) {
             InitializeComponent(caption, password);
+            IsPassword = password;
         }
 
         public Input(string caption, bool inline, bool multiline = false) {
@@ -139,5 +140,9 @@ namespace SelfService.Components
             get => box.Text;
             set => box.Text = value;
         }
+        public char PasswordChar {
+            get => box.PasswordChar;
+        }
+        public bool IsPassword { get; internal set; }
     }
 }

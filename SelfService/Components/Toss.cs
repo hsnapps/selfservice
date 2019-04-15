@@ -37,7 +37,7 @@ namespace SelfService.Components
             Controls.Add(label);
 
             timer = new Timer {
-                Interval = 150,
+                Interval = 300,
                 Enabled = true
             };
             timer.Tick += (s, e) => {
