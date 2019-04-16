@@ -1,5 +1,6 @@
 ﻿using SelfService.Code;
 using SelfService.Properties;
+using SelfService.Screens;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -57,6 +58,23 @@ namespace SelfService.Components
         protected override void OnMouseUp(MouseEventArgs mevent) {
             BackgroundImage = buttonUpImage;
             base.OnMouseUp(mevent);
+        }
+
+        protected override void OnClick(EventArgs e) {
+            BaseForm form = null;
+
+            if (this.Parent is BaseForm) {
+                form = (BaseForm)this.Parent;
+            } else if (this.Parent is FlowLayoutPanel) {
+                FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
+                form = (BaseForm)panel.Parent;
+            } else if (this.Parent is Panel) {
+                Panel panel = (Panel)this.Parent;
+                form = (BaseForm)panel.Parent;
+            }
+
+            form.Keyboard.Visible = false;
+            base.OnClick(e);
         }
 
         protected override void OnEnabledChanged(EventArgs e) {

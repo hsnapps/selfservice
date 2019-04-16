@@ -18,6 +18,7 @@ namespace SelfService.Screens
         Timer timer;
         //Timer connectionTimer;
         Image background;
+        Keyboard keyboard;
 
         public BaseForm(bool disableTimer = false, bool checkConnection = true) {
             InitializeComponent();
@@ -95,6 +96,10 @@ namespace SelfService.Screens
             if (touch) {
                 Cursor.Hide();
             }
+
+            keyboard = new Keyboard();
+            keyboard.Show();
+            keyboard.Visible = false;
         }
 
         protected override void OnPaint(PaintEventArgs e) {
@@ -127,21 +132,6 @@ namespace SelfService.Screens
             }
         }
 
-        protected override void OnLoad(EventArgs e) {
-            try {
-                IEnumerator enumerator = Application.OpenForms.GetEnumerator();
-                while (enumerator.MoveNext()) {
-                    Form form = (Form)enumerator.Current;
-                    if (form is Keyboard) {
-                        form.Close();
-                    }
-                }
-            } catch (Exception) {
-                
-            }
-            base.OnLoad(e);
-        }
-
 #if DEBUG
         //protected override void OnFormClosing(FormClosingEventArgs e) {
         //    MessageBox.Show(e.CloseReason.ToString());
@@ -168,5 +158,6 @@ namespace SelfService.Screens
 
         public bool IsTimeout { get; set; }
         public static Student Student { get; set; }
+        public Keyboard Keyboard { get => keyboard; }
     }
 }

@@ -10,16 +10,16 @@ namespace SelfService.Components
         const int LEFT = 10;
         const int TOP = 40;
 
-        static bool shown;
+        //static bool shown;
 
-        readonly Input myControl;
+        Input myControl;
         readonly string[] rows = new string[6];
         readonly NumaricKeyboard numaricKeyboard;
         readonly TextBox box;
 
         bool arabic = true;
 
-        public Keyboard(Input control = null) {
+        public Keyboard() {
             arabic = true;
 
             int height = CharacterButton.DefaultHeight * 6;
@@ -41,8 +41,6 @@ namespace SelfService.Components
 #endif
             Visible = false;
 
-            myControl = control;
-
             box = new TextBox {
                 Multiline = true,
                 ReadOnly = true,
@@ -50,13 +48,10 @@ namespace SelfService.Components
                 Height = CharacterButton.DefaultHeight,
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = Color.LightGray,
-                Font = myControl != null ? myControl.Font : new Font(Fonts.ALMohanad, 18),
                 Margin = new Padding(0),
                 TextAlign = HorizontalAlignment.Right,
-                Text = myControl != null ? myControl.Text : "",
+                //Text = myControl != null ? myControl.Text : "",
             };
-
-            if (myControl.IsPassword) box.Text = "";
 
             rows[0] = @"ض ص ث ق ف غ ع ه خ ح ج د";
             rows[1] = @"ش س ي ب ل ا ت ن م ك ط ذ";
@@ -112,7 +107,7 @@ namespace SelfService.Components
 
             x = (Screen.PrimaryScreen.Bounds.Right - (10 + NumaricKeyboard.DefaultWidth)) - CharacterButton.DefaultWidth;
             y = (TOP - 5) + box.Height;
-            numaricKeyboard = new NumaricKeyboard(new Point(x, y), myControl, box);
+            numaricKeyboard = new NumaricKeyboard(new Point(x, y), box);
             Controls.Add(numaricKeyboard);
 
             x = numaricKeyboard.Right + 0;
@@ -130,6 +125,20 @@ namespace SelfService.Components
 
             Controls.Add(box);
             Controls.Add(close);
+        }
+
+        public void ChangeControl(Input control) {
+            if (control == null) return;
+
+            this.Visible = false;
+            numaricKeyboard.ChangeControl(control);
+            myControl = control;
+
+            if (myControl.IsPassword) box.Text = "";
+            else box.Text = control.Text;
+
+            box.Font = myControl.Font;
+            this.Visible = true;
         }
 
         void OnCharacterKeyClick(object s, EventArgs e) {
@@ -194,21 +203,16 @@ namespace SelfService.Components
         }
 
         void OnCloseKeyClick(object s, EventArgs e) {
-            Close();
+            Visible = false;
         }
 
         protected override void OnLoad(EventArgs e) {
-            if (shown) {
-                Close();
-                return;
-            }
-            shown = true;
+            //if (shown) {
+            //    Close();
+            //    return;
+            //}
+            //shown = true;
             base.OnLoad(e);
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e) {
-            shown = false;
-            base.OnFormClosing(e);
         }
     }
 }

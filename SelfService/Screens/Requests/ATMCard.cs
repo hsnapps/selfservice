@@ -10,9 +10,9 @@ namespace SelfService.Screens.Requests
     class ATMCard : BaseForm
     {
         readonly DropDown reason;
-        readonly CommandButton send;
-        readonly CommandButton close;
-        readonly Panel footer;
+        //readonly CommandButton send;
+        //readonly CommandButton close;
+        //readonly Panel footer;
         readonly FlowLayoutPanel panel;
 
         public ATMCard() {
@@ -26,24 +26,29 @@ namespace SelfService.Screens.Requests
             panel.ControlAdded += (s, e) => {
                 (s as FlowLayoutPanel).SetFlowBreak(e.Control, true);
             };
-            int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
-            close = new CommandButton(Resources.Close) {
-                Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
-            };
-            close.Click += (s, e) => { Close(); };
 
-            send = new CommandButton(Resources.Send) {
-                Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
-            };
-            send.Click += OnSend;
+            //int x = (Screen.PrimaryScreen.Bounds.Width - CommandButton.DefaultWidth) / 2;
+            //close = new CommandButton(Resources.Close) {
+            //    Location = new Point(x - CommandButton.DefaultWidth - 10, 0),
+            //};
+            //close.Click += (s, e) => { Close(); };
 
-            footer = new Panel {
-                Dock = DockStyle.Bottom,
-                Height = CommandButton.DefaultHeight + 2,
-                BackColor = Color.Transparent,
-            };
-            footer.Controls.Add(close);
-            footer.Controls.Add(send);
+            //send = new CommandButton(Resources.Send) {
+            //    Location = new Point(x + CommandButton.DefaultWidth + 10, 0),
+            //};
+            //send.Click += OnSend;
+
+            //footer = new Panel {
+            //    Dock = DockStyle.Bottom,
+            //    Height = CommandButton.DefaultHeight + 2,
+            //    BackColor = Color.Transparent,
+            //};
+            //footer.Controls.Add(close);
+            //footer.Controls.Add(send);
+
+            Footer footer = new Footer(CommandButton.DefaultHeight + 120, new Padding(0, 5, 0, 5), Resources.Back, Resources.Send);
+            footer.SetCallback(0, (s, e) => { Close(); });
+            footer.SetCallback(1, OnSend);
 
             Controls.Add(footer);
             Controls.Add(panel);

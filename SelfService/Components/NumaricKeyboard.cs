@@ -13,7 +13,7 @@ namespace SelfService.Components
         const int BTNWIDTH = 77;
         const int BTNHEIGHT = 68;
 
-        readonly Input myControl;
+        Input myControl;
         readonly TextBox textBox;
         Button[] buttons = new Button[12];
         readonly string numbers;
@@ -23,8 +23,7 @@ namespace SelfService.Components
         //    InitializeComponent();
         //}
 
-        public NumaricKeyboard(Point location, Input ctrl, TextBox box) {
-            myControl = ctrl;
+        public NumaricKeyboard(Point location, TextBox box) {
             textBox = box;
             numbers = "123456789,0.";
             InitializeComponent();
@@ -104,6 +103,10 @@ namespace SelfService.Components
         void DoSendKeys(string text) {
             //SendKeys.SendWait(text);
             if (myControl != null) myControl.Text += text;
+        }
+
+        internal void ChangeControl(Input control) {
+            myControl = control;
         }
 
         //public Control Control { get; set; }

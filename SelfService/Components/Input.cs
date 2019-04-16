@@ -1,4 +1,5 @@
 ﻿using SelfService.Code;
+using SelfService.Screens;
 using System;
 using System.Collections;
 using System.Drawing;
@@ -57,8 +58,7 @@ namespace SelfService.Components
             box.Click += (s, e) => {
                 //InputGotFocus?.Invoke(this, e);
                 try {
-                    Keyboard keyboard = new Keyboard(this);
-                    keyboard.Show();
+                    ShowKeyboard();
                 } catch (Exception) {
                     
                 }
@@ -112,20 +112,24 @@ namespace SelfService.Components
             box.Height = multiline ? 100 : 50;
 
             box.Click += (s, e) => {
-                try {
-                    IEnumerator enumerator = Application.OpenForms.GetEnumerator();
-                    while (enumerator.MoveNext()) {
-                        Form form = (Form)enumerator.Current;
-                        if (form is Keyboard) {
-                            form.Close();
-                        }
-                    }
-                } catch (Exception) {
-                    
-                }
-                Keyboard keyboard = new Keyboard(this);
-                keyboard.Show();
+                ShowKeyboard();
             };
+        }
+
+        void ShowKeyboard() {
+            BaseForm form = null;
+
+            if (this.Parent is BaseForm) {
+                form = (BaseForm)this.Parent;
+            } else if (this.Parent is FlowLayoutPanel) {
+                FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
+                form = (BaseForm)panel.Parent;
+            } else if (this.Parent is Panel) {
+                Panel panel = (Panel)this.Parent;
+                form = (BaseForm)panel.Parent;
+            }
+
+            form.Keyboard.ChangeControl(this);
         }
 
         public static int DefaultWidth = 420;
