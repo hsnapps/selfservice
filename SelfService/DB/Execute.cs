@@ -602,6 +602,9 @@ AND e.`group` IN (
 
         #region PRINT RESTRICTIONS
         internal static bool CanPrint(string document) {
+#if DEBUG
+            return true; 
+#endif
             bool exists = IsStudentIdExists();
             bool canPrint = false;
             if (!exists) {

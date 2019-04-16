@@ -19,9 +19,11 @@ namespace SelfService
         /// </summary>
         [STAThread]
         static void Main(string[] args) {
-            //CultureInfo culture = new CultureInfo("en-SA");
-            //Thread.CurrentThread.CurrentCulture = culture;
-            //Thread.CurrentThread.CurrentUICulture = culture;
+#if DEBUG
+            CultureInfo culture = new CultureInfo("en-SA");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture; 
+#endif
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
@@ -33,9 +35,9 @@ namespace SelfService
 
 #if DIRECT
             // open screen directly
-            Models.Student student = DB.Execute.Login("438138585", "1052124888");
+            Models.Student student = DB.Execute.Login("438102728", "1103226302");
             BaseForm.Student = student; // new Models.Student("", "prog.hasan@gmail.com", "0569163852", "حسن علي باعبدالله", "Hassan A. Baabdullah", "1046328777", "بكالوريوس علوم الحاسب الآلي", "", "", "", "");
-            Application.Run(new Screens.Temp.Schedule());
+            Application.Run(new RestCourses());
 #else
             Application.Run(new Start());
 #endif

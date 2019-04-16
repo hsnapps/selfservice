@@ -27,7 +27,9 @@ namespace SelfService.Code
                         .Replace(arabic[6], hindi[6])
                         .Replace(arabic[7], hindi[7])
                         .Replace(arabic[8], hindi[8])
-                        .Replace(arabic[9], hindi[9]);
+                        .Replace(arabic[9], hindi[9])
+                        .Replace("AM", "ص")
+                        .Replace("PM", "م");
         }
 
         internal static string LoadSound() {
@@ -90,130 +92,126 @@ namespace SelfService.Code
             new Toss(text).Show();
         }
 
-        internal static void PrintDataGrid(DataGridView grd, string title, bool landscape = true) {
-            Bitmap bitmap;
-            int height = grd.Height;
-            ScrollBars scroll = grd.ScrollBars;
-            int selected = grd.SelectedRows[0].Index;
-
-            grd.ScrollBars = ScrollBars.None;
-            grd.Height = grd.RowCount * grd.RowTemplate.Height * 2;
-            grd.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
-
-            bitmap = new Bitmap(grd.Width, grd.Height);
-            grd.DrawToBitmap(bitmap, new Rectangle(0, 0, grd.Width, grd.Height));
+        internal static void PrintDataGrid(DataGridView grd, string title, int headerHeigt, int rowHeigt) {
+            PageSettings pageSettings = GetPrinterPageInfo(null);
+            Size paperSize = new Size(pageSettings.PaperSize.Height, pageSettings.PaperSize.Width);
+            int leftMargin = GetMargin("LEFT");
+            int rightMargin = GetMargin("RIGHT") * 2;
 
             PrintDocument document = new PrintDocument {
                 DefaultPageSettings = new PageSettings {
-                    Landscape = landscape,
-                    PaperSize = new PaperSize("A4", 825, 1175),
+                    Landscape = true,
+                    // PaperSize = new PaperSize("A4", paperSize.Width, paperSize.Height),
                     Margins = new Margins(50, 50, 50, 50)
                 },
             };
             document.PrintPage += (s, e) => {
-                if (landscape) {
-                    e.Graphics.DrawImage(bitmap, 10, 10, 1155, grd.Height);
-                } else {
-                    e.Graphics.DrawImage(bitmap, 10, 10, 775, grd.Height);
+                Graphics g = e.Graphics;
+                Font font = new Font(Fonts.ALMohanad, 13);
+                Font font12 = new Font(Fonts.ALMohanad, 12.5f);
+                Font font18 = new Font(Fonts.ALMohanadBold, 18, FontStyle.Bold);
+                int x = leftMargin;
+                int y = 50;
+                int width = paperSize.Width - rightMargin;
+                StringFormat format = new StringFormat {
+                    Alignment = StringAlignment.Near,
+                    LineAlignment = StringAlignment.Center,
+                    FormatFlags = StringFormatFlags.DirectionRightToLeft
+                };
+                Rectangle rect = new Rectangle(leftMargin, y, width, 25);
+                //e.Graphics.DrawRectangle(Pens.Black, rect);
+
+                #region Draw Right Header
+                g.DrawString(Resources.TVTC_Ar_Full, font, Brushes.Black, rect, format);
+                rect.Y += 25;
+                g.DrawString(Resources.College_Ar, font, Brushes.Black, rect, format);
+                rect.Y += 25;
+                g.DrawString(Resources.AppTitle, font, Brushes.Black, rect, format);
+                #endregion
+
+                #region Draw Title
+                format.Alignment = StringAlignment.Center;
+                rect.Y += 60;
+                g.DrawString(title, font18, Brushes.Black, rect, format);
+                #endregion
+
+                #region Draw Name and Section
+                format.Alignment = StringAlignment.Center;
+                rect.Y += 25;
+                string name = String.Format("{0} - {1}", BaseForm.Student.Name_AR, BaseForm.Student.Section);
+                g.DrawString(name, font12, Brushes.Black, rect, format);
+                #endregion
+
+                #region Render Logo
+                Image logo = Tools.LoadImage("Logo.png");
+                g.DrawImage(logo, new PointF(leftMargin, 50));
+                #endregion
+
+                #region Draw Grid Headers
+                rect.Y += 35;
+                rect.Height = 70;
+                for (int i = grd.Columns.Count - 1; i > -1; i--) {
+                    format.Alignment = StringAlignment.Center;
+                    rect.Width = width / grd.Columns.Count;
+                    g.DrawRectangle(Pens.Black, rect);
+                    g.FillRectangle(Brushes.LightGray, rect);
+                    g.DrawString(grd.Columns[i].HeaderText, font12, Brushes.Black, rect, format);
+                    rect.X = rect.Right;
                 }
-            };
+                #endregion
 
-            PrintPreviewDialog dialog = new PrintPreviewDialog {
-                Document = document,
-            };
-            dialog.Show();
-
-            grd.Height = height;
-            grd.ScrollBars = scroll;
-            grd.Rows[selected].Selected = true;
-        }
-
-        internal static void PrintDataGrid(DataGridView grd, string title, int headerHeigt, int rowHeigt, bool landscape = true) {
-            Bitmap bitmap;
-            int height = headerHeigt + (rowHeigt * grd.Rows.Count);
-            ScrollBars scroll = grd.ScrollBars;
-            int selected = grd.SelectedRows[0].Index;
-            int paperHeight = landscape ? 1175 : 825 ;
-            int paperWidth = landscape ? 825 : 1175 ;
-            int widthFactor = 200;
-            int leftFactor = 200;
-
-            grd.ScrollBars = ScrollBars.None;
-            grd.Height = grd.RowCount * grd.RowTemplate.Height * 2;
-            grd.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
-
-            bitmap = new Bitmap(grd.Width - widthFactor, grd.Height);
-            grd.DrawToBitmap(bitmap, new Rectangle(0, 250, grd.Width - widthFactor, height));
-
-            PrintDocument document = new PrintDocument {
-                DefaultPageSettings = new PageSettings {
-                    Landscape = landscape,
-                    PaperSize = new PaperSize("A4", paperWidth, paperHeight),
-                    Margins = new Margins(50, 50, 50, 50)
-                },
-            };
-            document.PrintPage += (s, e) => {
-                using (Font font = new Font(Fonts.ALMohanad, 13)) {
-                    int x = 50;
-                    int y = 50;
-                    int margin = 100;
-                    
-                    StringFormat format = new StringFormat {
-                        Alignment = StringAlignment.Near,
-                        LineAlignment = StringAlignment.Center,
-                        FormatFlags = StringFormatFlags.DirectionRightToLeft
-                    };
-                    Rectangle rect = new Rectangle(x, y, paperHeight - margin, 25);
-                    e.Graphics.DrawString(Resources.TVTC_Ar_Full, font, Brushes.Black, rect, format);
-                    y += 25;
-                    rect = new Rectangle(x, y, paperHeight - margin, 25);
-                    e.Graphics.DrawString(Resources.College_Ar, font, Brushes.Black, rect, format);
-                    y += 25;
-                    rect = new Rectangle(x, y, paperHeight - margin, 25);
-                    e.Graphics.DrawString(Resources.AppTitle, font, Brushes.Black, rect, format);
-
-                    using (Font font18 = new Font(Fonts.ALMohanadBold, 18, FontStyle.Bold)) {
-                        format.Alignment = StringAlignment.Center;
-                        y += 30;
-                        rect = new Rectangle(x, y, paperHeight - margin, 60);
-                        e.Graphics.DrawString(title, font18, Brushes.Black, rect, format); 
+                #region Draw Grid Rows
+                rect.Y = rect.Bottom;
+                rect.X = leftMargin;
+                rect.Height = 30;
+                for (int i = 0; i < grd.Rows.Count; i++) {
+                    for (int k = grd.Columns.Count - 1; k > -1; k--) {
+                        rect.Width = width / grd.Columns.Count;
+                        g.DrawRectangle(Pens.Black, rect);
+                        string value = ToHindi(grd.Rows[i].Cells[k].Value.ToString());
+                        g.DrawString(value, font12, Brushes.Black, rect, format);
+                        rect.X = rect.Right;
                     }
+                    rect.Y = rect.Bottom;
+                    rect.X = leftMargin;
+                } 
+                #endregion
 
-                    using (Font font12 = new Font(Fonts.ALMohanad, 12.5f)) {
-                        format.Alignment = StringAlignment.Center;
-                        y += 30;
-                        rect = new Rectangle(x, y, paperHeight - margin, 60);
-                        string name = String.Format("{0} - {1}", BaseForm.Student.Name_AR, BaseForm.Student.Section);
-                        e.Graphics.DrawString(name, font12, Brushes.Black, rect, format);
-                    }
-
-                    Image logo = Tools.LoadImage("Logo.png");
-                    e.Graphics.DrawImage(logo, new PointF(50, 50));
-                }
-
-                if (landscape) {
-                    e.Graphics.DrawImage(bitmap, 10, 10, paperHeight - 20, grd.Height);
-                } else {
-                    e.Graphics.DrawImage(bitmap, 10, 10, paperWidth - 50, grd.Height);
-                }
-            };
+                font.Dispose();
+                font12.Dispose();
+                font18.Dispose();
+            }; // -- END PrintPage
 
 #if DEBUG
             PrintPreviewDialog dialog = new PrintPreviewDialog {
                 Document = document,
+                TopLevel = true,
             };
             dialog.Show();
 #else
             document.Print();
 #endif
-
-            grd.Height = height;
-            grd.ScrollBars = scroll;
-            grd.Rows[selected].Selected = true;
         }
 
-        private static void Document_PrintPage(object sender, PrintPageEventArgs e) {
-            throw new NotImplementedException();
+        private static int GetMargin(string v) {
+            var path = Application.StartupPath + "\\DB\\print.txt";
+            int margin = 0;
+
+            if (File.Exists(path)) {
+                var lines = File.ReadLines(path);
+
+                foreach (var line in lines) {
+                    if (line.StartsWith(v)) {
+                        var parts = line.Split('=');
+                        if (parts.Length < 2) break;
+                        var s_margin = parts[1].Trim();
+                        Int32.TryParse(s_margin, out margin);
+                        break;
+                    }
+                }
+            }
+
+            return margin;
         }
 
         internal static void PrintFooter(Graphics g) {
@@ -238,6 +236,27 @@ namespace SelfService.Code
         internal static void PrintStamp(Graphics g, Rectangle rect) {
             Image image = Tools.LoadImage("stamp.png");
             g.DrawImage(image, rect);
+        }
+
+        private static PageSettings GetPrinterPageInfo(String printerName) {
+            PrinterSettings settings;
+
+            // If printer name is not set, look for default printer
+            if (String.IsNullOrEmpty(printerName)) {
+                foreach (var printer in PrinterSettings.InstalledPrinters) {
+                    settings = new PrinterSettings();
+                    settings.PrinterName = printer.ToString();
+                    if (settings.IsDefaultPrinter)
+                        return settings.DefaultPageSettings;
+                }
+                return null; // <- No default printer  
+            }
+
+            // printer by its name 
+            settings = new PrinterSettings();
+
+            settings.PrinterName = printerName;
+            return settings.DefaultPageSettings;
         }
 
         public static int PaperWidth { get => 827; }
