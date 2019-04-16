@@ -146,10 +146,14 @@ namespace SelfService.Components
             bool isNumaric = myControl.IsNumaric;
 
             if (tag.Equals(back)) {
-                myControl.Text = myControl.Text.Substring(0, myControl.Text.Length - 1);
-                box.Text = myControl.Text;
-                box.PasswordChar = myControl.PasswordChar;
-                return;
+                try {
+                    myControl.Text = myControl.Text.Substring(0, myControl.Text.Length - 1);
+                    box.Text = myControl.Text;
+                    box.PasswordChar = myControl.PasswordChar;
+                    return;
+                } catch (Exception) {
+                    return;
+                }
             }
 
             if (tag.Equals(space)) {

@@ -56,8 +56,12 @@ namespace SelfService.Components
             };
             box.Click += (s, e) => {
                 //InputGotFocus?.Invoke(this, e);
-                Keyboard keyboard = new Keyboard(this);
-                keyboard.Show();
+                try {
+                    Keyboard keyboard = new Keyboard(this);
+                    keyboard.Show();
+                } catch (Exception) {
+                    
+                }
             };
 
             AutoScaleMode = AutoScaleMode.None;

@@ -11,7 +11,7 @@ namespace SelfService.Models
             Name_EN = reader["name_en"].ToString();
             Name_AR = reader["name_ar"].ToString();
             ID_Number = reader["id_num"].ToString();
-            Program = reader["program"].ToString();
+            Program = DB.Execute.GetMajor(ID);
             Section = reader["section"].ToString();
             Level = reader["level"].ToString();            
             Unit = reader["unit"].ToString();

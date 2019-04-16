@@ -98,7 +98,7 @@ namespace SelfService.Components
                     break;
             }
 
-            textBox.Text = myControl.Text;
+            if (!myControl.IsPassword) textBox.Text = myControl.Text;
         }
 
         void DoSendKeys(string text) {

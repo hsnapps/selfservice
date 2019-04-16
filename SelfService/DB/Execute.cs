@@ -42,6 +42,30 @@ namespace SelfService.DB
             return value;
         }
 
+        internal static string GetMajor(string iD) {
+            string value = "";
+
+            try {
+                string statement = "SELECT major from student_records s WHERE s.std_no = '" + iD + "';";
+                using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(statement, connection)) {
+                        MySqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) {
+                            value = reader.GetString(0);
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch (Exception) {
+#if DEBUG
+                throw;
+#endif
+            }
+
+            return value;
+        }
+
         static Execute() {
             var path = Application.StartupPath + @"\DB\env.txt";
             string[] lines = File.ReadAllLines(path);
@@ -301,7 +325,7 @@ namespace SelfService.DB
 
         internal static Student Login(string trainee_num, string id_number) {
             string statement = @"
-select id, email, mobile, name_ar, name_en, id_num, program, section, level, unit, term 
+select id, email, mobile, name_ar, name_en, id_num, program, section, level, unit, term
 from students 
 where id = '{0}' 
 and id_num = '{1}';";

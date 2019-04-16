@@ -509,7 +509,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لا يمكنك طباعة هذا المستند! الرجاء مراجعة الجهة المختصة..
+        ///   Looks up a localized string similar to لا يمكنك طباعة هذا المستند! الرجاء التواصل مع إدارة القبول..
         /// </summary>
         internal static string MaxPrint {
             get {
@@ -781,7 +781,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الممكلة العربية السعودية
+        ///   Looks up a localized string similar to الممـلـكـة الـعـــــربـيــة الـســعــوديــة
         ///المؤسسة العامة للتدريب التقني والمهني
         ///الفصل term year1.
         /// </summary>

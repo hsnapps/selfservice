@@ -135,13 +135,15 @@ namespace SelfService.Code
             int selected = grd.SelectedRows[0].Index;
             int paperHeight = landscape ? 1175 : 825 ;
             int paperWidth = landscape ? 825 : 1175 ;
+            int widthFactor = 200;
+            int leftFactor = 200;
 
             grd.ScrollBars = ScrollBars.None;
             grd.Height = grd.RowCount * grd.RowTemplate.Height * 2;
             grd.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
-            bitmap = new Bitmap(grd.Width, grd.Height);
-            grd.DrawToBitmap(bitmap, new Rectangle(0, 250, grd.Width, height));
+            bitmap = new Bitmap(grd.Width - widthFactor, grd.Height);
+            grd.DrawToBitmap(bitmap, new Rectangle(0, 250, grd.Width - widthFactor, height));
 
             PrintDocument document = new PrintDocument {
                 DefaultPageSettings = new PageSettings {
@@ -196,10 +198,14 @@ namespace SelfService.Code
                 }
             };
 
+#if DEBUG
             PrintPreviewDialog dialog = new PrintPreviewDialog {
                 Document = document,
             };
             dialog.Show();
+#else
+            document.Print();
+#endif
 
             grd.Height = height;
             grd.ScrollBars = scroll;
