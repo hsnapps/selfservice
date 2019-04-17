@@ -28,7 +28,7 @@ namespace SelfService.Documents
             var academicYear = academic["currentYear"];
             var years = academicYear.Split('/');
             //var nextYear = academic["nextYear"];
-            var currentTerm = academic["currentTerm"];
+            var currentTerm = academic["organization"];
             string managerTitle = "", managerName = "";
             StringFormat near = new StringFormat {
                 Alignment = StringAlignment.Near,

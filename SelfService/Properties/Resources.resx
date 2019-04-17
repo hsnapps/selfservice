@@ -402,7 +402,7 @@ Admission &amp; Registration &amp; Trainees Services</value>
 term</value>
   </data>
   <data name="SaudiCouncilOfEngineersTitle" xml:space="preserve">
-    <value>شهادة تعريف</value>
+    <value>خطاب تعريف</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>الممـلـكـة الـعـــــربـيــة الـســعــوديــة
@@ -439,7 +439,7 @@ WHERE student_id = '{0}';</value>
     <value>عودة</value>
   </data>
   <data name="MaxPrint" xml:space="preserve">
-    <value>لا يمكنك طباعة هذا المستند! الرجاء التواصل مع إدارة القبول.</value>
+    <value>لقد إستنفذت الحد الاعلى من الطباعة الرجاء مراجعة القبول والتسجيل للحصول على نسختك</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>مرحباً... {0}</value>

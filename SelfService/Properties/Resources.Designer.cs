@@ -509,7 +509,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لا يمكنك طباعة هذا المستند! الرجاء التواصل مع إدارة القبول..
+        ///   Looks up a localized string similar to لقد إستنفذت الحد الاعلى من الطباعة الرجاء مراجعة القبول والتسجيل للحصول على نسختك.
         /// </summary>
         internal static string MaxPrint {
             get {
@@ -709,7 +709,7 @@ namespace SelfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to شهادة تعريف.
+        ///   Looks up a localized string similar to خطاب تعريف.
         /// </summary>
         internal static string SaudiCouncilOfEngineersTitle {
             get {
