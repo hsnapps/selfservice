@@ -37,7 +37,7 @@ namespace SelfService.Screens
             }
 
             timer = new Timer {
-                Interval = DB.Execute.GetTimeout() * 60 * 1000,
+                Interval = DB.Execute.GetTimeout() * 1000,
                 Enabled = true,
             };
             timer.Tick += (s, e) => {
@@ -57,10 +57,6 @@ namespace SelfService.Screens
 
             //keyboard = new Keyboard();
             //keyboard.Hide();
-        }
-
-        protected void ShowKeyboard(bool show) {
-            //keyboard.Visible = show;
         }
 
         void InitializeComponent() {

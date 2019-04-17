@@ -2,6 +2,8 @@
 using SelfService.Components;
 using SelfService.Properties;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SelfService.Screens
@@ -11,13 +13,16 @@ namespace SelfService.Screens
         Login login;
         CommandsPanel commands;
         Timer _timer;
-        //Video video;
+        int _timeout;
+        int _timerTick;
         CommandButton start;
         CommandButton close;
         AxWMPLib.AxWindowsMediaPlayer player;
         readonly string url;
 
         public Start() : base(true) {
+            this.Name = "Start";
+
             string selection = DB.Execute.GetVideoSelection();
             switch (selection) {
                 case "web":
@@ -48,8 +53,9 @@ namespace SelfService.Screens
             //video = new Video();
             //video.FormClosed += (s, e) => { _timer.Start(); };
 
+            _timeout = DB.Execute.GetTimeout();
             _timer = new Timer {
-                Interval = DB.Execute.GetTimeout() * 60 * 100,
+                Interval = 1000,
                 Enabled = true,
             };
             _timer.Tick += OnTimer;
@@ -69,21 +75,39 @@ namespace SelfService.Screens
                 };
 
                 close.Click += (s, e) => { Close(); };
-                Controls.Add(close); 
+                Controls.Add(close);
             }
         }
 
         void OnTimer(object s, EventArgs e) {
-            FormCollection fc = Application.OpenForms;
-            if (fc.Count == 1) {
-                start.Visible = false;
-#if DEBUG
-                close.Visible = false;
-#endif
-                player.Visible = true;
-                player.URL = url;
-                (s as Timer).Stop();
+            _timerTick++;
+            if (_timerTick < _timeout) {
+                return;
             }
+
+            // FormCollection forms = Application.OpenForms;
+            IEnumerator formsCollection = Application.OpenForms.GetEnumerator();
+            List<Form> forms = new List<Form>();
+
+            while (formsCollection.MoveNext()) {
+                forms.Add((Form)formsCollection.Current);                
+            };
+
+            for (int i = 0; i < forms.Count; i++) {
+                Form form = forms[i];
+                if (form.Name != "Start") {
+                    form.Close();
+                }
+            }
+
+            start.Visible = false;
+#if DEBUG
+            close.Visible = false;
+#endif
+            player.Visible = true;
+            player.URL = url;
+            _timerTick = 0;
+            (s as Timer).Stop();
         }
 
         void InitializeVideo() {

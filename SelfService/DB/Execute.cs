@@ -268,7 +268,16 @@ namespace SelfService.DB
         }
 
         internal static string GetVideoPath() {
-            return Application.StartupPath + "\\Videos\\" + GetVideo("path");
+            string path = Application.StartupPath + "\\Videos\\" + GetVideo("path");
+            if (!path.EndsWith(".mp4")) {
+                path += ".mp4";
+            }
+
+            if (!File.Exists(path)) {
+                return null;
+            }
+
+            return path;
         }
 
         internal static string GetVideoUrl() {
@@ -356,7 +365,7 @@ and id_num = '{1}';";
             int timeout = 60 * 2 * 1000;
 
             try {
-                string statement = "select value from settings where `category` = 'config' and `key` = 'timeout';";
+                string statement = "select value from settings where `category` = 'video' and `key` = 'timeout';";
                 using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING)) {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(statement, connection)) {
